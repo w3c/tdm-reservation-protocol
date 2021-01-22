@@ -26,4 +26,4 @@ In order to [join the group](https://www.w3.org/community/tdmrep/join), you will
 
 ---
 
-Contact: Laurent Le Meurs (@llemeurfr) or Ivan Herman (@iherman)
+Contact: Laurent Le Meur (@llemeurfr) or Ivan Herman (@iherman)
