@@ -22,7 +22,12 @@ The “opt-out” mechanism introduced by the DMS Directive is therefore a real 
 
 The goal of this [Community Group](https://www.w3.org/community/tdmrep/) is to facilitate TDM in Europe and elsewhere, by specifying a simple and practical machine-readable solution, capable of expressing the reservation of TDM rights.
 
+Read more details is the [CG Charter](charter.md).  
+
 In order to [join the group](https://www.w3.org/community/tdmrep/join), you will need a (free) [W3C account](https://www.w3.org/accounts/request). Please note, however, that [W3C Membership](https://www.w3.org/community/about/faq/#is-w3c-membership-required-to-participate-in-a-community-or-business-group) is _not_ required to join a Community Group.
+
+## Table of Contents
+
 
 ---
 
