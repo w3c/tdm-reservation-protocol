@@ -1,6 +1,6 @@
 # Vocabulary and requirements for a technical solution
 
-## Definitions:
+## Vocabulary:
 
 - **Rightsholder**: person or organization that owns the legal rights to something, in our case Web Resources. (Wiktionary)
 - **TDM Actor**: organization practicing TDM (on Web resources in our case).
