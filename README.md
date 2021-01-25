@@ -28,6 +28,8 @@ In order to [join the group](https://www.w3.org/community/tdmrep/join), you will
 
 ## Table of Contents
 
+- [Vocabulary and Requirements](docs/requirements.md)
+
 
 ---
 
