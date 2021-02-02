@@ -1,7 +1,7 @@
 
-# TDM Reservation Protocol Community Group
+# Text and Data Mining Reservation Protocol Community Group
 
-## Text and Data Mining (TDM) Techniques
+##  Text and Data Mining (TDM) Techniques
 
 In addition to their significance in the context of scientific research, text and data mining techniques (TDM) are widely used both by private and public entities to analyse large amounts of data (including copyright protected content like text, images, video etc.) in different areas of life and for various purposes, including for government services, complex business decisions and the development of new applications or technologies.
 
