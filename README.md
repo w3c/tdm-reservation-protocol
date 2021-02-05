@@ -28,7 +28,7 @@ In order to [join the group](https://www.w3.org/community/tdmrep/join), you will
 
 ## Table of Contents
 
-- [Vocabulary used during the project](docs/requirements.md)
+- [Vocabulary used during the project](docs/vocabulary.md)
 - [Requirements for a technical solution](docs/requirements.md)
 - [TDM: what does it mean in practice?](docs/tdm-meaning.md)
 - [Useful extracts of the DSM Directive](docs/dsm-extracts.md)
