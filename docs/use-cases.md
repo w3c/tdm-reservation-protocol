@@ -13,9 +13,8 @@ But for TDM usages outside of the EU, a TDM actor must contact NEWSONLINE and re
 ## Use Case 2: a publisher declares that TDM rights are not reserved
 
 OPENORG is a European open data publisher. It explicitly indicates that TDM rights on its articles, datasets and pictures are not reserved. 
-By checking TDM rights, a TDM agent knows that it can mine this content for TDM usage in the EU without having to contact OPENORG. 
 
-For TDM usage outside the EU, a TDM actor must still contact OPENORG and request an authorization to mine such content. 
+By checking TDM rights, TDM actors know that they can mine such content for TDM purposes regardless where TDM usage is taking place. TDM actors do not need to contact OPENORG to check if it is possible to obtain an authorization for TDM usage outside the EU, which eases the workload of the OPENORG team.
 
 ## Use Case 3: a publisher declares that TDM rights are reserved
 
