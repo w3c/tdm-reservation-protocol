@@ -34,7 +34,8 @@ In order to [join the group](https://www.w3.org/community/tdmrep/join), you will
 - [Use cases](docs/use-cases.md)
 - [Past and existing initiatives](docs/initiatives.md)
 - [Useful extracts of the DSM Directive](docs/dsm-extracts.md)
+- [robots for non techies](docs/robots.md)
 
 ---
 
-Contact: Laurent Le Meur (@llemeurfr) or Ivan Herman (@iherman)
+Contacts: Laurent Le Meur (@llemeurfr), Giulia Marangoni () or Ivan Herman (@iherman)
