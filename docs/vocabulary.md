@@ -1,6 +1,7 @@
 # Vocabulary used during the project
 
-- **Rightsholder**: person or organization that owns the legal rights to something, in our case Web Resources. ([Wiktionary](https://en.wiktionary.org/wiki/rightsholder))
+- **Rightsholder**: person or organization that owns the legal rights to something, in our case Web resources. ([Wiktionary](https://en.wiktionary.org/wiki/rightsholder))
+- **Publisher**: person or organization that makes Web resources available to the public.
 - **TDM Actor**: person or organization practicing TDM (on Web resources in our case).
 - **TDM Agent**: software accessing Web resources for TDM purposes. 
 - **TDM License**: description of the terms and conditions by which a TDM actor can process a given Web resource.  

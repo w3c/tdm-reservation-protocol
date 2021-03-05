@@ -4,7 +4,7 @@
 
 To ensure that all users without discrimination will be able to reserve TDM Rights, the solution shall:
 
-1. Rely on open standards  - especially Web standards - and be interoperable.
+1. Rely on open standards and be interoperable.
 1. Rely on tools and formats widely supported by publishers and TDM Actors.
 1. Minimize economic and technical barriers to implementation.
 
@@ -19,8 +19,8 @@ The solution shall:
 1. Specify how a rightsholder can indicate the location of a TDM Licence associated with each individual Web resource he controls.
 1. Specify a machine-readable format for TDM Licenses. 
 
-## Additional Requirements for Advanced Solutions
+## Additional Requirements
 
-Advanced user needs or sector specific practices may imply additional requirements. The additional features resulting from these additional requirements will not replace the code features resulting from core requirements, but will complement them. 
+Advanced user needs or sector specific practices may imply additional requirements. The additional features resulting from these additional requirements will not replace the core features resulting from core requirements, but will complement them. 
 
 1. ... 
