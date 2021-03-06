@@ -26,6 +26,8 @@ Read more details is the [CG Charter](charter.md).
 
 In order to [join the group](https://www.w3.org/community/tdmrep/join), you will need a (free) [W3C account](https://www.w3.org/accounts/request). Please note, however, that [W3C Membership](https://www.w3.org/community/about/faq/#is-w3c-membership-required-to-participate-in-a-community-or-business-group) is _not_ required to join a Community Group.
 
+If you are new to Github, an interesting read is [ I.Herman's introduction on the subject](https://iherman.github.io/misc-notes/docs/BasicGitHubContributionIntro). 
+
 ## Table of Contents
 
 - [TDM: what does it mean in practice?](docs/tdm-meaning.md)
