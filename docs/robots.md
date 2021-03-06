@@ -10,6 +10,14 @@ Because of this, a robots.txt file tries to maximize the crawl budget of search 
 
 **robots.txt is not meant to protect or block sensitive data.**
 
+A robots.txt file is placed at the top level path of the service (i.e.root of a web server). The URL of the file is therefore something like: 
+
+```
+http://www.example.com/robots.txt
+```
+
+If no file is found at this location, a web crawler will consider that every file present on the web site can be parsed and indexed. 
+
 The expressivity of robots.txt is very limited, with only three “words”:
 
 - *User-Agent* identifies a Web crawler (e.g. Googlebot) to which the following instructions apply; The asterisk ‘*’ is a wildcard and means “all crawlers”;
@@ -18,13 +26,30 @@ The expressivity of robots.txt is very limited, with only three “words”:
 
 robots.txt may include several User-Agent directives, each followed by one or more Disallow and Allow instructions.
 
+Each Disallow or Allow instruction contains the path of Web resources impacted by the instruction. Jockers like '*' and '?' are allowed to minimize verbosity.
+
+In the following example, any user agent ('*') should follow the rule that disallows exploring the top level path ('/'), and therefore every file and directory at this location, meaning the whole web site.
+
+```
+User-agent: *
+Disallow: /
+```
+
+In the following example, exploring the content of the '/public/covers' directory and any file with a .pdf extension is disallowed ('$' marks the end of a match pattern).
+
+```
+User-agent: *
+Disallow: /public/covers
+Disallow: /*.pdf$
+```
+
 robots.txt has been so far loosely specified, but there is an effort undergoing to [make it an Internet Standard(https://tools.ietf.org/html/draft-koster-rep-00)] via the IETF standardization body. 
 
 ## robots meta directives 
 
 Whereas robots.txt file directives give bots suggestions for how to crawl files on a website robots meta directives provide more firm instructions on how to process the content of a Web page (or other kind of file) after the file has been crawled. If these directives are discovered by bots, their parameters serve as strong suggestions for crawler indexation behavior. 
 
-There are two types of robots meta directives: those that are part of a Web page (nécessarily in HTML) and those a web server sends back (as an X-Robots-Tag HTTP header) to the crawler when the Web resource (any file: image, audio, video etc.) is fetched. 
+There are two types of robots meta directives: those that are part of a Web page (necessarily in HTML) and those a web server sends back (as an X-Robots-Tag HTTP header) to the crawler when the Web resource (any file: image, audio, video etc.) is fetched. 
 
 The author of a Web page can easily add a meta directive to the header of any HTML page. Its syntax is of the type:
 
@@ -58,4 +83,4 @@ But other instructions have also been defined over time, like:
 - *nosnippet* which means “do not show a snippet of this page on a search engine result page”.
 - *notranslate* which means “do not offer this page’s translation on a search engine result page”.
 
-This set of instructions is not properly standardized and different search engines accept different meta-tag parameters for the “robots” meta-tag. For instance Google specifies [here(https://developers.google.com/search/reference/robots_meta_tag?hl=fr)] the vocabulary it understands.
+This set of instructions is not properly standardized and different search engines accept different meta-tag parameters for the “robots” meta-tag. For instance Google specifies [here(https://developers.google.com/search/reference/robots_meta_tag)] the vocabulary it understands.
