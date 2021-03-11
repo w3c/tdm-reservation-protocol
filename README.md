@@ -32,7 +32,7 @@ If you are new to Github, an interesting read is [ I.Herman's introduction on th
 
 - [TDM: what does it mean in practice?](docs/tdm-meaning.md)
 - [Vocabulary used during the project](docs/vocabulary.md)
-- [Requirements for a technical solution](docs/requirements.md)
+- [Goals and Requirements for a technical solution](docs/requirements.md)
 - [Use cases](docs/use-cases.md)
 - [Past and existing initiatives](docs/initiatives.md)
 - [Useful extracts of the DSM Directive](docs/dsm-extracts.md)
