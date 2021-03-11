@@ -12,7 +12,7 @@ TDM and content indexing for search and discovery have different usage purposes.
 
 ## Core requirements
 
-The solution shall:
+The technical specification shall:
 
 1. Specify how a rightsholder can declare the reservation of TDM Rights on each individual Web resource he controls.
 1. Specify how a rightsholder can indicate the location of human readable information indicating how to apply for a TDM License.
