@@ -23,15 +23,17 @@ unset | no declaration              | use-case 1
 1     | TDM rights are reserved     | use-case 3
 2     | TDM rights are reserved but a TDM license can be acquired  | use-case 4
 
+Other values are considered protocol errors. In such a case the TDM Actor MUST consider that the value of TDM-a is `unset`.
+
 ### TDM-b
 
-If the value of TDM-a is `2`, the absence of TDM-b is considered a protocol error. 
+If the value of TDM-a is `2`, the absence of TDM-b is considered a protocol error. In such a case the TDM Actor MUST consider that the value of TDM-a is `1`. 
 
 TDM-b is a URL. 
 
 If the Web resource located at this URL is a Web page (i.e. its content-type is `text/html`), this resource is considered human readable. If it has the content-type of the license format defined by the protocol, this resource is considered machine-readable. 
 
-Other content-types are considered protocol errors.  
+Other content-types are considered protocol errors. In such a case the TDM Actor MUST consider that the value of TDM-a is `1`. 
 
 ## Use of http headers
 
