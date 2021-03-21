@@ -37,7 +37,7 @@ Other content-types are considered protocol errors. In such a case the TDM Actor
 
 ## Use of http headers
 
-Let's imagine that TDM Agent fetches a Web resource using 
+Let's imagine that a TDM Agent fetches a Web resource using: 
 
 ``` http
 GET /path/page.html HTTP/1.1
@@ -85,7 +85,7 @@ Content-Length: 1245
 
 ## Implementing the proposal
 
-HTTP headers can easily be integrated by web servers like Apache (using mod_headers), reverse-proxies like nginx, or directly in source code driving the behavior of a web server (e.g. using Golang). This is made particularly easy if resources associated with given properties are gathered in specific locations. 
+HTTP headers can easily be integrated by web servers like Apache (using mod_headers), reverse-proxies like nginx, or directly in the source code driving the behavior of a web server (e.g. using Golang). This is made particularly easy if the resources associated with given TDM properties are placed in specific locations. 
 
 In Apache for instance, setting TDM-a to 0 for all resources contained in the directory "/path" is obtained via the directive: 
 
