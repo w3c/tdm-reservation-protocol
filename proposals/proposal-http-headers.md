@@ -16,11 +16,12 @@ This is done using two properties:
 
 TDM-a is a integer which can take the following values. 
 
-| value | meaning | reference use-case |
-| unset | no declaration | use-case 1 |
-| 0     | TDM rights are not reserved | use-case 2 |
-| 1     | TDM rights are reserved | use-case 3 | 
-| 2     | TDM rights are reserved but a TDM license can be acquired  | use-case 4 | 
+value | meaning | reference use-case
+----- | ------- | ------------------
+unset | no declaration              | use-case 1
+0     | TDM rights are not reserved | use-case 2
+1     | TDM rights are reserved     | use-case 3
+2     | TDM rights are reserved but a TDM license can be acquired  | use-case 4
 
 ### TDM-b
 
