@@ -37,8 +37,10 @@ Other content-types are considered protocol errors.
 
 Let's imagine that TDM Agent fetches a Web resource using 
 
+``` http
 GET /path/page.html HTTP/1.1
 Host: http://example.com 
+```
 
 The message returned by the Web server to the TDM Agent may have the following header:
 
