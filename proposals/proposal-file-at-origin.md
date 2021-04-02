@@ -30,7 +30,7 @@ There are many variants of regular expressions. In order to be simplify the work
 
 Note: nginx is using another variant for expressing locations, a variant called [PCRE](https://www.pcre.org), for Perl compatible Regular Expressions. 
 
-Note: the group may want to restrict the RegExp language to the simplest, e.G. ‘*’ and ‘?’ jokers. 
+Note: the group may want to restrict the RegExp language to the simplest, e.G. ‘*’ and ‘?’ jokers. Or it may decide to reuse the specification and wording of the [robots.txt draft-koster-rep-00](https://tools.ietf.org/html/draft-koster-rep-00#section-2.2.2).
 
 ## Use of the .well-known directory
 
@@ -46,9 +46,9 @@ To address this, this memo defines a path prefix in HTTP(S) URIs for these “we
 
 ## Implementing the proposal
 
-Let’s imagine that a Web server is hosting three groups of files. The rightsholder  of the first group of files wants to express that TDM rights are reserved on its content. The rightsholder of the second and third group of files, owner-b, wants to express that TDM rights are tied to a license for the second group and TDM rights are not reserved for the third.
+Let’s imagine that a Web server is hosting three groups of files. The rightsholder of the first group of files (PDF documents) wants to express that TDM rights are reserved on this content. The rightsholder of the two other groups of files wants to express that TDM rights are tied to a license for the second group (html pages) and TDM rights are not reserved for the third (JPEG images).
 
-In this example, the first group is a set of PDF files stored in /directory-a; the second group is a set of HTML files stored in /directory-b/html and the third group is a set of JPEG image files stored in /directory-b/other. 
+In this example, the first group is a set of files stored in /directory-a; the second group is stored in /directory-b/html and the third group in /directory-b/other. 
 
 TDMRep.json is therefore structured as: 
 
@@ -60,17 +60,17 @@ TDMRep.json is therefore structured as:
   },
   {
   "location": "/directory-b/html",
-  "TDM-a": 0
+  "TDM-a": 2,
+  "TDM-b":"https://example.com/tdm-licenses/license-a"
   },
   {
   "location": "/directory-b/other/*.jpg",
-  "TDM-a": 2,
-  "TDM-b":"https://example.com/tdm-licenses/license-a"
+  "TDM-a": 0
   }
 ]
 ```
 
-Note:  in the previous example, if non-JPEG files are also located in “/directory-b/images”, they are driven by the TDM exception of the DSM. 
+Note:  in this example, if non-JPEG files are also located in “/directory-b/images”, they are driven by the TDM exception of the DSM. 
 
 ## Solution vs requirements
 
