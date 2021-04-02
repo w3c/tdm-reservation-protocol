@@ -3,48 +3,52 @@
 ## Status of this document
 
 This is a working document. It serves as a support for discussions of the TDMRep CG.
+
 This document is by no way an outcome of the work of the TDMRep CG and does not adopt the style of W3C CG Notes.
-No bikeshedding: choosing property names will come last; in this document, properties are prefixed by "TDM-" followed by a letter, starting at 'a'.
+
+We’ll reuse here the TDM-a and TDM-b properties as defined in [Proposal based on http headers](/proposals/proposal-http-headers.md).
 
 ## Specification of the TDMRep.json file 
 
-Let’s imagine a Web server hosting several sets of files, driven by different TDM policies; each set of files being located on the server using a regular expression. 
+Let’s imagine a Web server hosting several sets of files, driven by different TDM policies. 
 
-This specification defines TDMRep.json as as JSON file which contains an array of objects; each object contains three properties: 
+This specification defines TDMRep.json as as JSON file which contains an array of objects; each object represents a rule and contains three properties: 
 
-- location: a pattern locating the set of files hosted on the server and driven by the sibling TDM-a and TDM-b values.
-- TDM-a (*)
-- TDM-b (*)
+- location: a pattern matching the path of a set of files hosted on the server, associated with the sibling TDM properties.
+- TDM-a
+- TDM-b
 
-(*) We use here the property names and values already used in the [Proposal based on http headers](./proposal-http-headers.md).
-
-A URL ready for matching is obtained by the concatenation of the protocol and domain name of the TDMRep JSON file URL with the path expressed in the location property.
-
-Note 1: the name “TDMRep.json” is a placeholder, here also we’ll avoid bikeshedding in the first phase of discussion. 
+Note 1: the name “TDMRep.json” is a placeholder, here also we’ll avoid bikeshedding in this phase of the discussion. 
 
 Note 2: JSON is chosen because unmarshalling it is obvious in every language, and especially built-in in Javascript. Unmarshalling alternative formats like yaml or xml is not so immediate. Using JSON-LD makes no sense in our case, as no RDF model will be extracted from this structure. 
+
+Note 3: the following specification has been extracted from  [robots.txt draft-koster-rep-00 2.2.2](https://tools.ietf.org/html/draft-koster-rep-00#section-2.2.2).
+
+To evaluate if the URL of a Web resource is subject to a given rule, a TDM Agent MUST match the paths against the URL.  The matching SHOULD be case sensitive.  The most specific match found MUST be used.  The most specific match is the first in sequence.
+
+If a percent-encoded US-ASCII character is encountered in the URI, it MUST be unencoded prior to comparison, unless it is a reserved character in the URI as defined by RFC3986 or the character is outside the unreserved character range.  The match evaluates positively if and only if the end of the path from the rule is reached before a difference in octets is encountered.
 
 ## Use of regular expressions
 
 There are many variants of regular expressions. In order to be simplify the work of TDM Agents, this specification is using [Javascript RegExps](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions), Javascript being supposed to be used for developing most TDM Agents. 
 
-Note: nginx is using another variant for expressing locations, a variant called [PCRE](https://www.pcre.org), for Perl compatible Regular Expressions. 
+Note 1: nginx is using another variant for expressing locations on which specific rules apply, a variant called [PCRE](https://www.pcre.org) for Perl compatible Regular Expressions. 
 
-Note: the group may want to restrict the RegExp language to the simplest, e.G. ‘*’ and ‘?’ jokers. Or it may decide to reuse the specification and wording of the [robots.txt draft-koster-rep-00](https://tools.ietf.org/html/draft-koster-rep-00#section-2.2.2).
+Note 2: the group may want to restrict the RegExp language to something simpler, e.g. the specification and wording of the [robots.txt draft-koster-rep-00 2.2.3](https://tools.ietf.org/html/draft-koster-rep-00#section-2.2.3).
 
 ## Use of the .well-known directory
 
-TDPRep.json is stored in the .well-known directory, located at the root of the origin server. 
+TDMRep.json is stored in the .well-known directory, located at the root of the origin server. 
 
 Here is a quick introduction of [RFC-5785](https://tools.ietf.org/html/rfc5785):
 
-It is increasingly common for Web-based protocols to require the discovery of policy or other information about a host (“site-wide metadata”) before making a request.
-[…]
-When this happens, it is common to designate a “well-known location” for such data, so that it can be easily located.
-[…]
+It is increasingly common for Web-based protocols to require the discovery of policy or other information about a host (“site-wide metadata”) before making a request.<br>
+[…]<br>
+When this happens, it is common to designate a “well-known location” for such data, so that it can be easily located.<br>
+[…]<br>
 To address this, this memo defines a path prefix in HTTP(S) URIs for these “well-known locations”, “/.well-known/".
 
-## Implementing the proposal
+## Example
 
 Let’s imagine that a Web server is hosting three groups of files. The rightsholder of the first group of files (PDF documents) wants to express that TDM rights are reserved on this content. The rightsholder of the two other groups of files wants to express that TDM rights are tied to a license for the second group (html pages) and TDM rights are not reserved for the third (JPEG images).
 
@@ -70,7 +74,14 @@ TDMRep.json is therefore structured as:
 ]
 ```
 
-Note:  in this example, if non-JPEG files are also located in “/directory-b/images”, they are driven by the TDM exception of the DSM. 
+Note: in this example, if non-JPEG files are also located in “/directory-b/images”, they are driven by the TDM exception of the DSM. 
+
+## Implementing the proposal
+
+This solution applies to any type of Web resource. 
+
+It does not require a specific configuration of the Web server, only write access to the /.well-known directory. 
+
 
 ## Solution vs requirements
 
