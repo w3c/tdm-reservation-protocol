@@ -40,3 +40,9 @@ This solution is only relevant for html (or xhtml) documents. It does not apply 
 Meta elements can easily be integrated in html document at the time they are produced. No configuration is needed on the Web server which will serve these documents.
 
 This solution cannot associated particular rights to different fragments of html content (this is not a requirement we has agreed on but it is an open issue under discussion). 
+
+## Relationship with other initiatives
+
+html meta tags are found in the context of [robots meta directives]()https://github.com/w3c/tdm-reservation-protocol/blob/main/docs/robots.md#robots-meta-directives.
+
+html meta tags are also found in the context of the [Article Sharing Framework](https://github.com/w3c/tdm-reservation-protocol/blob/main/docs/initiatives.md#article-sharing-framework-stm-association). Look especially at the [NISO ALI Best practices](https://groups.niso.org/apps/group_public/download.php/14226/rp-22-2015_ALI.pdf) in section 4. 
