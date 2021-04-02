@@ -55,22 +55,22 @@ TDMRep.json is therefore structured as:
 ```json
 [
   {
-  “location”: “/directory-a”,
-  “TDM-a”: 1
+  "location": "/directory-a",
+  "TDM-a": 1
   },
   {
-  “location”: “/directory-b/html”,
-  “TDM-a”: 0
+  "location": "/directory-b/html",
+  "TDM-a": 0
   },
   {
-  “location”: “/directory-b/other/*.jpg”,
-  “TDM-a”: 2,
-  “TDM-b”:”https://example.com/tdm-licenses/license-a”
+  "location": "/directory-b/other/*.jpg",
+  "TDM-a": 2,
+  "TDM-b":"https://example.com/tdm-licenses/license-a"
   }
 ]
 ```
 
-Note:  if non-JPEG files are also located in “/directory-b/images”, they are driven by the TDM exception of the DSM. 
+Note:  in the previous example, if non-JPEG files are also located in “/directory-b/images”, they are driven by the TDM exception of the DSM. 
 
 ## Solution vs requirements
 
