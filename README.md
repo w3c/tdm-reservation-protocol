@@ -37,6 +37,8 @@ If you are new to Github, an interesting read is [ I.Herman's introduction on th
 - [Past and existing initiatives](docs/initiatives.md)
 - [Useful extracts of the DSM Directive](docs/dsm-extracts.md)
 - [robots for non techies](docs/robots.md)
+- [Proposal based on http headers](proposals/proposal-http-headers.md)
+- [Proposal based on a file hosted on the origin server](proposals/proposal-file-at-origin.md)
 
 ---
 
