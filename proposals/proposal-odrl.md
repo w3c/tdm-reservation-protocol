@@ -137,7 +137,7 @@ He agrees that TDM Actors from any country can mine its research papers:
   "@context": [
     "http://www.w3.org/ns/odrl.jsonld",
     { "vcard": "http://www.w3.org/2006/vcard/ns#" }
-  ]
+  ],
   "@type": "Offer",
   "uid": "https://provider.com/policy/1",
   "profile": "https://www.w3c.org/tdmrep/odrl-profile",
@@ -172,7 +172,7 @@ In this example, the rightsholder agrees that TDM Actors from any country can mi
   "@context": [
     "http://www.w3.org/ns/odrl.jsonld",
     { "vcard": "http://www.w3.org/2006/vcard/ns#" }
-  ]
+  ],
   "@type": "Offer",
   "uid": "https://provider.com/policy/1",
   "profile": "https://www.w3c.org/tdmrep/odrl-profile",
@@ -204,7 +204,7 @@ In this example, the rightsholder agrees that TDM Actors from any country can mi
   "@context": [
     "http://www.w3.org/ns/odrl.jsonld",
     { "vcard": "http://www.w3.org/2006/vcard/ns#" }
-  ]
+  ],
   "@type": "Offer",
   "uid": "https://provider.com/policy/1",
   "profile": "https://www.w3c.org/tdmrep/odrl-profile",
@@ -233,7 +233,7 @@ In this example, the rightsholder agrees that TDM Actors from Canada and Brazil 
   "@context": [
     "http://www.w3.org/ns/odrl.jsonld",
     { "vcard": "http://www.w3.org/2006/vcard/ns#" }
-  ]
+  ],
   "@type": "Offer",
   "uid": "https://provider.com/policy/1",
   "profile": "https://www.w3c.org/tdmrep/odrl-profile",
