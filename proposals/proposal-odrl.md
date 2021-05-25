@@ -28,7 +28,7 @@ Notes:
 
 - A Policy MUST have a `profile` property and the value of this property MUST be `https://edrlab.org/tdmrep/odrl-profile`
 - A Policy MUST be of subclass `Offer`.
-- A Policy MUST contain one `permission` property and no `prohibition` nor `obligation` property. 
+- A Policy MUST contain one `permission` or one `obligation` but no `prohibition`  property. 
 - Every `action` property in a Policy MUST have `tdmine` as value.
 
 Notes: 
@@ -58,22 +58,32 @@ Notes:
 - Offer https://www.w3.org/TR/odrl-model/#policy-offer
 - Party https://www.w3.org/TR/odrl-model/#party 
 
+## Rules allowed in this profile
+
+An ODRL Policy MUST have at least one property value of type Rule. Subtypes of Rules are Permission, Prohibition and Duty. 
+
+The Policies defined here do not replace the TDMRep property TDM-a / TDM-b set via different means (http, file, html), but rather complement them. An important question is therefore: should we repeat in the Policy the permission / prohibition to mine already expressed via the TDM-a property? 
+
+In this draft, the editor proposes to only express permission (yes / yes if) or a duty to contact the rightsholder, the logic being that if TDM-a expresses a prohibition (no tdm), the Policy will never be fetched by the TDM Actor. Expressing in ODRL Policies what is already expressed with a different format (in e.g. http headers or a "file on the origin server") could lead to many ambiguities for implementers.
+
+## Expression of the requirement to contact the rightsholder
+
+This is what the Copyright Hub recommends so far. 
+
+ODRL specifies that a Policy can have an `obligation` property with a Duty value. In this profile, the duty is to contact the rightholder, which avoids having to express any permission in the Policy itself. This is a machine-readible equivalent of "TDM rights reserved". 
+
+This profile uses one value from the ODRL Vocabulary for the `action` property of a Duty:
+
+- `obtainConsent` indicates that verifiable consent must be obtained to perform TDM on the resource.
+
 ## Identification of the target resource in a Permission
 
-ODRL 2 specifies that a Permission MUST have one `target` property value, of type Asset or AssetCollection. 
+ODRL specifies that a Permission MUST have one `target` property value, of type Asset or AssetCollection. 
 Such value may be expressed as a JSON object or as a URI (i.e. the identifier of an Asset). 
 
 A Policy is shared by multiple resources, therefore in this profile, the `target` property identifies "a collection of resources" via a URL which makes sense to the content provider. 
 
 Note: The target value is not used by TDM Agents. Accessing such URL may end with an http error (403 in many cases): this is not a processing error. 
-
-## Rules allowed in this profile
-
-An ORDL Policy MUST have at least one property value of type Rule. Subtypes of Rules are Permission, Prohibition and Duty. 
-
-The Policies defined here do not replace the TDMRep property TDM-a / TDM-b set via different means (http, file, html), but rather complement them. An important question is therefore: should we repeat in the Policy the permission / prohibition to mine already expressed via the TDM-a property? 
-
-In this draft, the editor proposes to only express permission (yes / yes if), the logic being that if TDM-a expresses a prohibition (no tdm), the Policy will never be fetched by the TDM Actor. Expressing in ODRL Policies what is already expressed with a different format (in e.g. http headers or a "file on the origin server") could lead to many ambiguities for implementers.
 
 ## Constraints on the type of usage
 
@@ -215,6 +225,7 @@ In this example, the rightsholder agrees that TDM Actors from any country can mi
   ]
 }
 ```
+
 ### Example 4
 
 In this example, the rightsholder agrees that TDM Actors from Canada and Brazil only can mine his content:
@@ -243,6 +254,30 @@ In this example, the rightsholder agrees that TDM Actors from Canada and Brazil 
   ]
 }
 ```
+
+### Example 5
+
+In this example, the rightsholder requires TDM Actors to contact him for obtaining licensing rights:
+
+```json
+{
+  "@context": "http://www.w3.org/ns/odrl.jsonld",
+  "@type": "Offer",
+  "uid": "https://provider.com/policy/1",
+  "profile": "https://edrlab.org/tdmrep/odrl-profile",
+  "assigner": {
+    "uid": "https://provider.com",
+    "vcard:fn": "Provider",
+    "vcard:hasEmail": "mailto:contact@provider.com"
+  },
+  "obligation": [{
+      "action": "obtainConsent"
+    }
+  ]
+}
+```
+
+
 
 Note that when multiple Constraints apply to the same Rule, then they are interpreted as conjunction and all MUST be satisfied. Thus it is possible to express that a permission applies only to Canadian TDM Actors for Research purposes. 
 
