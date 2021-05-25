@@ -20,7 +20,7 @@ This specification defines TDMRep.json as as JSON file which contains an array o
 
 Note 1: the name “TDMRep.json” is a placeholder, here also we’ll avoid bikeshedding in this phase of the discussion. 
 
-Note 2: JSON is chosen because unmarshalling it is obvious in every language, and especially built-in in Javascript. Unmarshalling alternative formats like yaml or xml is not so immediate. Using JSON-LD makes no sense in our case, as no RDF model will be extracted from this structure. 
+Note 2: JSON is chosen because unmarshalling it is obvious in every language, and especially built-in in Javascript. Unmarshalling alternative formats like yaml or xml is not so immediate. Using JSON-LD is an option, but no RDF model will be extracted from this structure. 
 
 Note 3: the following specification has been extracted from  [robots.txt draft-koster-rep-00 2.2.2](https://tools.ietf.org/html/draft-koster-rep-00#section-2.2.2).
 
@@ -30,11 +30,23 @@ If a percent-encoded US-ASCII character is encountered in the URI, it MUST be un
 
 ## Use of regular expressions
 
-There are many variants of regular expressions. In order to be simplify the work of TDM Agents, this specification is using [Javascript RegExps](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions), Javascript being supposed to be used for developing most TDM Agents. 
+There are many variants of regular expressions. In order to simplify the work of TDM Agents, this specification is re-using the specification and wording of the [robots.txt draft-koster-rep-00 2.2.3](https://tools.ietf.org/html/draft-koster-rep-00#section-2.2.3).
 
-Note 1: nginx is using another variant for expressing locations on which specific rules apply, a variant called [PCRE](https://www.pcre.org) for Perl compatible Regular Expressions. 
+> TDM Agents MUST allow the following special characters:
 
-Note 2: the group may want to restrict the RegExp language to something simpler, e.g. the specification and wording of the [robots.txt draft-koster-rep-00 2.2.3](https://tools.ietf.org/html/draft-koster-rep-00#section-2.2.3).
+| Character | Description | Example |
+| "#"       | Designates an end of line comment. | "TDM-b: / # comment at the end |
+| "$"       | Designates the end of the match pattern. A URI MUST end with a $. | "TDM-b: /this/path/exactly$" |
+| "*"       | Designates 0 or more instances of any character | "TDM-b: /this/*/end" |
+
+If TDM Agents match special characters verbatim in the URI, they MUST use "%" encoding.  For example:
+
+| Pattern       | URI |
+| /path/foo-%24 | https://www.example.com/path/foo-$ |
+
+Note 1: [Javascript RegExps](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) was a possible alternative, Javascript being supposed to be used for developing most TDM Agents. 
+
+Note 2: nginx is using another variant for expressing locations on which specific rules apply, a variant called [PCRE](https://www.pcre.org) for Perl compatible Regular Expressions. 
 
 ## Use of the .well-known directory
 
@@ -52,7 +64,7 @@ To address this, this memo defines a path prefix in HTTP(S) URIs for these “we
 
 Let’s imagine that a Web server is hosting three groups of files. The rightsholder of the first group of files (PDF documents) wants to express that TDM rights are reserved on this content. The rightsholder of the two other groups of files wants to express that TDM rights are tied to a license for the second group (html pages) and TDM rights are not reserved for the third (JPEG images).
 
-In this example, the first group is a set of files stored in /directory-a; the second group is stored in /directory-b/html and the third group in /directory-b/other. 
+In this example, the first group is a set of files stored in /directory-a; the second group is stored in /directory-b/html and the third group in /directory-b/images. 
 
 TDMRep.json is therefore structured as: 
 
@@ -68,13 +80,13 @@ TDMRep.json is therefore structured as:
   "TDM-b":"https://example.com/tdm-licenses/license-a"
   },
   {
-  "location": "/directory-b/other/*.jpg",
+  "location": "/directory-b/images/*.jpg",
   "TDM-a": 0
   }
 ]
 ```
 
-Note: in this example, if non-JPEG files are also located in “/directory-b/images”, they are driven by the TDM exception of the DSM. 
+Note: in this example, if non-JPEG files are also located in “/directory-b/images”, they are by default driven by the TDM exception of the DSM. 
 
 ## Implementing the proposal
 
