@@ -40,6 +40,7 @@ If you are new to Github, an interesting read is [ I.Herman's introduction on th
 - [Proposal based on http headers](proposals/proposal-http-headers.md)
 - [Proposal based on a file hosted on the origin server](proposals/proposal-file-at-origin.md)
 - [Proposal based on html meta tags](proposals/proposal-html-meta.md)
+- [Proposal for Policies expressed as ODRL 2.2 structures](proposals/proposal-odrl.md)
 
 ---
 
