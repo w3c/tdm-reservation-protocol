@@ -9,27 +9,48 @@ Note: looking at the similarities between the structure we obtain here and the [
 
 ## TDMRep Profile of ODRL
 
-### Additional Action defined by this profile
+### Additional property values defined by this profile
 
-This profile defines the following Action: 
+#### tdm:mine
 
 *Definition*: analyse, via automated analytical technique, text and data in digital form in order to generate information which includes but is not limited to patterns, trends and correlations.
 
 *Label*: Text & Data Mine
 
-*Identifier*: https://edrlab.org/tdmrep/odrl-profile/tdmine
+*Identifier*: https://edrlab.org/tdmrep/odrl-profile#mine
 
 *Included in*: http://www.w3.org/ns/odrl/2/use
 
 Notes: 
-- The definition of the `tdmine` action is copied from the EU Copyright Directive itself. 
+- The definition of the `tdm:mine` action is copied from the EU Copyright Directive itself.
+
+#### tdm:research
+
+*Definition*: designates research purposes.
+
+*Label*: Research purpose
+
+*Identifier*: https://edrlab.org/tdmrep/odrl-profile#research
+
+*Included in*: http://www.w3.org/ns/odrl/2/rightOperand
+
+#### tdm:commercial
+
+*Definition*: designates non-research purposes.
+
+*Label*: Commercial purpose
+
+*Identifier*: https://edrlab.org/tdmrep/odrl-profile#commercial
+
+*Included in*: http://www.w3.org/ns/odrl/2/rightOperand
+
 
 ### Requirements of a Policy belonging to this profile
 
 - A Policy MUST have a `profile` property and the value of this property MUST be `https://edrlab.org/tdmrep/odrl-profile`
 - A Policy MUST be of subclass `Offer`.
 - A Policy MUST contain one `permission` or one `obligation` but no `prohibition`  property. 
-- Every `action` property in a Policy MUST have `tdmine` as value.
+- Every `action` property in a Policy MUST have `tdm:mine` as value.
 
 Notes: 
 - A explanatory page will be set on the profile URL, as part of the EDRLab webpage. 
@@ -52,7 +73,7 @@ A Party MUST have a `uid` property. To describe more details about the Party, OD
 
 For the sake of interoperability, this profile imposes the use of a limited number of vCard properties: "fn", "nickname", "hasEmail", "hasAddress", "hasTelephone", "hasURL".
 
-In particular, `hasURL` designates a URL to reach in order to acquire a license. 
+In particular, `hasURL` designates a URL to reach in order to acquire a license; it is recommended to locate there a Web app easing such acquisition; even a standardized machine-to-machine acquisition API in the future. 
 
 Notes:
 - Offer https://www.w3.org/TR/odrl-model/#policy-offer
@@ -91,14 +112,14 @@ ODRL 2 specifies that a Permission may have one `constraint` property value of t
 
 This profile uses one value from the ODRL Vocabulary for the `leftOperand`:
 
-- `purpose` creates a constrain on a usage of the mined content.
+- `purpose` creates a constraint on a usage of the mined content.
 
 This profile defines two corresponding values for the `rightOperand`:
 
-- `research` designates research purposes.
-- `commercial` designates any non-research purposes.
+- `tdm:research` designates research purposes.
+- `tdm:commercial` designates any non-research purposes.
 
-Using these values, a rightsholder can constraint TDM usage to research purposes only. 
+Using these values, a rightsholder can constrain TDM usage to research purposes only. 
 
 Notes:
 - Purpose: https://www.w3.org/TR/odrl-vocab/#term-purpose
@@ -107,7 +128,7 @@ Notes:
 
 This profile uses one value from the ODRL Vocabulary for the `leftOperand`:
 
-- `spatial` creates a constrain on a geographical location of the TDM Agent.
+- `spatial` creates a constraint on a geographical location of the TDM Agent.
 
 This profile uses one value from the ODRL Vocabulary for the `operator`:
 
@@ -118,7 +139,7 @@ This profile defines the possible values of each item of the `rightOperand`, exp
 - `urn:iso:3166:` followed by a 3 letter code designates an iso3166 3 letter country code.
 
 Notes:
-- Geospacial Named Area: https://www.w3.org/TR/odrl-vocab/#term-spatial
+- Geospatial Named Area: https://www.w3.org/TR/odrl-vocab/#term-spatial
 - Expressing the code as a full URI avoids declaring aliases in the @context part of the structure when used (which is tricky JSON-LD stuff as we want to use the odrl contect directly).
 - Using only iso3166 alpha3 provides better interoperability results; the alpha3 list is more complete than the alpha2. 
 - The urn form was found in https://www.hl7.org/fhir/iso3166.html and simplified from there. It's a pity that there is not proper standard form for that. 
@@ -139,12 +160,42 @@ Notes:
 
 ### Example 1
 
+In this example, the rightsholder requires TDM Actors to contact him for obtaining licensing rights:
+
+```json
+{
+    "@context": [
+      "http://www.w3.org/ns/odrl.jsonld",
+      {"tdm": "https://edrlab.org/tdmrep/odrl-profile#"}
+  ],
+
+  "@type": "Offer",
+  "uid": "https://provider.com/policy/1",
+  "profile": "https://edrlab.org/tdmrep/odrl-profile",
+  "assigner": {
+    "uid": "https://provider.com",
+    "vcard:fn": "Provider",
+    "vcard:hasEmail": "mailto:contact@provider.com"
+  },
+  "obligation": [{
+      "action": "obtainConsent"
+    }
+  ]
+}
+```
+
+### Example 2
+
 In this example, the rightsholder expresses detailed contact information using the W3C vCard Ontology. 
 He agrees that TDM Actors from any country can mine its research papers:
 
 ```json
 {
-  "@context": "http://www.w3.org/ns/odrl.jsonld",
+    "@context": [
+      "http://www.w3.org/ns/odrl.jsonld",
+      {"tdm": "https://edrlab.org/tdmrep/odrl-profile#"}
+  ],
+
   "@type": "Offer",
   "uid": "https://provider.com/policy/1",
   "profile": "https://edrlab.org/tdmrep/odrl-profile",
@@ -164,36 +215,7 @@ He agrees that TDM Actors from any country can mine its research papers:
   },
   "permission": [{
     "target": "https://provider.com/research-papers",
-    "action": "tdmine"
-    }
-  ]
-}
-```
-
-### Example 2
-
-In this example, the rightsholder agrees that TDM Actors from any country can mine its content only if they are mining for research purpose:
-
-```json
-{
-  "@context": "http://www.w3.org/ns/odrl.jsonld",
-  "@type": "Offer",
-  "uid": "https://provider.com/policy/1",
-  "profile": "https://edrlab.org/tdmrep/odrl-profile",
-  "assigner": {
-    "uid": "https://provider.com",
-    "vcard:fn": "Provider",
-    "vcard:hasEmail": "mailto:contact@provider.com"
-  },
-  "permission": [{
-      "target": "https://provider.com/research-papers",
-      "action": "tdmine",
-      "constraint": [{
-        "leftOperand": "purpose",
-        "operator": "eq",
-        "rightOperand": "research"
-        }
-      ]
+    "action": "tdm:mine"
     }
   ]
 }
@@ -201,11 +223,14 @@ In this example, the rightsholder agrees that TDM Actors from any country can mi
 
 ### Example 3
 
-In this example, the rightsholder agrees that TDM Actors from any country can mine its content only if they are ready to pay a fee:
+In this example, the rightsholder agrees that TDM Actors from any country can mine its content only if they are mining for research purpose:
 
 ```json
 {
-  "@context": "http://www.w3.org/ns/odrl.jsonld",
+  "@context": [
+      "http://www.w3.org/ns/odrl.jsonld",
+      {"tdm": "https://edrlab.org/tdmrep/odrl-profile#"}
+  ],
   "@type": "Offer",
   "uid": "https://provider.com/policy/1",
   "profile": "https://edrlab.org/tdmrep/odrl-profile",
@@ -216,9 +241,11 @@ In this example, the rightsholder agrees that TDM Actors from any country can mi
   },
   "permission": [{
       "target": "https://provider.com/research-papers",
-      "action": "tdmine",
-      "duty": [{
-        "action": "compensate"
+      "action": "tdm:mine",
+      "constraint": [{
+        "leftOperand": "purpose",
+        "operator": "eq",
+        "rightOperand": "tdm:research"
         }
       ]
     }
@@ -228,11 +255,15 @@ In this example, the rightsholder agrees that TDM Actors from any country can mi
 
 ### Example 4
 
-In this example, the rightsholder agrees that TDM Actors from Canada and Brazil only can mine his content:
+In this example, the rightsholder agrees that TDM Actors from any country can mine its content only if they are ready to pay a fee:
 
 ```json
 {
-  "@context": "http://www.w3.org/ns/odrl.jsonld",
+    "@context": [
+      "http://www.w3.org/ns/odrl.jsonld",
+      {"tdm": "https://edrlab.org/tdmrep/odrl-profile#"}
+  ],
+
   "@type": "Offer",
   "uid": "https://provider.com/policy/1",
   "profile": "https://edrlab.org/tdmrep/odrl-profile",
@@ -243,7 +274,38 @@ In this example, the rightsholder agrees that TDM Actors from Canada and Brazil 
   },
   "permission": [{
       "target": "https://provider.com/research-papers",
-      "action": "tdmine",
+      "action": "tdm:mine",
+      "duty": [{
+        "action": "compensate"
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Example 5
+
+In this example, the rightsholder agrees that TDM Actors from Canada and Brazil only can mine his content:
+
+```json
+{
+    "@context": [
+      "http://www.w3.org/ns/odrl.jsonld",
+      {"tdm": "https://edrlab.org/tdmrep/odrl-profile#"}
+  ],
+
+  "@type": "Offer",
+  "uid": "https://provider.com/policy/1",
+  "profile": "https://edrlab.org/tdmrep/odrl-profile",
+  "assigner": {
+    "uid": "https://provider.com",
+    "vcard:fn": "Provider",
+    "vcard:hasEmail": "mailto:contact@provider.com"
+  },
+  "permission": [{
+      "target": "https://provider.com/research-papers",
+      "action": "tdm:mine",
       "constraint": [{
         "leftOperand": "spatial",
         "operator": "isPartOf",
@@ -255,31 +317,7 @@ In this example, the rightsholder agrees that TDM Actors from Canada and Brazil 
 }
 ```
 
-### Example 5
-
-In this example, the rightsholder requires TDM Actors to contact him for obtaining licensing rights:
-
-```json
-{
-  "@context": "http://www.w3.org/ns/odrl.jsonld",
-  "@type": "Offer",
-  "uid": "https://provider.com/policy/1",
-  "profile": "https://edrlab.org/tdmrep/odrl-profile",
-  "assigner": {
-    "uid": "https://provider.com",
-    "vcard:fn": "Provider",
-    "vcard:hasEmail": "mailto:contact@provider.com"
-  },
-  "obligation": [{
-      "action": "obtainConsent"
-    }
-  ]
-}
-```
-
-
-
-Note that when multiple Constraints apply to the same Rule, then they are interpreted as conjunction and all MUST be satisfied. Thus it is possible to express that a permission applies only to Canadian TDM Actors for Research purposes. 
+Note that when multiple Constraints apply to the same Rule, then they are interpreted as conjunction and all MUST be satisfied. Thus it is possible to express that a permission applies only to Canadian TDM Actors for Research purposes and that a fee is requested. 
 
 ## References
 
