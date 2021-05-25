@@ -189,7 +189,7 @@ In this example, the rightsholder agrees that TDM Actors from any country can mi
       "target": "https://provider.com/research-papers",
       "action": "tdmine",
       "constraint": [{
-        "leftOperand": "usage",
+        "leftOperand": "purpose",
         "operator": "eq",
         "rightOperand": "research"
         }
