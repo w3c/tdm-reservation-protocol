@@ -39,7 +39,7 @@ This solution is only relevant for html (or xhtml) documents. It does not apply 
 
 Meta elements can easily be integrated in html document at the time they are produced. No configuration is needed on the Web server which will serve these documents.
 
-This solution cannot associated particular rights to different fragments of html content (this is not a requirement we has agreed on but it is an open issue under discussion). 
+This solution cannot associate particular rights to different fragments of html content (this is not a requirement we has agreed on but it is an open issue under discussion). 
 
 ## Relationship with other initiatives
 
