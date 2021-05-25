@@ -4,6 +4,9 @@ Policies are machine-readable structures referenced from the TDM-b property defi
 
 The format of policies defined in this specification is a profile of the Open Digital Rights Language 2.2, a W3C recommandation. 
 
+Note: looking at the similarities between the structure we obtain here and the [Proposal based on a file hosted on the origin server](./proposal-file-at-origin.md)), we could decide to merge both. In such a case, the `target` URL must point to the folder containing every resource associated with this Policy and pattern matching must be allowed: this is a departure from the RDF purity of ODRL. Or the `target` must become an AssetCollection object with a `source` property representing the path: pure but more verbose. 
+
+
 ## TDMRep Profile of ODRL
 
 ### Additional Action defined by this profile
@@ -19,8 +22,6 @@ This profile defines the following Action:
 *Included in*: http://www.w3.org/ns/odrl/2/use
 
 Notes: 
-- A explanatory page will be set on the profile URL, as part of the EDRLab webpage. 
-- About ODRL Policy Offers, see https://www.w3.org/TR/odrl-model/#policy-offer
 - The definition of the `tdmine` action is copied from the EU Copyright Directive itself. 
 
 ### Requirements of a Policy belonging to this profile
@@ -29,6 +30,11 @@ Notes:
 - A Policy MUST be of subclass `Offer`.
 - A Policy MUST contain one `permission` property and no `prohibition` nor `obligation` property. 
 - Every `action` property in a Policy MUST have `tdmine` as value.
+
+Notes: 
+- A explanatory page will be set on the profile URL, as part of the EDRLab webpage. 
+- About ODRL Policy Offers, see https://www.w3.org/TR/odrl-model/#policy-offer
+
 
 ## Identification of a Policy
 
@@ -68,8 +74,6 @@ An ORDL Policy MUST have at least one property value of type Rule. Subtypes of R
 The Policies defined here do not replace the TDMRep property TDM-a / TDM-b set via different means (http, file, html), but rather complement them. An important question is therefore: should we repeat in the Policy the permission / prohibition to mine already expressed via the TDM-a property? 
 
 In this draft, the editor proposes to only express permission (yes / yes if), the logic being that if TDM-a expresses a prohibition (no tdm), the Policy will never be fetched by the TDM Actor. Expressing in ODRL Policies what is already expressed with a different format (in e.g. http headers or a "file on the origin server") could lead to many ambiguities for implementers.
-
-Note: looking at the similarities between the structure we obtain here and the [Proposal based on a file hosted on the origin server](./proposal-file-at-origin.md)), we could decide to merge both ... In such a case, the `target` URL must point to the folder containing every resource associated with this Policy and pattern matching must be allowed: a slight departure from the RDF purity of ODRL. Or the `target` must become an AssetCOllection object with a `source` property, pure but more verbose. 
 
 ## Constraints on the type of usage
 
@@ -239,6 +243,8 @@ In this example, the rightsholder agrees that TDM Actors from Canada and Brazil 
   ]
 }
 ```
+
+Note that when multiple Constraints apply to the same Rule, then they are interpreted as conjunction and all MUST be satisfied. Thus it is possible to express that a permission applies only to Canadian TDM Actors for Research purposes. 
 
 ## References
 
