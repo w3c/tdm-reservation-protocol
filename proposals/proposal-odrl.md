@@ -17,7 +17,7 @@ This profile defines the following Action:
 
 *Label*: Text & Data Mine
 
-*Identifier*: https://edrlab.org/tdmrep/odrl-profile/tdmine
+*Identifier*: https://www.w3c.org/tdmrep/odrl-profile/tdmine
 
 *Included in*: http://www.w3.org/ns/odrl/2/use
 
@@ -134,10 +134,13 @@ He agrees that TDM Actors from any country can mine its research papers:
 
 ```json
 {
-  "@context": "http://www.w3.org/ns/odrl.jsonld",
+  "@context": [
+    "http://www.w3.org/ns/odrl.jsonld",
+    { "vcard": "http://www.w3.org/2006/vcard/ns#" }
+  ]
   "@type": "Offer",
   "uid": "https://provider.com/policy/1",
-  "profile": "https://edrlab.org/tdmrep/odrl-profile",
+  "profile": "https://www.w3c.org/tdmrep/odrl-profile",
   "assigner": {
     "uid": "https://provider.com",
     "vcard:fn": "Provider",
@@ -166,10 +169,13 @@ In this example, the rightsholder agrees that TDM Actors from any country can mi
 
 ```json
 {
-  "@context": "http://www.w3.org/ns/odrl.jsonld",
+  "@context": [
+    "http://www.w3.org/ns/odrl.jsonld",
+    { "vcard": "http://www.w3.org/2006/vcard/ns#" }
+  ]
   "@type": "Offer",
   "uid": "https://provider.com/policy/1",
-  "profile": "https://edrlab.org/tdmrep/odrl-profile",
+  "profile": "https://www.w3c.org/tdmrep/odrl-profile",
   "assigner": {
     "uid": "https://provider.com",
     "vcard:fn": "Provider",
@@ -195,10 +201,13 @@ In this example, the rightsholder agrees that TDM Actors from any country can mi
 
 ```json
 {
-  "@context": "http://www.w3.org/ns/odrl.jsonld",
+  "@context": [
+    "http://www.w3.org/ns/odrl.jsonld",
+    { "vcard": "http://www.w3.org/2006/vcard/ns#" }
+  ]
   "@type": "Offer",
   "uid": "https://provider.com/policy/1",
-  "profile": "https://edrlab.org/tdmrep/odrl-profile",
+  "profile": "https://www.w3c.org/tdmrep/odrl-profile",
   "assigner": {
     "uid": "https://provider.com",
     "vcard:fn": "Provider",
@@ -221,10 +230,13 @@ In this example, the rightsholder agrees that TDM Actors from Canada and Brazil 
 
 ```json
 {
-  "@context": "http://www.w3.org/ns/odrl.jsonld",
+  "@context": [
+    "http://www.w3.org/ns/odrl.jsonld",
+    { "vcard": "http://www.w3.org/2006/vcard/ns#" }
+  ]
   "@type": "Offer",
   "uid": "https://provider.com/policy/1",
-  "profile": "https://edrlab.org/tdmrep/odrl-profile",
+  "profile": "https://www.w3c.org/tdmrep/odrl-profile",
   "assigner": {
     "uid": "https://provider.com",
     "vcard:fn": "Provider",
