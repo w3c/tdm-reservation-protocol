@@ -35,6 +35,7 @@ There are many variants of regular expressions. In order to simplify the work of
 > TDM Agents MUST allow the following special characters:
 
 | Character | Description | Example |
+| -------- | -------- | -------- |
 | "#"       | Designates an end of line comment. | "TDM-b: / # comment at the end |
 | "$"       | Designates the end of the match pattern. A URI MUST end with a $. | "TDM-b: /this/path/exactly$" |
 | "*"       | Designates 0 or more instances of any character | "TDM-b: /this/*/end" |
@@ -42,6 +43,7 @@ There are many variants of regular expressions. In order to simplify the work of
 If TDM Agents match special characters verbatim in the URI, they MUST use "%" encoding.  For example:
 
 | Pattern       | URI |
+| -------- | -------- |
 | /path/foo-%24 | https://www.example.com/path/foo-$ |
 
 Note 1: [Javascript RegExps](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) was a possible alternative, Javascript being supposed to be used for developing most TDM Agents. 
