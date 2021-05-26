@@ -1,4 +1,4 @@
-# Proposal based on a file hosted on the origin server
+# Proposal based on a wll known file hosted on the origin server
 
 ## Status of this document
 
