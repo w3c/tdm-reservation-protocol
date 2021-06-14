@@ -16,8 +16,8 @@ The technical specification shall:
 
 1. Specify how a rightsholder can declare the reservation of TDM Rights on each individual Web resource he controls.
 1. Specify how a rightsholder can indicate the location of human readable information indicating how to apply for a TDM License.
-1. Specify how a rightsholder can indicate the location of a TDM Licence associated with each individual Web resource he controls.
-1. Specify a machine-readable format for TDM Licenses. 
+1. Specify how a rightsholder can indicate the location of a TDM Policy associated with each individual Web resource he controls.
+1. Specify a machine-readable format for TDM Policies. 
 
 ## Additional Requirements
 
