@@ -167,9 +167,11 @@
 
 		<section id="sec-protocol">
 
-				<h1>Protocol</h1>
+      <h1>Protocol</h1>
 
-				<p>This specification provides three complementary techniques for expressing rightsholders' choices. These three techniques correspond to different situations and publishers' technical skills.</p>
+      <p>This specification provides three complementary techniques for expressing rightsholders' choices. These three techniques correspond to different situations and publishers' technical skills.</p>
+
+      <section id="sec-tdm-file">
 
         <h2>TDM File on the Origin Server</h2>
 
@@ -178,7 +180,7 @@
 
         <p>An origin server that receives a valid GET request targeting this resource MUST send either a successful response containing a machine-readable representation of the site-wide righsholder's choices, as defined below, or a sequence of redirects that leads to such a representation. Failure to provide access to such a representation implies that the origin server does not implement this protocol.</p>
 
-        <p>This specification defines a JSON file named <code>tdmrep.json</code>, which MUST be hosted in the <code>/.well-known<code> repository of a Web server.
+        <p>This specification defines a JSON file named <code>tdmrep.json</code>, which MUST be hosted in the <code>/.well-known<code> repository of a Web server.</p>
         
         <p>This file contains an array of JSON objects; each object represents a rule and contains three properties:</p> 
 
@@ -191,42 +193,50 @@
         <p>To evaluate if the URL of a Web resource is subject to a given pattern, a TDM Agent MUST match the paths inferred from the pattern against the URL. The matching SHOULD be case sensitive. The most specific match found MUST be used. The most specific match is the first in sequence.</p>
 
         <p>If a percent-encoded US-ASCII character is encountered in the URI, it MUST be unencoded prior to comparison, unless it is a reserved character in the URI as defined by RFC3986 or the character is outside the unreserved character range.  The match evaluates positively if and only if the end of the path from the rule is reached before a difference in octets is encountered.</p>
+      
+        <section id="sec-tdm-file-regexp">
 
-        <h3>Use of regular expressions</h3>
+          <h3>Use of regular expressions</h3>
 
-        <p>There are many variants of regular expressions. In order to simplify the work of TDM Agents, this specification is re-using the specification and wording of the [robots.txt draft-koster-rep-00 2.2.3](https://tools.ietf.org/html/draft-koster-rep-00#section-2.2.3).</p>
+          <p>There are many variants of regular expressions. In order to simplify the work of TDM Agents, this specification is re-using the specification and wording of the [robots.txt draft-koster-rep-00 2.2.3](https://tools.ietf.org/html/draft-koster-rep-00#section-2.2.3).</p>
 
-        <p>TDM Agents MUST allow the following special characters:</p>
+          <p>TDM Agents MUST allow the following special characters:</p>
 
-        <table class="simple">
-          <tr><th>Character</th>
-              <th>Description</th>
-              <th>Example</th>
-          </tr>
-          <tr><td>"#"</td>
-              <td>Designates an end of line comment.</td>
-              <td>"TDM-b: / # comment at the end"</td>
-          </tr>
-          <tr><td>"$"</td>
-              <td>Designates the end of the match pattern. A URI MUST end with a $.</td>
-              <td>"TDM-b: /this/path/exactly$"</td>
-          </tr>
-          <tr><td>"#"</td>
-              <td>Designates 0 or more instances of any character.</td>
-              <td>"TDM-b: /this/*/then"</td>
-          </tr>
-        </table>
- 
-        <p>If TDM Agents match special characters verbatim in the URI, they MUST use "%" encoding.  For example:</p>
+          <table class="simple">
+            <tr><th>Character</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+            <tr><td>"#"</td>
+                <td>Designates an end of line comment.</td>
+                <td>"TDM-b: / # comment at the end"</td>
+            </tr>
+            <tr><td>"$"</td>
+                <td>Designates the end of the match pattern. A URI MUST end with a $.</td>
+                <td>"TDM-b: /this/path/exactly$"</td>
+            </tr>
+            <tr><td>"#"</td>
+                <td>Designates 0 or more instances of any character.</td>
+                <td>"TDM-b: /this/*/then"</td>
+            </tr>
+          </table>
+  
+          <p>If TDM Agents match special characters verbatim in the URI, they MUST use "%" encoding.  For example:</p>
 
-        <table class="simple">
-          <tr><th>Pattern</th>
-              <th>URI</th>
-          </tr>
-          <tr><td>/path/foo-%24</td>
-              <td>https://www.example.com/path/foo-$</td>
-          </tr>
-        </table>
+          <table class="simple">
+            <tr><th>Pattern</th>
+                <th>URI</th>
+            </tr>
+            <tr><td>/path/foo-%24</td>
+                <td>https://www.example.com/path/foo-$</td>
+            </tr>
+          </table>
+
+        </section>
+
+      </section>
+
+      <section id="sec-tdm-header">
 
         <h2>TDM Header Field for HTTP Requests</h2>
 
@@ -234,45 +244,49 @@
         <p>This is the second thing a TDM Agent MUST check, if no TDM file has been found on the origin server.</p>
 
         <pre class="abnf">
-TDM-declaration  = "TDM-a"
-TDM-field-value = ( "0" / "1" / "2" )
-</pre>
+        TDM-declaration  = "TDM-a"
+        TDM-field-value = ( "0" / "1" / "2" )
+        </pre>
 
         <p>In the following example, the server returns a TDM-a header field with value <code>1</code>.
         <pre class="example">
-GET /something/here HTTP/1.1
-Host: example.com
-TDM-a: 1
-</pre>
+        GET /something/here HTTP/1.1
+        Host: example.com
+        TDM-a: 1
+        </pre>
 
         <p>In the following example, the server returns a TDM-a header field with value <code>2</code>, and a TDM-b header field with a URL as a value.</p>
         <pre class="example">
-GET /something/here HTTP/1.1
-Host: example.com
-TDM-a: 1
-TDM-b: https://something/policies/policy-a
-</pre>
+        GET /something/here HTTP/1.1
+        Host: example.com
+        TDM-a: 1
+        TDM-b: https://something/policies/policy-a
+        </pre>
 
         <p>The TDM Agent can then fetch the resource corresponding to the policy.<p> 
 
         <pre>
-GET /policies/policy-a HTTP/1.1
-Host: http://example.com 
-</pre>
+        GET /policies/policy-a HTTP/1.1
+        Host: http://example.com 
+        </pre>
 
         <p>The message returned by the Web server to the TDM Agent may indicate that the information is human readable:</p> 
 
         <pre>
-HTTP/1.1 200 OK
-Content-Type: text/html
-</pre>
+        HTTP/1.1 200 OK
+        Content-Type: text/html
+        </pre>
 
         <p>Or it may indicate that the information is machine-readable:</p>
 
         <pre>
-HTTP/1.1 200 OK
-Content-Type: application/ld+json
-</pre>
+        HTTP/1.1 200 OK
+        Content-Type: application/ld+json
+        </pre>
+
+      </section>
+
+      <section id="sec-tdm-html-meta">
 
         <h2>TDM Metadata in HTML Content</h2>
 
@@ -280,8 +294,9 @@ Content-Type: application/ld+json
 
         <p>...</p>
 
-		</section>
+		  </section>
 
+    </section>
 
 		<div data-include="common/html/acknowledgements.html" data-include-replace="true"></div>
 
