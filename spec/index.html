@@ -239,6 +239,38 @@
 
         </section>
 
+        <section class="informative" id="sec-tdm-file-example">
+
+          <h3>Example</h3>
+
+          <p>Let’s imagine that a Web server is hosting three groups of files. The rightsholder of the first group of files (PDF documents) wants to express that TDM rights are reserved on this content. The rightsholder of the two other groups of files wants to express that TDM rights are tied to a license for the second group (html pages) and TDM rights are not reserved for the third (JPEG images).</p>
+
+          <p>In this example, the first group is a set of files stored in /directory-a; the second group is stored in /directory-b/html and the third group in /directory-b/images.</p>
+
+          <p>tdmrep.json is therefore structured as:</p> 
+
+          <pre class="example">
+          [
+            {
+            "location": "/directory-a",
+            "TDM-a": 1
+            },
+            {
+            "location": "/directory-b/html",
+            "TDM-a": 2,
+            "TDM-b":"https://example.com/policies/policy-a"
+            },
+            {
+            "location": "/directory-b/images/*.jpg",
+            "TDM-a": 0
+            }
+          ]
+          </pre>
+
+          <p>Note: in this example, if non-JPEG files are also located in “/directory-b/images”, their TDM status is by default controlled by the TDM exception of the DSM.</p> 
+
+        </section>
+
       </section>
 
       <section id="sec-tdm-header">
