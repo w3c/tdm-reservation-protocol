@@ -17,7 +17,7 @@ Note: looking at the similarities between the structure we obtain here and the [
 
 *Label*: Text & Data Mine
 
-*Identifier*: https://edrlab.org/tdmrep/odrl-profile#mine
+*Identifier*: http://www.w3.org/ns/tdmrep#mine
 
 *Included in*: http://www.w3.org/ns/odrl/2/use
 
@@ -30,7 +30,7 @@ Notes:
 
 *Label*: Research purpose
 
-*Identifier*: https://edrlab.org/tdmrep/odrl-profile#research
+*Identifier*: http://www.w3.org/ns/tdmrep#research
 
 *Included in*: http://www.w3.org/ns/odrl/2/rightOperand
 
@@ -40,14 +40,14 @@ Notes:
 
 *Label*: Commercial purpose
 
-*Identifier*: https://edrlab.org/tdmrep/odrl-profile#commercial
+*Identifier*: http://www.w3.org/ns/tdmrep#commercial
 
 *Included in*: http://www.w3.org/ns/odrl/2/rightOperand
 
 
 ### Requirements of a Policy belonging to this profile
 
-- A Policy MUST have a `profile` property and the value of this property MUST be `https://edrlab.org/tdmrep/odrl-profile`
+- A Policy MUST have a `profile` property and the value of this property MUST be `http://www.w3.org/ns/tdmrep`
 - A Policy MUST be of subclass `Offer`.
 - A Policy MUST contain one `permission` or one `obligation` but no `prohibition`  property. 
 - Every `action` property in a Policy MUST have `tdm:mine` as value.
@@ -166,12 +166,12 @@ In this example, the rightsholder requires TDM Actors to contact him for obtaini
 {
     "@context": [
       "http://www.w3.org/ns/odrl.jsonld",
-      {"tdm": "https://edrlab.org/tdmrep/odrl-profile#"}
+      {"tdm": "http://www.w3.org/ns/tdmrep#"}
   ],
 
   "@type": "Offer",
   "uid": "https://provider.com/policy/1",
-  "profile": "https://edrlab.org/tdmrep/odrl-profile",
+  "profile": "http://www.w3.org/ns/tdmrep",
   "assigner": {
     "uid": "https://provider.com",
     "vcard:fn": "Provider",
@@ -193,12 +193,12 @@ He agrees that TDM Actors from any country can mine its research papers:
 {
     "@context": [
       "http://www.w3.org/ns/odrl.jsonld",
-      {"tdm": "https://edrlab.org/tdmrep/odrl-profile#"}
+      {"tdm": "http://www.w3.org/ns/tdmrep#"}
   ],
 
   "@type": "Offer",
   "uid": "https://provider.com/policy/1",
-  "profile": "https://edrlab.org/tdmrep/odrl-profile",
+  "profile": "http://www.w3.org/ns/tdmrep",
   "assigner": {
     "uid": "https://provider.com",
     "vcard:fn": "Provider",
@@ -229,11 +229,11 @@ In this example, the rightsholder agrees that TDM Actors from any country can mi
 {
   "@context": [
       "http://www.w3.org/ns/odrl.jsonld",
-      {"tdm": "https://edrlab.org/tdmrep/odrl-profile#"}
+      {"tdm": "http://www.w3.org/ns/tdmrep#"}
   ],
   "@type": "Offer",
   "uid": "https://provider.com/policy/1",
-  "profile": "https://edrlab.org/tdmrep/odrl-profile",
+  "profile": "http://www.w3.org/ns/tdmrep",
   "assigner": {
     "uid": "https://provider.com",
     "vcard:fn": "Provider",
@@ -261,12 +261,12 @@ In this example, the rightsholder agrees that TDM Actors from any country can mi
 {
     "@context": [
       "http://www.w3.org/ns/odrl.jsonld",
-      {"tdm": "https://edrlab.org/tdmrep/odrl-profile#"}
+      {"tdm": "http://www.w3.org/ns/tdmrep#"}
   ],
 
   "@type": "Offer",
   "uid": "https://provider.com/policy/1",
-  "profile": "https://edrlab.org/tdmrep/odrl-profile",
+  "profile": "http://www.w3.org/ns/tdmrep",
   "assigner": {
     "uid": "https://provider.com",
     "vcard:fn": "Provider",
@@ -292,12 +292,12 @@ In this example, the rightsholder agrees that TDM Actors from Canada and Brazil 
 {
     "@context": [
       "http://www.w3.org/ns/odrl.jsonld",
-      {"tdm": "https://edrlab.org/tdmrep/odrl-profile#"}
+      {"tdm": "http://www.w3.org/ns/tdmrep#"}
   ],
 
   "@type": "Offer",
   "uid": "https://provider.com/policy/1",
-  "profile": "https://edrlab.org/tdmrep/odrl-profile",
+  "profile": "http://www.w3.org/ns/tdmrep",
   "assigner": {
     "uid": "https://provider.com",
     "vcard:fn": "Provider",
