@@ -181,7 +181,7 @@
         <h2>TDM File on the Origin Server</h2>
 
         <p>The TDM file on the origin server is a mechanism for declaring site-wide righsholder's choices in a file hosted on the origin server of the Web content a TDM Agent wishes to mine.</p>
-        <p>The presence of this file is the first thing a TDM Agent MUST check, before it starts scraping the content of a Web server.</p>
+        <p>A TDM Agent MUST check the presence of this file before it starts scraping the content of a Web server.</p>
 
         <p>An origin server that receives a valid GET request targeting this resource MUST send either a successful response containing a machine-readable representation of the site-wide righsholder's choices, as defined below, or a sequence of redirects that leads to such a representation. Failure to provide access to such a representation implies that the origin server does not implement this protocol.</p>
 
@@ -198,6 +198,10 @@
         <p>To evaluate if the URL of a Web resource is subject to a given pattern, a TDM Agent MUST match the paths inferred from the pattern against the URL. The matching SHOULD be case sensitive. The most specific match found MUST be used. The most specific match is the first in sequence.</p>
 
         <p>If a percent-encoded US-ASCII character is encountered in the URI, it MUST be unencoded prior to comparison, unless it is a reserved character in the URI as defined by RFC3986 or the character is outside the unreserved character range.  The match evaluates positively if and only if the end of the path from the rule is reached before a difference in octets is encountered.</p>
+
+				<div class="note">
+          <p>A TDM Agent SHOULD keep in cache the unmarshaled resource and check the rules it contains against every Web resource it fetches from the origin server, <em>unless</em> this resource contains a TDM Header Field (see below).</p>
+        </div>
       
         <section id="sec-tdm-file-regexp">
 
@@ -278,7 +282,7 @@
         <h2>TDM Header Field for HTTP Requests</h2>
 
         <p>The TDM header field is a mechanism for declaring a choice in an HTTP request ([[RFC7230]]).</p>
-        <p>This is the second thing a TDM Agent MUST check, if no TDM file has been found on the origin server.</p>
+        <p>This is the first thing a TDM Agent MUST check when it fetches a Web resource. The values found in this header supercede any value present in a TDM file on the origin server.</p>
 
         <pre class="abnf">
         TDM-declaration  = "TDM-a"
@@ -328,6 +332,7 @@
         <h2>TDM Metadata in HTML Content</h2>
 
         <p>TDM Metadata in HTML Content is a mechanism for declaring a choice when the previous mechanisms are not practical for a rightsholder.</p>
+        <p>TDM Metadata are checked only if no TDM declaration has been found, either in a TDM header field or from rules expressed in a TDM file stored on the origin server.</p>
 
         <p>...</p>
 
