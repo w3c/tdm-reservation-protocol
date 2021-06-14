@@ -53,13 +53,13 @@ Last-Modified: Tue, 12 Feb 2019 17:47:55 GMT
 Content-Type: text/html
 Content-Length: 35026
 TDM-a: 2
-TDM-b: https://example.com/licences/licence-a
+TDM-b: https://example.com/policies/policy-a
 ```
 
-The TDM Agent can then fetch the resource corresponding to the license. 
+The TDM Agent can then fetch the resource corresponding to the policy. 
 
 ``` http
-GET /licences/licence-a HTTP/1.1
+GET /policies/policy-a HTTP/1.1
 Host: http://example.com 
 ```
 
