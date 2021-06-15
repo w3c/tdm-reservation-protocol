@@ -129,12 +129,12 @@
 
         <p>Such a preference is expressed via two complementary properties:</p>
 
-        <h2>TDM-a</h2>
+        <h2>tdm-reservation</h2>
 
-        <p>TDM-a is an integer.</p>
+        <p>`tdm-reservation`is an integer.</p>
         
         <table class="simple">
-          <tr><th>TDM-a</th>
+          <tr><th>tdm-reservation</th>
               <th>meaning</th>
           </tr>
           <tr><td>unset</td>
@@ -147,25 +147,25 @@
               <td>TDM rights are reserved. This is the "opt-out" option specified by the Article 4 of the DSM. TDM Agents shall not mine this content, regardless where the TDM usage is taking place.</td>
           </tr>
           <tr><td>2</td>
-              <td>TDM rights are reserved and a TDM Policy is available. TDM Agents can use TDM-b to ease contact with the rightsholder and request an authorization to mine the content.</td>
+              <td>TDM rights are reserved and a TDM Policy is available. TDM Agents can use `tdm-policy`to ease contact with the rightsholder and request an authorization to mine the content.</td>
           </tr>
         </table>
 
-        <p>Other values are considered protocol errors. In such a case the TDM Agents MUST consider that the value of TDM-a is <code>unset</code>.</p>
+        <p>Other values are considered protocol errors. In such a case the TDM Agents MUST consider that the value of `tdm-reservation`is <code>unset</code>.</p>
 
-        <h2>TDM-b</h2>
+        <h2>tdm-policy</h2>
         
-        <p>TDM-b is a URL.</p>
+        <p>`tdm-policy`is a URL.</p>
         
-        <p>TDM-b SHOULD be set only if the value of TDM-a is <code>2</code>.</p>
-        <p>The absence of TDM-b if the value of TDM-a is <code>2</code> is considered a protocol error. In such a case TDM Agents MUST consider that the value of TDM-a is <code>1</code>.</p>
+        <p>`tdm-policy`SHOULD be set only if the value of `tdm-reservation`is <code>2</code>.</p>
+        <p>The absence of `tdm-policy`if the value of `tdm-reservation`is <code>2</code> is considered a protocol error. In such a case TDM Agents MUST consider that the value of `tdm-reservation`is <code>1</code>.</p>
 
         <p>If the Web resource located at this URL is a Web page (i.e. its content-type is <code>text/html</code>), this resource is considered human readable.</p>
         <p>If it has the content-type of the TDM Policy (i.e. its content-type is <code>application/ld+json</code>), this Web resource is considered machine-readable.</p>
-        <p>Other content-types are considered protocol errors. In such a case TDM Agents MUST consider that the value of TDM-a is <code>1</code>.</p>
+        <p>Other content-types are considered protocol errors. In such a case TDM Agents MUST consider that the value of `tdm-reservation`is <code>1</code>.</p>
 
 				<div class="note">
-          <p>The presence of TDM-b if the value of TDM-a is not <code>2</code> is not considered a protocol error. TDM Agents simply don't process TDM-b in this case.</p>
+          <p>The presence of `tdm-policy`if the value of `tdm-reservation`is not <code>2</code> is not considered a protocol error. TDM Agents simply don't process `tdm-policy`in this case.</p>
         </div>
 
 		</section>
@@ -191,8 +191,8 @@
 
         <ul>
           <li><em>location</em>: a pattern matching the path of a set of files hosted on the server, associated with the sibling TDM properties.</li>
-          <li><em>TDM-a</em>: the value of TDM-a associated with the current pattern.</li>
-          <li><em>TDM-b</em>: the value of TDM-b associated with the current pattern.</li>
+          <li><em>tdm-reservation</em>: the value of `tdm-reservation`associated with the current pattern.</li>
+          <li><em>tdm-policy</em>: the value of `tdm-policy`associated with the current pattern.</li>
         </ul>
 
         <p>To evaluate if the URL of a Web resource is subject to a given pattern, a TDM Agent MUST match the paths inferred from the pattern against the URL. The matching SHOULD be case sensitive. The most specific match found MUST be used. The most specific match is the first in sequence.</p>
@@ -218,11 +218,11 @@
             </tr>
             <tr><td>"$"</td>
                 <td>Designates the end of the match pattern. A URI MUST end with a $.</td>
-                <td>"TDM-b: /this/path/exactly$"</td>
+                <td>"tdm-policy: /this/path/exactly$"</td>
             </tr>
             <tr><td>"*"</td>
                 <td>Designates 0 or more instances of any character.</td>
-                <td>"TDM-b: /this/*/then"</td>
+                <td>"tdm-policy: /this/*/then"</td>
             </tr>
           </table>
   
@@ -253,16 +253,16 @@
           [
             {
             "location": "/directory-a",
-            "TDM-a": 1
+            "tdm-reservation": 1
             },
             {
             "location": "/directory-b/html",
-            "TDM-a": 2,
-            "TDM-b":"https://example.com/policies/policy-a"
+            "tdm-reservation": 2,
+            "tdm-policy":"https://example.com/policies/policy-a"
             },
             {
             "location": "/directory-b/images/*.jpg",
-            "TDM-a": 0
+            "tdm-reservation": 0
             }
           ]
           </pre>
@@ -281,23 +281,23 @@
         <p>This is the first thing a TDM Agent MUST check when it fetches a Web resource. The values found in this header supercede any value present in a TDM file on the origin server.</p>
 
         <pre class="abnf">
-        TDM-declaration  = "TDM-a"
+        TDM-declaration  = "tdm-reservation"
         TDM-field-value = ( "0" / "1" / "2" )
         </pre>
 
-        <p>In the following example, the server returns a TDM-a header field with value <code>1</code>.
+        <p>In the following example, the server returns a `tdm-reservation`header field with value <code>1</code>.
         <pre class="example">
         GET /something/here HTTP/1.1
         Host: example.com
-        TDM-a: 1
+        tdm-reservation: 1
         </pre>
 
-        <p>In the following example, the server returns a TDM-a header field with value <code>2</code>, and a TDM-b header field with a URL as a value.</p>
+        <p>In the following example, the server returns a `tdm-reservation`header field with value <code>2</code>, and a `tdm-policy`header field with a URL as a value.</p>
         <pre class="example">
         GET /something/here HTTP/1.1
         Host: example.com
-        TDM-a: 1
-        TDM-b: https://something/policies/policy-a
+        tdm-reservation: 1
+        tdm-policy: https://something/policies/policy-a
         </pre>
 
         <p>The TDM Agent can then fetch the resource corresponding to the policy.<p> 
