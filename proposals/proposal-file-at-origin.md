@@ -36,7 +36,6 @@ There are many variants of regular expressions. In order to simplify the work of
 
 | Character | Description | Example |
 | -------- | -------- | -------- |
-| "#"       | Designates an end of line comment. | "TDM-b: / # comment at the end |
 | "$"       | Designates the end of the match pattern. A URI MUST end with a $. | "TDM-b: /this/path/exactly$" |
 | "*"       | Designates 0 or more instances of any character | "TDM-b: /this/*/end" |
 
