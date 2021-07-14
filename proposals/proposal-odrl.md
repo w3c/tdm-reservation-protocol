@@ -4,9 +4,6 @@ Policies are machine-readable structures referenced from the TDM-b property defi
 
 The format of policies defined in this specification is a profile of the Open Digital Rights Language 2.2, a W3C recommandation. 
 
-Note: looking at the similarities between the structure we obtain here and the [Proposal based on a file hosted on the origin server](./proposal-file-at-origin.md)), we could decide to merge both. In such a case, the `target` URL must point to the folder containing every resource associated with this Policy and pattern matching must be allowed: this is a departure from the RDF purity of ODRL. Or the `target` must become an AssetCollection object with a `source` property representing the path: pure but more verbose. 
-
-
 ## TDMRep Profile of ODRL
 
 ### Additional property values defined by this profile
@@ -322,7 +319,7 @@ Note that when multiple Constraints apply to the same Rule, then they are interp
 ## References
 
 - [ODRL Information Model 2.2](https://www.w3.org/TR/odrl-model)
-- [ODRL VOcabulary & Expression 2.2](https://www.w3.org/TR/odrl-vocab/)
+- [ODRL Vocabulary & Expression 2.2](https://www.w3.org/TR/odrl-vocab/)
 - [vCard rdf](https://www.w3.org/TR/vcard-rdf/)
 - [IPTC external controlled vocabularies](https://cvx.iptc.org/)
 
