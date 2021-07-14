@@ -463,106 +463,122 @@
 
           <p>A Policy MUST contain either one `permission` or one `obligation`. It MUST NOT contain a `prohibition` property.</p> 
 
-          <h4>Expressing the obligation to contact the rightsholder before getting a permission</h4>
+        <section id="sec-odrl-profile-obligation-contact">
 
-          <p>The obligation to obtain verifiable consent before getting a permission to perform TDM on content is expressed by adding an `obligation` property to the Policy. The duty is expressed as an `action` property with an `obtainConsent` value.</p>
+            <h4>Expressing the obligation to contact the rightsholder before getting a permission</h4>
 
-          <pre class="example">
-          {
-            "obligation": [{
-                "action": "obtainConsent"
-              }
-            ]
-          }
-          </pre>
+            <p>The obligation to obtain verifiable consent before getting a permission to perform TDM on content is expressed by adding an `obligation` property to the Policy. The duty is expressed as an `action` property with an `obtainConsent` value.</p>
 
-          <h4>Expressing the target and action of a permission</h4>
+            <pre class="example">
+            {
+              "obligation": [{
+                  "action": "obtainConsent"
+                }
+              ]
+            }
+            </pre>
 
-          <p>The mandatory target of a permission, which is expressed via the `target` property, MUST be a URI identiying the collection of resources involved in the policy.</p>
+          </section>
 
-          <div class="note">
-            <p>The target value is not used by TDM Agents. Accessing such URL may end with an http error (403 in many cases): this is not a processing error.</p>
-          </div>
+          <section id="sec-odrl-profile--permission-target">
 
-          <p>The mandatory action of a permission, which is expressed via the `action` property, MUST be the following:</p>
+            <h4>Expressing the target and action of a permission</h4>
 
-          <h5>tdm:mine</h5>
+            <p>The mandatory target of a permission, which is expressed via the `target` property, MUST be a URI identiying the collection of resources involved in the policy.</p>
 
-          <p><em>Definition</em>: analyse, via automated analytical technique, text and data in digital form in order to generate information which includes but is not limited to patterns, trends and correlations.</p>
+            <div class="note">
+              <p>The target value is not used by TDM Agents. Accessing such URL may end with an http error (403 in many cases): this is not a processing error.</p>
+            </div>
 
-          <p><em>Label</em>: Text & Data Mine</p>
+            <p>The mandatory action of a permission, which is expressed via the `action` property, MUST be the following:</p>
 
-          <p><em>Identifier</em>: http://www.w3.org/ns/tdmrep#mine</p>
+            <h5>tdm:mine</h5>
 
-          <p><em>Included in</em>: http://www.w3.org/ns/odrl/2/use</p>
+            <p><em>Definition</em>: analyse, via automated analytical technique, text and data in digital form in order to generate information which includes but is not limited to patterns, trends and correlations.</p>
 
-          <pre class="example">
-          {
-            "permission": [{
-              "target": "https://provider.com/research-papers",
-              "action": "tdm:mine"
-              }
-            ]
-          }
-          </pre>
+            <p><em>Label</em>: Text & Data Mine</p>
 
-          <h4>Expressing the duty to compensate financially the rightsholder</h4>
+            <p><em>Identifier</em>: http://www.w3.org/ns/tdmrep#mine</p>
 
-          <p>The duty to compensate financially the mining of content is expressed by adding a `duty` property to the Permission. The duty is expressed as an `action` property with a `compensate` value.</p>
+            <p><em>Included in</em>: http://www.w3.org/ns/odrl/2/use</p>
 
-          <pre class="example">
-          {
-            "permission": [{
+            <pre class="example">
+            {
+              "permission": [{
                 "target": "https://provider.com/research-papers",
-                "action": "tdm:mine",
-                "duty": [{
-                  "action": "compensate"
-                  }
-                ]
-              }
-            ]
-          }
-          </pre>
+                "action": "tdm:mine"
+                }
+              ]
+            }
+            </pre>
+          
+          </section>
 
-          <h4>Expressing constraints on the type of usage</h4>
+          <section id="sec-odrl-profile--permission-compensate">
 
-          <p>The permission to mine content for a given type of usage only is expressed by adding a `constraint` property to the Policy. The usage type is expressed as a `purpose` value on a `leftOperand` property, the `operator` property takes `eq` as value and the `rightOperand` property takes one of the following values:</p>
+            <h4>Expressing the duty to compensate financially the rightsholder</h4>
 
-          <h5>tdm:research</h5>
+            <p>The duty to compensate financially the mining of content is expressed by adding a `duty` property to the Permission. The duty is expressed as an `action` property with a `compensate` value.</p>
 
-          <p><em>Definition</em>: designates research purposes.</p>
+            <pre class="example">
+            {
+              "permission": [{
+                  "target": "https://provider.com/research-papers",
+                  "action": "tdm:mine",
+                  "duty": [{
+                    "action": "compensate"
+                    }
+                  ]
+                }
+              ]
+            }
+            </pre>
+          
+          </section>
 
-          <p><em>Label</em>: Research purpose</p>
+          <section id="sec-odrl-profile--permission-constraint">
 
-          <p><em>Identifier</em>: http://www.w3.org/ns/tdmrep#research</p>
+            <h4>Expressing a constraint on the type of usage</h4>
 
-          <p><em>Included in</em>: http://www.w3.org/ns/odrl/2/rightOperand</p>
+            <p>The permission to mine content for a given type of usage only is expressed by adding a `constraint` property to the Policy. The usage type is expressed as a `purpose` value on a `leftOperand` property, the `operator` property takes `eq` as value and the `rightOperand` property takes one of the following values:</p>
 
-          <h5>tdm:commercial</h5>
+            <h5>tdm:research</h5>
 
-          <p><em>Definition</em>: designates non-research purposes.</p>
+            <p><em>Definition</em>: designates research purposes.</p>
 
-          <p><em>Label</em>: Commercial purpose</p>
+            <p><em>Label</em>: Research purpose</p>
 
-          <p><em>Identifier</em>: http://www.w3.org/ns/tdmrep#commercial</p>
+            <p><em>Identifier</em>: http://www.w3.org/ns/tdmrep#research</p>
 
-          <p><em>Included in</em>: http://www.w3.org/ns/odrl/2/rightOperand</p>
+            <p><em>Included in</em>: http://www.w3.org/ns/odrl/2/rightOperand</p>
 
-          <pre class="example">
-          {
-            "permission": [{
-                "target": "https://provider.com/research-papers",
-                "action": "tdm:mine",
-                "constraint": [{
-                  "leftOperand": "purpose",
-                  "operator": "eq",
-                  "rightOperand": "tdm:research"
-                  }
-                ]
-              }
-            ]
-          }
-          </pre>
+            <h5>tdm:commercial</h5>
+
+            <p><em>Definition</em>: designates non-research purposes.</p>
+
+            <p><em>Label</em>: Commercial purpose</p>
+
+            <p><em>Identifier</em>: http://www.w3.org/ns/tdmrep#commercial</p>
+
+            <p><em>Included in</em>: http://www.w3.org/ns/odrl/2/rightOperand</p>
+
+            <pre class="example">
+            {
+              "permission": [{
+                  "target": "https://provider.com/research-papers",
+                  "action": "tdm:mine",
+                  "constraint": [{
+                    "leftOperand": "purpose",
+                    "operator": "eq",
+                    "rightOperand": "tdm:research"
+                    }
+                  ]
+                }
+              ]
+            }
+            </pre>
+ 
+          </section>
 
         </section>
 
