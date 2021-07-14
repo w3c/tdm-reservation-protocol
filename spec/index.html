@@ -127,7 +127,7 @@
 
 				<p>The goal of this protocol is to allow a rightsholder to declare his choice regarding text & data mining of Web resources he controls, thereby allowing recipients of that declaration to adjust their scraping behavior accordingly, or to reach a separate agreement with the rightsholder that satisfies all parties.</p>
 
-        <p>Such a preference is expressed via two complementary properties:</p>
+        <p>Such a preference is expressed via two complementary properties, `tdm-reservation` and `tdm-policy.</p>
 
         <section id="sec-tdm-reservation">
 
@@ -146,14 +146,20 @@
                 <td>TDM rights are not reserved. TDM agents can mine this content for TDM purposes without having to contact the rightsholder, regardless where the TDM usage is taking place.</td>
             </tr>
             <tr><td>1</td>
-                <td>TDM rights are reserved. This is the "opt-out" option specified by the Article 4 of the DSM Directive. TDM Agents shall not mine this content, regardless where the TDM usage is taking place.</td>
+                <td>TDM rights are reserved and TDM Agents shall not mine this content, regardless where the TDM usage is taking place.</td>
             </tr>
             <tr><td>2</td>
-                <td>TDM rights are reserved and a TDM Policy is available. TDM Agents can use `tdm-policy` to ease contact with the rightsholder and request an authorization to mine the content.</td>
+                <td>TDM rights are reserved and a TDM Policy is available. TDM Agents SHOULD use `tdm-policy` to contact the rightsholder and get an authorization to mine the content.</td>
             </tr>
           </table>
 
           <p>Other values are considered protocol errors. In such a case the TDM Agents MUST consider that the value of `tdm-reservation` is <code>unset</code>.</p>
+
+          <div class="note">
+            <p>The "opt-out" option specified by the Article 4 of the DSM Directive is simply expressed by the use of `tdm-reservation` with value equal <code>1</code>. This is the only feature rightsholder must know about if their only goal is to benefit from the rights relative to this Article 4.</p>
+          </div>
+
+          <b>.</b>
         
         </section>
         <section id="sec-tdm-policy">
@@ -493,7 +499,7 @@
 
             <h4>Expressing the target and action of a permission</h4>
 
-            <p>The mandatory target of a permission, which is expressed via the `target` property, MUST be a URI identiying the collection of resources involved in the policy.</p>
+            <p>The mandatory target of a permission, which is expressed via the `target` property, MUST be a URI identifying the collection of resources involved in the policy.</p>
 
             <div class="note">
               <p>The target value is not used by TDM Agents. Accessing such URL may end with an http error (403 in many cases): this is not a processing error.</p>
