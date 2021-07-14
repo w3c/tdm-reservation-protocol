@@ -221,7 +221,7 @@
                 <th>Example</th>
             </tr>
             <tr><td>"$"</td>
-                <td>Designates the end of the match pattern. A URI MUST end with a $.</td>
+                <td>Designates the end of the match pattern.</td>
                 <td>"tdm-policy: /this/path/exactly$"</td>
             </tr>
             <tr><td>"*"</td>
@@ -251,7 +251,7 @@
 
           <p>In this example, the first group is a set of files stored in /directory-a; the second group is stored in /directory-b/html and the third group in /directory-b/images.</p>
 
-          <p>tdmrep.json is therefore structured as:</p> 
+          <p>`tdmrep.json` is therefore structured as:</p> 
 
           <pre class="example">
           [
@@ -314,20 +314,20 @@
 
         <pre class="example">
           <code>
-          &amp;!DOCTYPE html>
-          &amp;html lang="en">
-            &amp;head>
-              &amp;meta charset="utf-8">
-              &amp;meta name="tdm-reservation" content="2">
-              &amp;meta name="tdm-policy" content="https://provider.com/policies/policy-a">
-              &amp;title>Document title&amp;/title>
-            &amp;/head>
-            &amp;body>
+          <!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="utf-8">
+              <meta name="tdm-reservation" content="2">
+              <meta name="tdm-policy" content="https://provider.com/policies/policy-a">
+              <title>Document title</title>
+            </head>
+            <body>
               ...
-              &amp;!-- body content -->
+              <!-- body content -->
               ...
-            &amp;/body>
-          &amp;/html>
+            </body>
+          </html>
           </code>
         </pre>
 
