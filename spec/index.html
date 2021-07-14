@@ -357,7 +357,7 @@
 
       <h1>Expressing a TDM Policy</h1>
 
-      <p>Policies are machine-readable structures referenced from the `tdm-policy` property defined in the specification, in case the value of `tdm-reservation` is `2`. They provide ways for TDM Actors to contact content rightsholder and may offer details about available TDM licenses. Thus, they facilitate the acquisition of TDM licenses from rightsholders by TDM Actors.</p>
+      <p>Policies are machine-readable structures referenced from the `tdm-policy` property defined in the specification, in case the value of `tdm-reservation` is <code>2</code>. They provide ways for TDM Actors to contact content rightsholder and may offer details about available TDM licenses. Thus, they facilitate the acquisition of TDM licenses from rightsholders by TDM Actors.</p>
 
       <p>The format of policies defined in this specification is a profile of the Open Digital Rights Language 2.2 [[ODRL]]. </p> 
 
@@ -369,21 +369,17 @@
 
         <h2>Specification of the TDM Profile</h2>
 
-        <section id="sec-odrl-profile-identification">
-
-          <h3>Identification of the profile</h3>
-
-          <p>A Policy MUST have a `profile` property with value `http://www.w3.org/ns/tdmrep`</p>
-
-        </section>
-
         <section id="sec-odrl-profile-context">
 
           <h3>JSON-LD context of a Policy</h3>
 
           <p>The `@context` of a Policy MUST be "http://www.w3.org/ns/odrl.jsonld".</p>
 
-          <p>A "tdm" alias MUST be added to the context and its value MUST be "http://www.w3.org/ns/tdmrep#".</p>
+          <p>A <code>tdm</code> alias MUST be added to the context if "tdm" prefixed properties are used in the Policy, and its value MUST be "http://www.w3.org/ns/tdmrep#".</p>
+
+          <div class="note">
+            <p>ODRL Policies also require an identifier, expressed as a URI.</p>
+          </div>
 
           <pre class="example">
           {
@@ -391,6 +387,7 @@
               "http://www.w3.org/ns/odrl.jsonld",
               {"tdm": "http://www.w3.org/ns/tdmrep#"}
             ]
+            "uid": "https://provider.com/policies/policy-a"
           }
           </pre>
 
@@ -401,6 +398,37 @@
           <h3>Type of a Policy</h3>
 
           <p>The `@type` of a Policy MUST have `Offer` as value.</p>
+
+          <pre class="example">
+          {
+            "@context": [
+              "http://www.w3.org/ns/odrl.jsonld",
+              {"tdm": "http://www.w3.org/ns/tdmrep#"}
+            ],
+            "@type": "Offer",
+            "uid": "https://provider.com/policies/policy-a"
+          }
+          </pre>
+
+        </section>
+
+        <section id="sec-odrl-profile-identification">
+
+          <h3>Identification of the profile</h3>
+
+          <p>A Policy MUST have a `profile` property with value `http://www.w3.org/ns/tdmrep`</p>
+
+          <pre class="example">
+          {
+            "@context": [
+              "http://www.w3.org/ns/odrl.jsonld",
+              {"tdm": "http://www.w3.org/ns/tdmrep#"}
+            ],
+            "@type": "Offer",
+            "uid": "https://provider.com/policies/policy-a",
+            "profile": "http://www.w3.org/ns/tdmrep"
+          }
+          </pre>
 
         </section>
 
@@ -422,18 +450,18 @@
           <pre class="example">
           {
             "assigner": {
-            "uid": "https://provider.com",
-            "vcard:fn": "Provider Name",
-            "vcard:nickname": "PRV",
-            "vcard:hasEmail": "mailto:contact@provider.com",
-            "vcard:hasAddress": {
-              "vcard:street-address": "111 Street Address",
-              "vcard:postal-code": "5555",
-              "vcard:locality": "Espérance",
-              "vcard:country-name": "France"
-            },
-            "vcard:hasTelephone": "tel:+61755555555",
-            "vcard:hasURL": "https://provider.com/tdm/licensing.html" 
+              "uid": "https://provider.com",
+              "vcard:fn": "Provider Name",
+              "vcard:nickname": "PRV",
+              "vcard:hasEmail": "mailto:contact@provider.com",
+              "vcard:hasAddress": {
+                "vcard:street-address": "111 Street Address",
+                "vcard:postal-code": "5555",
+                "vcard:locality": "Espérance",
+                "vcard:country-name": "France"
+              },
+              "vcard:hasTelephone": "tel:+61755555555",
+              "vcard:hasURL": "https://provider.com/tdm/licensing.html" 
             }
           }
           </pre>
