@@ -330,20 +330,22 @@
         <p>In the following example, an html document is associated with a TDM license:</p>
 
         <pre class="example">
-          <!DOCTYPE html>
-          <html lang="en">
-            <head>
-              <meta charset="utf-8">
-              <meta name="tdm-reservation" content="2">
-              <meta name="tdm-policy" content="https://example.com/policies/policy-a">
-              <title>Document title</title>
-            </head>
-            <body>
+          <code>
+          &amp;!DOCTYPE html>
+          &amp;html lang="en">
+            &amp;head>
+              &amp;meta charset="utf-8">
+              &amp;meta name="tdm-reservation" content="2">
+              &amp;meta name="tdm-policy" content="https://example.com/policies/policy-a">
+              &amp;title>Document title&amp;/title>
+            &amp;/head>
+            &amp;body>
               ...
-              <!-- body content -->
+              &amp;!-- body content -->
               ...
-            </body>
-          </html>
+            &amp;/body>
+          &amp;/html>
+          </code>
         </pre>
 
 		  </section>
@@ -442,10 +444,10 @@
             "vcard:nickname": "PRV",
             "vcard:hasEmail": "mailto:contact@provider.com",
             "vcard:hasAddress": {
-              "vcard:street-address": "111 Street Address"
+              "vcard:street-address": "111 Street Address",
               "vcard:postal-code": "5555",
               "vcard:locality": "Espérance",
-              "vcard:country-name": "France",
+              "vcard:country-name": "France"
             },
             "vcard:hasTelephone": "tel:+61755555555",
             "vcard:hasURL": "https://provider.com/tdm/licensing.html" 
@@ -486,13 +488,13 @@
 
           <h5>tdm:mine</h5>
 
-          <p>*Definition*: analyse, via automated analytical technique, text and data in digital form in order to generate information which includes but is not limited to patterns, trends and correlations.</p>
+          <p><em>Definition</em>: analyse, via automated analytical technique, text and data in digital form in order to generate information which includes but is not limited to patterns, trends and correlations.</p>
 
-          <p>*Label*: Text & Data Mine</p>
+          <p><em>Label</em>: Text & Data Mine</p>
 
-          <p>*Identifier*: http://www.w3.org/ns/tdmrep#mine</p>
+          <p><em>Identifier</em>: http://www.w3.org/ns/tdmrep#mine</p>
 
-          <p>*Included in*: http://www.w3.org/ns/odrl/2/use</p>
+          <p><em>Included in</em>: http://www.w3.org/ns/odrl/2/use</p>
 
           <pre class="example">
           {
@@ -528,23 +530,23 @@
 
           <h5>tdm:research</h5>
 
-          <p>*Definition*: designates research purposes.</p>
+          <p><em>Definition</em>: designates research purposes.</p>
 
-          <p>*Label*: Research purpose</p>
+          <p><em>Label</em>: Research purpose</p>
 
-          <p>*Identifier*: http://www.w3.org/ns/tdmrep#research</p>
+          <p><em>Identifier</em>: http://www.w3.org/ns/tdmrep#research</p>
 
-          <p>*Included in*: http://www.w3.org/ns/odrl/2/rightOperand</p>
+          <p><em>Included in</em>: http://www.w3.org/ns/odrl/2/rightOperand</p>
 
           <h5>tdm:commercial</h5>
 
-          <p>*Definition*: designates non-research purposes.</p>
+          <p><em>Definition</em>: designates non-research purposes.</p>
 
-          <p>*Label*: Commercial purpose</p>
+          <p><em>Label</em>: Commercial purpose</p>
 
-          <p>*Identifier*: http://www.w3.org/ns/tdmrep#commercial</p>
+          <p><em>Identifier</em>: http://www.w3.org/ns/tdmrep#commercial</p>
 
-          <p>*Included in*: http://www.w3.org/ns/odrl/2/rightOperand</p>
+          <p><em>Included in</em>: http://www.w3.org/ns/odrl/2/rightOperand</p>
 
           <pre class="example">
           {
@@ -612,10 +614,10 @@
             "vcard:nickname": "PRV",
             "vcard:hasEmail": "mailto:contact@provider.com",
             "vcard:hasAddress": {
-              "vcard:country-name": "Belgium",
-              "vcard:locality": "WonderCity",
+              "vcard:street-address": "111 Street Address",
               "vcard:postal-code": "5555",
-              "vcard:street-address": "111 Lake Drive"
+              "vcard:locality": "Espérance",
+              "vcard:country-name": "France"
             },
             "vcard:hasTelephone": "tel:+61755555555",
             "vcard:hasURL": "https://provider.com/tdm/licensing.html" 
@@ -640,5 +642,5 @@
 
     </section>
 
-	</body>
+  </body>
 </html>
