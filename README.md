@@ -41,7 +41,9 @@ The “opt-out” mechanism introduced by the DMS Directive is therefore a real 
 - [Proposal based on a well known file hosted on the origin server](proposals/proposal-file-at-origin.md)
 - [Proposal based on html meta tags](proposals/proposal-html-meta.md)
 - [Proposal for Policies expressed as ODRL 2.2 structures](proposals/proposal-odrl.md)
-- [Draft specification](spec/index.html)
+- [Draft specification as a Web page](https://w3c.github.io/tdm-reservation-protocol/spec/)
+- [Github source of the specification](spec/index.html)
+
 
 ## Illustration of the three approved techniques 
 
