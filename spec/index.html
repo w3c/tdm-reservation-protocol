@@ -253,7 +253,20 @@
 
         <section class="informative" id="sec-tdm-file-example">
 
-          <h3>Example</h3>
+          <h3>Examples</h3>
+
+          <p>A rightsholder wants to "opt-out" for every file present on a Web server.</p>
+
+          <p>`tdmrep.json` is therefore simply structured as:</p> 
+
+          <pre class="example">
+          [
+            {
+            "location": "/",
+            "tdm-reservation": 1
+            }
+          ]
+          </pre>
 
           <p>A Web server is hosting three groups of files. The rightsholder of the first group of files (PDF documents) wants to express that TDM rights are reserved on this content. The rightsholder of the two other groups of files wants to express that TDM rights are tied to a license for the second group (html pages) and TDM rights are not reserved for all JPEG images contained in the third group.</p>
 
@@ -264,11 +277,11 @@
           <pre class="example">
           [
             {
-            "location": "/directory-a",
+            "location": "/directory-a/",
             "tdm-reservation": 1
             },
             {
-            "location": "/directory-b/html",
+            "location": "/directory-b/html/",
             "tdm-reservation": 2,
             "tdm-policy":"https://provider.com/policies/policy-b"
             },
