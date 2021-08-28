@@ -1,14 +1,14 @@
 # robots for non techies
 
-## robots.txt 
+## Web crawlers and SEO
 
-A Web crawler  (a.k.a bot)  is a software application that systematically browses the [World Wide Web](https://en.wikipedia.org/wiki/World_Wide_Web), typically for the purpose of [Web indexing](https://en.wikipedia.org/wiki/Web_indexing). A robots.txt file is a small file that can be placed at the root of any Web site. Such robots.txt file tells Web crawlers which pages or files of the Web server the crawler can or can't request on this Web site.
+A Web crawler (a.k.a bot)  is a software application that systematically browses the [World Wide Web](https://en.wikipedia.org/wiki/World_Wide_Web), typically for the purpose of [Web indexing](https://en.wikipedia.org/wiki/Web_indexing). A robots.txt file is a small file that can be placed at the root of any Web site. Such robots.txt file tells Web crawlers which pages or files of the Web server the crawler can or can't request on this Web site.
 
 When a search engine crawls a Website, it requests by default every single file of the site, by browsing the directories it has access to and following every link it finds into Web pages. And if the site has lots of pages, it will take the crawler a while to crawl them; for the sake of efficiency, a crawler has therefore a crawl budget, i.e the number of URLs the crawler can afford to process in a session.
 
-Because of this, a robots.txt file tries to maximize the crawl budget of search engines by telling them to not crawl the parts of a site that aren’t displayed to the public. It is important to recognize that robots.txt is not a mechanism for keeping files out of reach from a crawler, but rather a mechanism for helping crawlers being more efficient. 
+Because of this, the SEO (Search Engine Optimization) manager of a web site tries to optimize the crawl budget of search engines. It may be by telling bots to not crawl parts of a site that are not displayed to the user, by limiting the number of hyperlinks crawlers should follow from a web page, or other techniques known only to SEO wizards.
 
-**robots.txt is not meant to protect or block sensitive data.**
+## robots.txt 
 
 A robots.txt file is placed at the top level path of the service (i.e.root of a web server). The URL of the file is therefore something like: 
 
@@ -84,3 +84,11 @@ But other instructions have also been defined over time, like:
 - *notranslate* which means “do not offer this page’s translation on a search engine result page”.
 
 This set of instructions is not properly standardized and different search engines accept different meta-tag parameters for the “robots” meta-tag. For instance Google specifies [here(https://developers.google.com/search/reference/robots_meta_tag)] the vocabulary it understands.
+
+## Conclusion
+
+robots.txt and robots meta directives are the tools SEO (Search Engine Optimization) managers are using for helping crawlers being more efficient. It is thus important to recognize that robots.txt is not a mechanism for keeping files out of reach from a bot and not meant to protect or block sensitive data.
+
+Using robots.txt for managing TDM opt-out would cause an important issue: if "Disallow" was used to express TDM opt-out, SEO and TDM directives would be identical, which makes no sense. If a new keyword was created instead (e.g. "TDM-Reservation") then SEO managers and TDM managers would have to share the maintenance of the same file, which would be error-prone in practice. Also, the "tdm-profile" property is a URL: all robots directives described above are booleans, none has a value. We would have to create a dirty extension for it. 
+
+This is why the TDMRep Community Group decided to get inspiration from robots.txt, which has proven to be simple to implement, but using a different file (cleanly located in the .well-known directory and not the root of the web server) and specific property names and values. 
