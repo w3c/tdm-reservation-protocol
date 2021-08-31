@@ -127,7 +127,7 @@
 
 				<p>The goal of this protocol is to allow a rightsholder to declare his choice regarding text & data mining of Web resources he controls, thereby allowing recipients of that declaration to adjust their scraping behavior, or to reach a separate agreement with the rightsholder that satisfies all parties.</p>
 
-        <p>Such a preference is expressed via two complementary properties, `tdm-reservation` and `tdm-policy.</p>
+        <p>Such a preference is expressed via two complementary properties, `tdm-reservation` and `tdm-policy`.</p>
 
         <section id="sec-tdm-reservation">
 
@@ -170,9 +170,8 @@
             <p>The presence of `tdm-policy` when the value of `tdm-reservation` is different from <code>2</code> is not considered a protocol error. TDM Agents simply don't process `tdm-policy` in this case.</p>
           </div>
 
-          <p>If the Web resource located at this URL is a Web page (i.e. its content-type is <code>text/html</code>), this resource is considered human readable.</p>
-          <p>If it has the content-type of the TDM Policy (i.e. its content-type is <code>application/ld+json</code>), this Web resource is considered machine-readable.</p>
-          <p>Other content-types are considered protocol errors. In such a case TDM Agents MUST consider that `tdm-reservation` is <code>unset</code>.</p>
+          <p>A TDM Policy is considered human readable if its content-type is <code>text/html</code>. It is considered machine-readable if its content-type is either <code>application/json</code> or <code>application/ld+json</code>.</p>
+          <p>Other content-types are considered protocol errors. In such a case, TDM Agents MUST consider that `tdm-reservation` is <code>unset</code>.</p>
   
   		</section>
 
@@ -392,7 +391,7 @@
 
           <p>The `@context` of a Policy MUST be "http://www.w3.org/ns/odrl.jsonld".</p>
 
-          <p>A <code>tdm</code> alias MUST be added to the context if "tdm" prefixed properties are used in the Policy, and its value MUST be "http://www.w3.org/ns/tdmrep#".</p>
+          <p>A <code>tdm</code> alias MUST be added to the context if "tdm" prefixed properties are used in the Policy, and its value MUST be `http://www.w3.org/ns/tdmrep#`.</p>
 
           <div class="note">
             <p>ODRL Policies also require an identifier, expressed as a URI.</p>
