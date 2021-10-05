@@ -1,4 +1,4 @@
-# Proposal for Policies expressed as ODRL 2.2 structures
+# Expressing Policies as ODRL 2.2 structures
 
 Policies are machine-readable structures referenced from the TDM-b property defined in the specification, in case the value of TDM-a is "2". They provide ways for TDM Actors to contact content rightsholder and may offer details about available TDM licenses. Thus, they facilitate the acquisition of TDM licenses from rightsholders by TDM Actors. 
 

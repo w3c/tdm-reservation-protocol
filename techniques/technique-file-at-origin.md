@@ -1,4 +1,4 @@
-# Proposal based on a well known file hosted on the origin server
+# Technique based on a well known file hosted on the origin server
 
 ## Status of this document
 

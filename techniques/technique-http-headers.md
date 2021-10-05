@@ -1,4 +1,4 @@
-# Proposal based on http headers
+# Technique based on http headers
 
 ## Status of this document
 

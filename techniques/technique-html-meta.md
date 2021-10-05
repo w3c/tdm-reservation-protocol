@@ -1,4 +1,4 @@
-# Proposal based on html meta tags
+# Technique based on html meta tags
 
 ## Status of this document
 
