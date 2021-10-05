@@ -20,7 +20,7 @@
               		name: "Laurent Le Meur",
               		company: "EDRLab",
               		companyURL: "https://www.edrlab.org",
-									"w3cid": 91888
+									w3cid: 91888
               	}
               ],
               formerEditors: [
@@ -140,10 +140,7 @@
                 <th>meaning</th>
             </tr>
             <tr><td>1</td>
-                <td>TDM rights are reserved and TDM Agents shall not mine this content.</td>
-            </tr>
-            <tr><td>2</td>
-                <td>TDM rights are reserved and a TDM Policy is available. TDM Agents SHOULD use the TDM Policy to contact the rightsholder and get an authorization to mine the content.</td>
+              <td>TDM rights are reserved. If a TDM Policy is set, TDM Agents MAY use it to get information on how they can acquire from the rightsholder an authorization to mine the content.</td>
             </tr>
             <tr><td>0</td>
                 <td>TDM rights are not reserved. TDM agents can mine the content for TDM purposes without having to contact the rightsholder.</td>
@@ -163,15 +160,15 @@
           
           <p>`tdm-policy` is a URL pointing to a TDM Policy set by the rightsholder.</p>
           
-          <p>`tdm-policy` SHOULD only be set if the value of `tdm-reservation` equals <code>2</code>.</p>
-          <p>The absence of `tdm-policy` when the value of `tdm-reservation` equals <code>2</code> is considered a protocol error. In such cases TDM Agents MUST consider that `tdm-reservation` is <code>unset</code>.</p>
-
           <div class="note">
-            <p>The presence of `tdm-policy` when the value of `tdm-reservation` is different from <code>2</code> is not considered a protocol error. TDM Agents simply don't process `tdm-policy` in this case.</p>
+            <p>The presence of `tdm-policy` when the value of `tdm-reservation` is <code>0</code> is not considered a protocol error. TDM Agents SHOULD NOT process `tdm-policy` in this case.</p>
           </div>
 
           <p>A TDM Policy is considered human readable if its content-type is <code>text/html</code>. It is considered machine-readable if its content-type is either <code>application/json</code> or <code>application/ld+json</code>.</p>
-          <p>Other content-types are considered protocol errors. In such a case, TDM Agents MUST consider that `tdm-reservation` is <code>unset</code>.</p>
+
+          <div class="note">
+            <p>Being unable to access or parse a TDM Policy is not considered a protocol error. In such a case, the TDM Agent MUST consider that there is no way to know at this time which conditions would allow it to process the resource.</p>
+          </div>
   
   		</section>
 
@@ -197,13 +194,13 @@
 
         <ul>
           <li><em>location</em>: a pattern matching the path of a set of files hosted on the server, associated with the sibling TDM properties.</li>
-          <li><em>tdm-reservation</em>: the value of `tdm-reservation` associated with the current pattern.</li>
-          <li><em>tdm-policy</em>: the value of `tdm-policy` associated with the current pattern.</li>
+          <li><em>tdm-reservation</em>: a TDM reservation value associated with the current pattern.</li>
+          <li><em>tdm-policy</em>: a TDM Policy value associated with the current pattern.</li>
         </ul>
 
         <p>To evaluate if the URL of a Web resource is subject to a given pattern, a TDM Agent MUST match the paths inferred from the pattern against the URL. The matching SHOULD be case sensitive. The most specific match found MUST be used. The most specific match is the first in sequence.</p>
 
-        <p>If no match is found, a TDM Agent MUST consider that `tdm-reservation` is <code>unset</code>.</p>
+        <p>If no match is found, a TDM Agent MUST consider that `tdm-reservation` is <code>unset</code> for the given URL.</p>
 
         <p>If a percent-encoded US-ASCII character is encountered in the URI, it MUST be unencoded prior to comparison, unless it is a reserved character in the URI as defined by RFC3986 or the character is outside the unreserved character range.  The match evaluates positively if and only if the end of the path from the rule is reached before a difference in octets is encountered.</p>
       
@@ -252,7 +249,7 @@
 
           <h3>Examples</h3>
 
-          <p>A rightsholder wants to "opt-out" for every file present on a Web server.</p>
+          <p>In the following example, a rightsholder wants to "opt-out" for every file present on a Web server.</p>
 
           <p>`tdmrep.json` is therefore simply structured as:</p> 
 
@@ -265,7 +262,7 @@
           ]
           </pre>
 
-          <p>A Web server is hosting three groups of files. The rightsholder of the first group of files (PDF documents) wants to express that TDM rights are reserved on this content. The rightsholder of the two other groups of files wants to express that TDM rights are tied to a license for the second group (html pages) and TDM rights are not reserved for all JPEG images contained in the third group.</p>
+          <p>In the following example, a Web server is hosting three groups of files. The rightsholder of the first group of files (PDF documents) wants to express that TDM rights are reserved on these files with no way to acquire a TDM License. The rightsholder of the second group of files (html pages) wants to express that TDM rights are reserved with a TDM Policy. TDM rights are not reserved for all JPEG images contained in the third group.</p>
 
           <p>In this example, the first group is a set of files stored in /directory-a; the second group is stored in /directory-b/html and the third group in /directory-b/images.</p>
 
@@ -279,8 +276,8 @@
             },
             {
             "location": "/directory-b/html/",
-            "tdm-reservation": 2,
-            "tdm-policy":"https://provider.com/policies/policy-b"
+            "tdm-reservation": 1,
+            "tdm-policy":"https://provider.com/policies/policy.json"
             },
             {
             "location": "/directory-b/images/*.jpg",
@@ -299,7 +296,7 @@
 
         <p>The TDM Header Field is a mechanism for declaring a choice in an HTTP response ([[RFC7230]]).</p>
 
-        <p>In the following example, the server returns a `tdm-reservation` header field with value <code>1</code>.
+        <p>In the following example, the rightsholder expresses that TDM rights are reserved on these files with no way to acquire a TDM License. The server returns a `tdm-reservation` header field with value <code>1</code>.
         
         <pre class="example">
         HTTP/1.1 200 OK
@@ -308,14 +305,14 @@
         tdm-reservation: 1
         </pre>
 
-        <p>In the following example, the server returns a `tdm-reservation` header field with value <code>2</code> and a `tdm-policy` header field pointing to an attached TDM Policy.</p>
+        <p>In the following example, a TDM License may be acquired. The server returns a `tdm-reservation` header field with value <code>1</code> and a `tdm-policy` header field pointing to a TDM Policy.</p>
 
         <pre class="example">
         HTTP/1.1 200 OK
         Date: Wed, 14 Jul 2021 12:07:48 GMT
         Content-type: text/html
-        tdm-reservation: 2
-        tdm-policy: https://provider.com/policies/policy-a
+        tdm-reservation: 1
+        tdm-policy: https://provider.com/policies/policy.json
         </pre>
 
       </section>
@@ -335,8 +332,8 @@
           &lt;html lang="en">
             &lt;head>
               &lt;meta charset="utf-8">
-              &lt;meta name="tdm-reservation" content="2">
-              &lt;meta name="tdm-policy" content="https://provider.com/policies/policy-a">
+              &lt;meta name="tdm-reservation" content="1">
+              &lt;meta name="tdm-policy" content="https://provider.com/policies/policy.json">
               &lt;title>Document title&lt;/title>
             &lt;/head>
             &lt;body>
@@ -373,7 +370,7 @@
 
       <h1>Expressing a TDM Policy</h1>
 
-      <p>Policies are machine-readable structures referenced from the `tdm-policy` property defined in the specification, in case the value of `tdm-reservation` is <code>2</code>. They provide ways for TDM Actors to contact content rightsholder and may offer details about available TDM licenses. Thus, they facilitate the acquisition of TDM licenses from rightsholders by TDM Actors.</p>
+      <p>Policies are machine-readable structures referenced from the `tdm-policy` property defined in the specification. They provide ways for TDM Actors to contact content rightsholder and they offer details about available TDM licenses. Thus, they facilitate the acquisition of TDM licenses from rightsholders by TDM Actors.</p>
 
       <p>The format of policies defined in this specification is a profile of the Open Digital Rights Language 2.2 [[ODRL]]. </p> 
 
