@@ -69,7 +69,7 @@
 				</dd>
 				<dt><dfn id="dfn-publisher"></dfn>Publisher</dt>
 				<dd>
-					<p>Person or organization that makes Web resources available to the public..</p>
+					<p>Person or organization that makes Web resources available to the public.</p>
 				</dd>
 				<dt><dfn id="dfn-tdm-actor" data-lt="TDM Actors">TDM Actor</dfn></dt>
 				<dd>
@@ -401,6 +401,7 @@
               {"tdm": "http://www.w3.org/ns/tdmrep#"}
             ]
             "uid": "https://provider.com/policies/policy-a"
+            ...
           }
           </pre>
 
@@ -420,6 +421,8 @@
             ],
             "@type": "Offer",
             "uid": "https://provider.com/policies/policy-a"
+            ...
+
           }
           </pre>
 
@@ -440,6 +443,7 @@
             "@type": "Offer",
             "uid": "https://provider.com/policies/policy-a",
             "profile": "http://www.w3.org/ns/tdmrep"
+            ...
           }
           </pre>
 
@@ -462,6 +466,14 @@
 
           <pre class="example">
           {
+            "@context": [
+              "http://www.w3.org/ns/odrl.jsonld",
+              {"tdm": "http://www.w3.org/ns/tdmrep#"}
+            ],
+            "@type": "Offer",
+            "uid": "https://provider.com/policies/policy-a",
+            "profile": "http://www.w3.org/ns/tdmrep"
+            ...
             "assigner": {
               "uid": "https://provider.com",
               "vcard:fn": "Provider Name",
@@ -495,6 +507,14 @@
 
             <pre class="example">
             {
+              "@context": [
+                "http://www.w3.org/ns/odrl.jsonld",
+                {"tdm": "http://www.w3.org/ns/tdmrep#"}
+              ],
+              "@type": "Offer",
+              "uid": "https://provider.com/policies/policy-a",
+              "profile": "http://www.w3.org/ns/tdmrep"
+              ...
               "obligation": [{
                   "action": "obtainConsent"
                 }
@@ -529,6 +549,14 @@
 
             <pre class="example">
             {
+              "@context": [
+                "http://www.w3.org/ns/odrl.jsonld",
+                {"tdm": "http://www.w3.org/ns/tdmrep#"}
+              ],
+              "@type": "Offer",
+              "uid": "https://provider.com/policies/policy-a",
+              "profile": "http://www.w3.org/ns/tdmrep"
+              ...
               "permission": [{
                 "target": "https://provider.com/research-papers",
                 "action": "tdm:mine"
@@ -547,6 +575,14 @@
 
             <pre class="example">
             {
+              "@context": [
+                "http://www.w3.org/ns/odrl.jsonld",
+                {"tdm": "http://www.w3.org/ns/tdmrep#"}
+              ],
+              "@type": "Offer",
+              "uid": "https://provider.com/policies/policy-a",
+              "profile": "http://www.w3.org/ns/tdmrep"
+              ...
               "permission": [{
                   "target": "https://provider.com/research-papers",
                   "action": "tdm:mine",
@@ -589,6 +625,14 @@
 
             <pre class="example">
             {
+              "@context": [
+                "http://www.w3.org/ns/odrl.jsonld",
+                {"tdm": "http://www.w3.org/ns/tdmrep#"}
+              ],
+              "@type": "Offer",
+              "uid": "https://provider.com/policies/policy-a",
+              "profile": "http://www.w3.org/ns/tdmrep"
+              ...
               "permission": [{
                   "target": "https://provider.com/research-papers",
                   "action": "tdm:mine",
