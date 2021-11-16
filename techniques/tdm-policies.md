@@ -1,127 +1,38 @@
 # Dealing with TDM Policies
 
-Policies are machine-readable structures referenced from the TDM-b property defined in the specification, in case the value of TDM-a is "2". They provide ways for TDM Actors to contact content rightsholder and may offer details about available TDM licenses. Thus, they facilitate the acquisition of TDM licenses from rightsholders by TDM Actors. 
+## Status of this document
 
-The format of policies defined in this specification is a profile of the Open Digital Rights Language 2.2, a W3C recommandation. 
+This is a best practices document, its aims is to help implementors handling with TDM Policies and it may evolve over time.
 
-## TDMRep Profile of ODRL
+The related section of the specification is [Expressing a TDM Policy](https://w3c.github.io/tdm-reservation-protocol/spec/#sec-policy). 
 
-### Additional property values defined by this profile
+## How TDM miners should identify the content they want to mine?
 
-#### tdm:mine
+An issue TDM Actors are facing is that when scrapping a server, TDM Agents will retrieve large series of resources for which TDM Rights are reserved and a TDM Policy is set. 
 
-*Definition*: analyse, via automated analytical technique, text and data in digital form in order to generate information which includes but is not limited to patterns, trends and correlations.
+If the policiy states that consent must be obtained, it would be illogical to send an email for each and every resource the TDM Actor is willing to mine. The good thing is that TDM Policies have a URL which is a first mean to de-duplicate such requests, and a `permission` `target` property as a second mean to achieve optimal de-duplication (several Policy URLs could reference the same target). 
 
-*Label*: Text & Data Mine
-
-*Identifier*: http://www.w3.org/ns/tdmrep#mine
-
-*Included in*: http://www.w3.org/ns/odrl/2/use
-
-Notes: 
-- The definition of the `tdm:mine` action is copied from the EU Copyright Directive itself.
-
-#### tdm:research
-
-*Definition*: designates research purposes.
-
-*Label*: Research purpose
-
-*Identifier*: http://www.w3.org/ns/tdmrep#research
-
-*Included in*: http://www.w3.org/ns/odrl/2/rightOperand
-
-#### tdm:commercial
-
-*Definition*: designates non-research purposes.
-
-*Label*: Commercial purpose
-
-*Identifier*: http://www.w3.org/ns/tdmrep#commercial
-
-*Included in*: http://www.w3.org/ns/odrl/2/rightOperand
+The process a TDM Agent follows could therefore be:
+- Check every resource for TDM properties
+- For each resource having TDM Rights reserved and a TDM Policy set
+ * retrieve the TDM Policy if its URL is not already in the cache, and put in cache the URL and the content of the TDM Policy (at least `obligation` or `permission`).
+- If 
 
 
-### Requirements of a Policy belonging to this profile
+Reminder: the mandatory `target` of a `permission` is a URI identifying the collection of resources involved in the policy.
 
-- A Policy MUST have a `profile` property and the value of this property MUST be `http://www.w3.org/ns/tdmrep`
-- A Policy MUST be of subclass `Offer`.
-- A Policy MUST contain one `permission` or one `obligation` but no `prohibition`  property. 
-- Every `action` property in a Policy MUST have `tdm:mine` as value.
+TDM Agents will use the value of this `target`property in their messages to publishers, to identify a collection of resources they wish to mine. This identifier shall therefore properly identify a specific collection of resources and be well know from their publisher.
 
-Notes: 
-- A explanatory page will be set on the profile URL, as part of the EDRLab webpage. 
-- About ODRL Policy Offers, see https://www.w3.org/TR/odrl-model/#policy-offer
+As an example, a TDM Actor may send to a publisher an email stating their desire to "mine the collection of resources identified by the following target value: 'https://provider.com/research-papers' ".
+
+Note: The `target` value is not necessarily dereferencable. Accessing this URL may end with an http error (403 in many cases): this is not a processing error.
 
 
-## Identification of a Policy
+## Possible extensions
 
-As an ODRL structure, a Policy MUST have one `uid` property value (of type IRI [rfc3987]) to identify the Policy.
+### Constraints on geographical areas
 
-Note:
-- Policy https://www.w3.org/TR/odrl-model/#policy
-
-## Identification and contact info for the rightholder
-
-As a member of the subclass `Offer`, a Policy MUST have one `assigner` property value, of type Party. 
-The 
-
-A Party MUST have a `uid` property. To describe more details about the Party, ODRL recommended to use W3C vCard Ontology [vcard-rdf] or FOAF Vocabulary [foaf]. 
-
-For the sake of interoperability, this profile imposes the use of a limited number of vCard properties: "fn", "nickname", "hasEmail", "hasAddress", "hasTelephone", "hasURL".
-
-In particular, `hasURL` designates a URL to reach in order to acquire a license; it is recommended to locate there a Web app easing such acquisition; even a standardized machine-to-machine acquisition API in the future. 
-
-Notes:
-- Offer https://www.w3.org/TR/odrl-model/#policy-offer
-- Party https://www.w3.org/TR/odrl-model/#party 
-
-## Rules allowed in this profile
-
-An ODRL Policy MUST have at least one property value of type Rule. Subtypes of Rules are Permission, Prohibition and Duty. 
-
-The Policies defined here do not replace the TDMRep property TDM-a / TDM-b set via different means (http, file, html), but rather complement them. An important question is therefore: should we repeat in the Policy the permission / prohibition to mine already expressed via the TDM-a property? 
-
-In this draft, the editor proposes to only express permission (yes / yes if) or a duty to contact the rightsholder, the logic being that if TDM-a expresses a prohibition (no tdm), the Policy will never be fetched by the TDM Actor. Expressing in ODRL Policies what is already expressed with a different format (in e.g. http headers or a "file on the origin server") could lead to many ambiguities for implementers.
-
-## Expression of the requirement to contact the rightsholder
-
-This is what the Copyright Hub recommends so far. 
-
-ODRL specifies that a Policy can have an `obligation` property with a Duty value. In this profile, the duty is to contact the rightholder, which avoids having to express any permission in the Policy itself. This is a machine-readible equivalent of "TDM rights reserved". 
-
-This profile uses one value from the ODRL Vocabulary for the `action` property of a Duty:
-
-- `obtainConsent` indicates that verifiable consent must be obtained to perform TDM on the resource.
-
-## Identification of the target resource in a Permission
-
-ODRL specifies that a Permission MUST have one `target` property value, of type Asset or AssetCollection. 
-Such value may be expressed as a JSON object or as a URI (i.e. the identifier of an Asset). 
-
-A Policy is shared by multiple resources, therefore in this profile, the `target` property identifies "a collection of resources" via a URL which makes sense to the content provider. 
-
-Note: The target value is not used by TDM Agents. Accessing such URL may end with an http error (403 in many cases): this is not a processing error. 
-
-## Constraints on the type of usage
-
-ODRL 2 specifies that a Permission may have one `constraint` property value of type Constraint. 
-
-This profile uses one value from the ODRL Vocabulary for the `leftOperand`:
-
-- `purpose` creates a constraint on a usage of the mined content.
-
-This profile defines two corresponding values for the `rightOperand`:
-
-- `tdm:research` designates research purposes.
-- `tdm:commercial` designates any non-research purposes.
-
-Using these values, a rightsholder can constrain TDM usage to research purposes only. 
-
-Notes:
-- Purpose: https://www.w3.org/TR/odrl-vocab/#term-purpose
-
-## Constraints on geographical areas
+A permission MAY be completed with a geographical constraint. 
 
 This profile uses one value from the ODRL Vocabulary for the `leftOperand`:
 
@@ -141,190 +52,4 @@ Notes:
 - Using only iso3166 alpha3 provides better interoperability results; the alpha3 list is more complete than the alpha2. 
 - The urn form was found in https://www.hl7.org/fhir/iso3166.html and simplified from there. It's a pity that there is not proper standard form for that. 
 - Enabling the expression of "allowed here, denied there", "allowed everywhere but" ... would add a lot to the complexity. 
-
-## Payment Duties
-
-ODRL 2 specifies that a Permission may have one `duty` property value of type Duty. 
-
-This profile defines one value for the `action` property of the `duty` property:
-
-- `compensate` is a request for payment for mining the content.
-
-Notes:
-- A future extension could allow rightsholders to detail the amount (& currency) they are expecting. 
-
-## Examples
-
-### Example 1
-
-In this example, the rightsholder requires TDM Actors to contact him for obtaining licensing rights:
-
-```json
-{
-    "@context": [
-      "http://www.w3.org/ns/odrl.jsonld",
-      {"tdm": "http://www.w3.org/ns/tdmrep#"}
-  ],
-
-  "@type": "Offer",
-  "uid": "https://provider.com/policy/1",
-  "profile": "http://www.w3.org/ns/tdmrep",
-  "assigner": {
-    "uid": "https://provider.com",
-    "vcard:fn": "Provider",
-    "vcard:hasEmail": "mailto:contact@provider.com"
-  },
-  "obligation": [{
-      "action": "obtainConsent"
-    }
-  ]
-}
-```
-
-### Example 2
-
-In this example, the rightsholder expresses detailed contact information using the W3C vCard Ontology. 
-He agrees that TDM Actors from any country can mine its research papers:
-
-```json
-{
-    "@context": [
-      "http://www.w3.org/ns/odrl.jsonld",
-      {"tdm": "http://www.w3.org/ns/tdmrep#"}
-  ],
-
-  "@type": "Offer",
-  "uid": "https://provider.com/policy/1",
-  "profile": "http://www.w3.org/ns/tdmrep",
-  "assigner": {
-    "uid": "https://provider.com",
-    "vcard:fn": "Provider",
-    "vcard:nickname": "PRV",
-    "vcard:hasEmail": "mailto:contact@provider.com",
-    "vcard:hasAddress": {
-      "vcard:country-name": "Belgium",
-      "vcard:locality": "WonderCity",
-      "vcard:postal-code": "5555",
-      "vcard:street-address": "111 Lake Drive"
-    },
-    "vcard:hasTelephone": "tel:+61755555555",
-    "vcard:hasURL": "https://provider.com/tdm/licensing.html" 
-  },
-  "permission": [{
-    "target": "https://provider.com/research-papers",
-    "action": "tdm:mine"
-    }
-  ]
-}
-```
-
-### Example 3
-
-In this example, the rightsholder agrees that TDM Actors from any country can mine its content only if they are mining for research purpose:
-
-```json
-{
-  "@context": [
-      "http://www.w3.org/ns/odrl.jsonld",
-      {"tdm": "http://www.w3.org/ns/tdmrep#"}
-  ],
-  "@type": "Offer",
-  "uid": "https://provider.com/policy/1",
-  "profile": "http://www.w3.org/ns/tdmrep",
-  "assigner": {
-    "uid": "https://provider.com",
-    "vcard:fn": "Provider",
-    "vcard:hasEmail": "mailto:contact@provider.com"
-  },
-  "permission": [{
-      "target": "https://provider.com/research-papers",
-      "action": "tdm:mine",
-      "constraint": [{
-        "leftOperand": "purpose",
-        "operator": "eq",
-        "rightOperand": "tdm:research"
-        }
-      ]
-    }
-  ]
-}
-```
-
-### Example 4
-
-In this example, the rightsholder agrees that TDM Actors from any country can mine its content only if they are ready to pay a fee:
-
-```json
-{
-    "@context": [
-      "http://www.w3.org/ns/odrl.jsonld",
-      {"tdm": "http://www.w3.org/ns/tdmrep#"}
-  ],
-
-  "@type": "Offer",
-  "uid": "https://provider.com/policy/1",
-  "profile": "http://www.w3.org/ns/tdmrep",
-  "assigner": {
-    "uid": "https://provider.com",
-    "vcard:fn": "Provider",
-    "vcard:hasEmail": "mailto:contact@provider.com"
-  },
-  "permission": [{
-      "target": "https://provider.com/research-papers",
-      "action": "tdm:mine",
-      "duty": [{
-        "action": "compensate"
-        }
-      ]
-    }
-  ]
-}
-```
-
-### Example 5
-
-In this example, the rightsholder agrees that TDM Actors from Canada and Brazil only can mine his content:
-
-```json
-{
-    "@context": [
-      "http://www.w3.org/ns/odrl.jsonld",
-      {"tdm": "http://www.w3.org/ns/tdmrep#"}
-  ],
-
-  "@type": "Offer",
-  "uid": "https://provider.com/policy/1",
-  "profile": "http://www.w3.org/ns/tdmrep",
-  "assigner": {
-    "uid": "https://provider.com",
-    "vcard:fn": "Provider",
-    "vcard:hasEmail": "mailto:contact@provider.com"
-  },
-  "permission": [{
-      "target": "https://provider.com/research-papers",
-      "action": "tdm:mine",
-      "constraint": [{
-        "leftOperand": "spatial",
-        "operator": "isPartOf",
-        "rightOperand": ["iso3166-3:can", "iso3166-3:bra"]
-        }
-      ]
-    }
-  ]
-}
-```
-
-Note that when multiple Constraints apply to the same Rule, then they are interpreted as conjunction and all MUST be satisfied. Thus it is possible to express that a permission applies only to Canadian TDM Actors for Research purposes and that a fee is requested. 
-
-## References
-
-- [ODRL Information Model 2.2](https://www.w3.org/TR/odrl-model)
-- [ODRL Vocabulary & Expression 2.2](https://www.w3.org/TR/odrl-vocab/)
-- [vCard rdf](https://www.w3.org/TR/vcard-rdf/)
-- [IPTC external controlled vocabularies](https://cvx.iptc.org/)
-
-
-
-
-
 
