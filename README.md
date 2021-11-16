@@ -40,7 +40,7 @@ The “opt-out” mechanism introduced by the DMS Directive is therefore a real 
 - [Technique based on http headers](techniques/technique-http-headers.md)
 - [Technique based on a well known file hosted on the origin server](techniques/technique-file-at-origin.md)
 - [Technique based on html meta tags](techniques/technique-html-meta.md)
-- [Expressing Policies as ODRL 2.2 structures](techniques/technique-odrl.md)
+- [Dealing with TDM Policies](techniques/tdm-policies.md)
 - [Draft specification as a Web page](https://w3c.github.io/tdm-reservation-protocol/spec/)
 - [Github source of the specification](spec/index.html)
 
