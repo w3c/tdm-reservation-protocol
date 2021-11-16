@@ -441,8 +441,8 @@
               {"tdm": "http://www.w3.org/ns/tdmrep#"}
             ],
             "@type": "Offer",
-            "uid": "https://provider.com/policies/policy-a",
             "profile": "http://www.w3.org/ns/tdmrep"
+            "uid": "https://provider.com/policies/policy-a",
             ...
           }
           </pre>
@@ -471,8 +471,8 @@
               {"tdm": "http://www.w3.org/ns/tdmrep#"}
             ],
             "@type": "Offer",
-            "uid": "https://provider.com/policies/policy-a",
             "profile": "http://www.w3.org/ns/tdmrep"
+            "uid": "https://provider.com/policies/policy-a",
             ...
             "assigner": {
               "uid": "https://provider.com",
@@ -493,38 +493,13 @@
 
         </section>
 
-        <section id="sec-odrl-profile-obligations-permissions">
+        <section id="sec-odrl-profile-permissions">
 
-          <h3>Obligations and Permissions</h3>
+          <h3>Permissions</h3>
 
-          <p>A Policy MUST contain either one `permission` or one `obligation`. It MUST NOT contain a `prohibition` property.</p> 
+          <p>A Policy MUST contain one `permission` property. It SHOULD contain no `obligation` nor  `prohibition` property.</p> 
 
-        <section id="sec-odrl-profile-obligation-contact">
-
-            <h4>Expressing the obligation to contact the rightsholder before getting a permission</h4>
-
-            <p>The obligation to obtain verifiable consent before getting a permission to perform TDM on content is expressed by adding an `obligation` property to the Policy. The duty is expressed as an `action` property with an `obtainConsent` value.</p>
-
-            <pre class="example">
-            {
-              "@context": [
-                "http://www.w3.org/ns/odrl.jsonld",
-                {"tdm": "http://www.w3.org/ns/tdmrep#"}
-              ],
-              "@type": "Offer",
-              "uid": "https://provider.com/policies/policy-a",
-              "profile": "http://www.w3.org/ns/tdmrep"
-              ...
-              "obligation": [{
-                  "action": "obtainConsent"
-                }
-              ]
-            }
-            </pre>
-
-          </section>
-
-          <section id="sec-odrl-profile--permission-target">
+          <section id="sec-odrl-profile-permission-target-action">
 
             <h4>Expressing the target and action of a permission</h4>
 
@@ -554,8 +529,8 @@
                 {"tdm": "http://www.w3.org/ns/tdmrep#"}
               ],
               "@type": "Offer",
-              "uid": "https://provider.com/policies/policy-a",
               "profile": "http://www.w3.org/ns/tdmrep"
+              "uid": "https://provider.com/policies/policy-a",
               ...
               "permission": [{
                 "target": "https://provider.com/research-papers",
@@ -567,7 +542,37 @@
           
           </section>
 
-          <section id="sec-odrl-profile--permission-compensate">
+          <section id="sec-odrl-profile-permission-obtainconsent">
+
+            <h4>Expressing the duty to contact the rightsholder before getting a permission</h4>
+
+            <p>The duty to obtain verifiable consent before performing TDM on content is expressed by adding an `duty` property to the Policy. The duty is expressed as an `action` property with an `obtainConsent` value.</p>
+
+            <pre class="example">
+            {
+              "@context": [
+                "http://www.w3.org/ns/odrl.jsonld",
+                {"tdm": "http://www.w3.org/ns/tdmrep#"}
+              ],
+              "@type": "Offer",
+              "profile": "http://www.w3.org/ns/tdmrep"
+              "uid": "https://provider.com/policies/policy-a",
+              ...
+              "permission": [{
+                  "target": "https://provider.com/research-papers",
+                  "action": "tdm:mine",
+                  "duty": [{
+                    "action": "obtainConsent"
+                    }
+                  ]
+                }
+              ]
+            }
+            </pre>
+
+          </section>
+
+          <section id="sec-odrl-profile-permission-compensate">
 
             <h4>Expressing the duty to compensate financially the rightsholder</h4>
 
@@ -580,8 +585,8 @@
                 {"tdm": "http://www.w3.org/ns/tdmrep#"}
               ],
               "@type": "Offer",
-              "uid": "https://provider.com/policies/policy-a",
               "profile": "http://www.w3.org/ns/tdmrep"
+              "uid": "https://provider.com/policies/policy-a",
               ...
               "permission": [{
                   "target": "https://provider.com/research-papers",
@@ -597,7 +602,7 @@
           
           </section>
 
-          <section id="sec-odrl-profile--permission-constraint">
+          <section id="sec-odrl-profile-permission-constraint">
 
             <h4>Expressing a constraint on the type of usage</h4>
 
@@ -630,12 +635,13 @@
                 {"tdm": "http://www.w3.org/ns/tdmrep#"}
               ],
               "@type": "Offer",
-              "uid": "https://provider.com/policies/policy-a",
               "profile": "http://www.w3.org/ns/tdmrep"
+              "uid": "https://provider.com/policies/policy-a",
               ...
               "permission": [{
                   "target": "https://provider.com/research-papers",
                   "action": "tdm:mine",
+                  ...
                   "constraint": [{
                     "leftOperand": "purpose",
                     "operator": "eq",
@@ -657,7 +663,8 @@
 
         <h2>Full Examples</h2>
 
-        <p>In this example, the rightsholder requires TDM Actors to contact him for obtaining licensing rights. The rightsholder provides detailed contact information using the W3C vCard Ontology. Important note: TDM Actors which benefit from the Article 3 of the DSM Directive do not have to comply to this requirement. </p>
+        <p>In this example, the rightsholder requires TDM Actors to contact him for obtaining licensing rights. The rightsholder provides detailed contact information using the W3C vCard Ontology.</p>
+        <p>Important note: TDM Actors which benefit from the Article 3 of the DSM Directive do not have to comply to this requirement.</p>
 
         <pre class="example">
         {
@@ -683,11 +690,16 @@
             "vcard:hasTelephone": "tel:+61755555555",
             "vcard:hasURL": "https://provider.com/tdm/licensing.html" 
           },
-          "obligation": [{
+          "permission": [{
+            "target": "https://provider.com/research-papers",
+            "action": "tdm:mine",
+            "duty": [{
               "action": "obtainConsent"
-            }
-          ]
-        }
+              }
+            ]
+          }
+        ]
+      }
         </pre>
 
         <p>In this example, the rightsholder expresses that non-research Actors from any country can mine its content if they agree to pay a fee.</p>
@@ -710,14 +722,14 @@
           "permission": [{
               "target": "https://provider.com/research-papers",
               "action": "tdm:mine",
+              "duty": [{
+                "action": "compensate"
+                }
+              ],
               "constraint": [{
                 "leftOperand": "purpose",
                 "operator": "eq",
                 "rightOperand": "tdm:non-research"
-                }
-              ],
-              "duty": [{
-                "action": "compensate"
                 }
               ]
             }
