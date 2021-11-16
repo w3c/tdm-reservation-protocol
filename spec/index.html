@@ -511,7 +511,8 @@
             <p>The mandatory target of a permission, which is expressed via the `target` property, MUST be a URI identifying the collection of resources involved in the policy.</p>
 
             <div class="note">
-              <p>The target value is not used by TDM Agents. Accessing such URL may end with an http error (403 in many cases): this is not a processing error.</p>
+              <p>TDM Agents will use this property in their messages to publishers, to identify a collection of resources they which to mine. This identifier shall therefore properly identify a specific collection of resources and be well know from their publisher.</p>
+              <p>The target URL is not necessarily dereferencable. Accessing this URL may end with an http error (403 in many cases): this is not a processing error.</p>
             </div>
 
             <p>The mandatory action of a permission, which is expressed via the `action` property, MUST be the following:</p>
