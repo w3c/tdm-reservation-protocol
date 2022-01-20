@@ -83,7 +83,7 @@ But other instructions have also been defined over time, like:
 - *nosnippet* which means “do not show a snippet of this page on a search engine result page”.
 - *notranslate* which means “do not offer this page’s translation on a search engine result page”.
 
-This set of instructions is not properly standardized and different search engines accept different meta-tag parameters for the “robots” meta-tag. For instance Google specifies [here(https://developers.google.com/search/reference/robots_meta_tag)] the vocabulary it understands.
+This set of instructions is not properly standardized and different search engines accept different meta-tag parameters for the “robots” meta-tag. For instance Google specifies [here](https://developers.google.com/search/reference/robots_meta_tag) the vocabulary it understands.
 
 ## Conclusion
 
