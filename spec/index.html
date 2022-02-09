@@ -395,7 +395,7 @@
               "http://www.w3.org/ns/odrl.jsonld",
               {"tdm": "http://www.w3.org/ns/tdmrep#"}
             ]
-            "uid": "https://provider.com/policies/policy-a"
+            "uid": "https://provider.com/policies/policy-a",
             ...
           }
           </pre>
@@ -414,8 +414,8 @@
               "http://www.w3.org/ns/odrl.jsonld",
               {"tdm": "http://www.w3.org/ns/tdmrep#"}
             ],
+            "uid": "https://provider.com/policies/policy-a",
             "@type": "Offer",
-            "uid": "https://provider.com/policies/policy-a"
             ...
           }
           </pre>
@@ -434,9 +434,9 @@
               "http://www.w3.org/ns/odrl.jsonld",
               {"tdm": "http://www.w3.org/ns/tdmrep#"}
             ],
+            "uid": "https://provider.com/policies/policy-a",
             "@type": "Offer",
             "profile": "http://www.w3.org/ns/tdmrep",
-            "uid": "https://provider.com/policies/policy-a",
             ...
           }
           </pre>
@@ -447,7 +447,7 @@
 
           <h3>Assigner</h3>
 
-          <p>The `assigner` property of the Offer MUST use a limited number of vCard properties ([[vcard-rdf]]):</p> 
+          <p>A Policy MUST contain one `assigner` property. The `assigner` property of the Offer MUST use a limited number of vCard properties ([[vcard-rdf]]):</p> 
           
           <ul>
             <li>"fn": full name of the rightsholder, as a string</li>
@@ -464,10 +464,9 @@
               "http://www.w3.org/ns/odrl.jsonld",
               {"tdm": "http://www.w3.org/ns/tdmrep#"}
             ],
+            "uid": "https://provider.com/policies/policy-a",
             "@type": "Offer",
             "profile": "http://www.w3.org/ns/tdmrep",
-            "uid": "https://provider.com/policies/policy-a",
-            ...,
             "assigner": {
               "uid": "https://provider.com",
               "vcard:fn": "Provider Name",
@@ -482,6 +481,7 @@
               "vcard:hasTelephone": "tel:+61755555555",
               "vcard:hasURL": "https://provider.com/tdm/licensing.html" 
             }
+            ...,
           }
           </pre>
 
@@ -635,7 +635,6 @@
               "permission": [{
                   "target": "https://provider.com/research-papers",
                   "action": "tdm:mine",
-                  ...
                   "constraint": [{
                     "leftOperand": "purpose",
                     "operator": "eq",
