@@ -12,7 +12,7 @@
           var respecConfig = {
               group: "tdmrep",
               shortName: "tdmrep",
-              specStatus: "CG-DRAFT",
+              specStatus: "CG-FINAL",
               noRecTrack: true,
               copyrightStart: "2021",
               editors: [
@@ -31,7 +31,6 @@
       </script>
 	</head>
 	<body>
-
 		<section id="abstract">
 			<p>This specification defines a simple and practical Web protocol, capable of expressing the reservation of rights relative to text & data mining (TDM) applied to lawfully accessible Web content, and to ease the discovery of TDM licensing policies associated with such content.</p>
       <p>This initiative is a technical answer to the constraints set by the Article 4 of the new Digital Single Market European Directive.</p>
@@ -67,7 +66,7 @@
 				<dd>
 					<p>Person or organization that owns the legal rights to something, in our case Web resources <a href="https://en.wiktionary.org/wiki/rightsholder">Wiktionary</a>.</p>
 				</dd>
-				<dt><dfn id="dfn-publisher"></dfn>Publisher</dt>
+				<dt><dfn id="dfn-publisher">Publisher</dfn></dt>
 				<dd>
 					<p>Person or organization that makes Web resources available to the public.</p>
 				</dd>
@@ -75,29 +74,29 @@
 				<dd>
 					<p>Person or organization practicing TDM (on Web resources in our case).</p>
 				</dd>
-				<dt><dfn id="dfn-tdm-agent">TDM Agent</dfn></dt>
+				<dt><dfn id="dfn-tdm-agent" data-lt="TDM Agents">TDM Agent</dfn></dt>
 				<dd>
 					<p>Software accessing Web resources for TDM purposes.</p>
 				</dd>
-				<dt><dfn id="dfn-tdm-license">TDM License</dfn></dt>
+				<dt><dfn id="dfn-tdm-license" data-lt="TDM Licenses">TDM License</dfn></dt>
 				<dd>
-					<p>Description of the terms and conditions by which a TDM actor can process a given Web resource. </p>
+					<p>Description of the terms and conditions by which a <a>TDM Actor</a> can process a given Web resource. </p>
 				</dd>
 				<dt><dfn id="dfn-tdm-policy">TDM Policy</dfn></dt>
 				<dd>
-					<p>Description of the kind of TDM Licenses a TDM Actor may obtain from a rightsholder. </p>
+					<p>Description of the kind of <a>TDM Licenses</a> a <a>TDM Actor</a> may obtain from a <a>Rightsholder</a>. </p>
 				</dd>
-				<dt><dfn id="dfn-tdm-rights"></dfn>TDM Rights</dt>
+				<dt><dfn id="dfn-tdm-rights">TDM Rights</dfn></dt>
 				<dd>
 					<p>Rights to process a Web resource via TDM techniques, for a certain purpose (e.g scientific research, commercial).</p>
 				</dd>
-				<dt><dfn id="dfn-web-resource"></dfn>Web Resource</dt>
+				<dt><dfn id="dfn-web-resource">Web Resource</dfn></dt>
 				<dd>
 					<p>Identifiable thing available on the Web <a href="https://en.wikipedia.org/wiki/Web_resource">Wikipedia</a>. Web resources are located using URLs.</p>
 				</dd>
-				<dt><dfn id="dfn-web-page"></dfn>Web page</dt>
+				<dt><dfn id="dfn-web-page">Web page</dfn></dt>
 				<dd>
-					<p>Web resource formatted in HTML.</p>
+					<p><a>Web resource</a> formatted in HTML.</p>
 				</dd>
 			</dl>
 
@@ -114,8 +113,8 @@
 				<p>The technical specification shall:</p>
 
         <ul>
-          <li>Specify how a rightsholder can declare the reservation of TDM Rights on each individual Web resource he controls.</li>
-          <li>Specify how a rightsholder can indicate the location of a TDM Policy associated with each individual Web resource he controls.</li>
+          <li>Specify how a <a>rightsholder</a> can declare the reservation of <a>TDM Rights</a> on each individual <a>Web resource</a> he controls.</li>
+          <li>Specify how a rightsholder can indicate the location of a <a>TDM Policy</a> associated with each individual Web resource he controls.</li>
           <li>Specify a machine-readable format for TDM Policies.</li>
       </ul>
 
@@ -140,7 +139,7 @@
                 <th>meaning</th>
             </tr>
             <tr><td>1</td>
-              <td>TDM rights are reserved. If a TDM Policy is set, TDM Agents MAY use it to get information on how they can acquire from the rightsholder an authorization to mine the content.</td>
+              <td>TDM rights are reserved. If a TDM Policy is set, <a>TDM Agents</a> MAY use it to get information on how they can acquire from the rightsholder an authorization to mine the content.</td>
             </tr>
             <tr><td>0</td>
                 <td>TDM rights are not reserved. TDM agents can mine the content for TDM purposes without having to contact the rightsholder.</td>
@@ -178,7 +177,7 @@
 
       <h1>Protocol</h1>
 
-      <p>This specification provides three complementary techniques for expressing rightsholders' choices. These three techniques correspond to different situations and publishers' technical skills.</p>
+      <p>This specification provides three complementary techniques for expressing rightsholders' choices. These three techniques correspond to different situations and technical skills a <a>Publisher</a> may have.</p>
 
       <section id="sec-tdm-file">
 
@@ -262,7 +261,7 @@
           ]
           </pre>
 
-          <p>In the following example, a Web server is hosting three groups of files. The rightsholder of the first group of files (PDF documents) wants to express that TDM rights are reserved on these files with no way to acquire a TDM License. The rightsholder of the second group of files (html pages) wants to express that TDM rights are reserved with a TDM Policy. TDM rights are not reserved for all JPEG images contained in the third group.</p>
+          <p>In the following example, a Web server is hosting three groups of files. The rightsholder of the first group of files (PDF documents) wants to express that TDM rights are reserved on these files with no way to acquire a <a>TDM License</a>. The rightsholder of the second group of files (html pages) wants to express that TDM rights are reserved with a TDM Policy. TDM rights are not reserved for all JPEG images contained in the third group.</p>
 
           <p>In this example, the first group is a set of files stored in /directory-a; the second group is stored in /directory-b/html and the third group in /directory-b/images.</p>
 
