@@ -19,7 +19,7 @@ The protection offered by this solution only applies to the html (or xhtml) cont
 
 Meta elements can easily be integrated in html document at the time they are produced. No configuration is needed on the Web server which will serve these documents.
 
-This solution cannot associate particular rights to different fragments of html content (this may be added to a next version of the specification). 
+This solution cannot associate particular rights to different fragments of html content (this may be added to a future version of the specification). 
 
 ## Relationship with other initiatives
 
