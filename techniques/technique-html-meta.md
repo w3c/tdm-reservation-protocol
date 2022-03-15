@@ -13,11 +13,13 @@ In html, metadata are defined using the repeatable and empty <meta> element, chi
 
 ## Implementing the proposal
 
-This solution is only relevant for html (or xhtml) documents. It does not apply to any other type of Web resource.
+This solution is only relevant for html (or xhtml) documents and does not apply to any other type of Web resource.
+  
+The protection offered by this solution only applies to the html (or xhtml) content: it does not apply to the Web resources referenced from such html content, e.g. images (via and <img> tag) or audiovisual content (via an <audio> <video> or <object> tag). 
 
 Meta elements can easily be integrated in html document at the time they are produced. No configuration is needed on the Web server which will serve these documents.
 
-This solution cannot associate particular rights to different fragments of html content (this is not a requirement we has agreed on but it is an open issue under discussion). 
+This solution cannot associate particular rights to different fragments of html content (this may be added to a next version of the specification). 
 
 ## Relationship with other initiatives
 
