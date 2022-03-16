@@ -10,20 +10,19 @@ The related section of the specification is [Expressing a TDM Policy](https://w3
 
 An issue TDM Actors are facing is that when scrapping a server, TDM Agents will retrieve large series of resources for which TDM Rights are reserved and a TDM Policy is set. 
 
-If the policiy states that consent must be obtained, it would be illogical to send an email for each and every resource the TDM Actor is willing to mine. The good thing is that TDM Policies have a URL which is a first mean to de-duplicate such requests, and a `permission` `target` property as a second mean to achieve optimal de-duplication (several Policy URLs could reference the same target). 
-
-The process a TDM Agent follows could therefore be:
-- Check every resource for TDM properties
-- For each resource having TDM Rights reserved and a TDM Policy set
- * retrieve the TDM Policy if its URL is not already in the cache, and put in cache the URL and the content of the TDM Policy (at least `obligation` or `permission`).
-- If 
-
+If the policy states that consent must be obtained, it would be illogical to send an email for each and every resource the TDM Actor is willing to mine. The good thing is that TDM Policies have a URL which is a first mean to de-duplicate such requests, and a `permission` / `target` property as a second mean to achieve optimal de-duplication (several Policy URLs could reference the same target). 
 
 Reminder: the mandatory `target` of a `permission` is a URI identifying the collection of resources involved in the policy.
 
-TDM Agents will use the value of this `target`property in their messages to publishers, to identify a collection of resources they wish to mine. This identifier shall therefore properly identify a specific collection of resources and be well know from their publisher.
+TDM Agents will use the value of this `target` property in their messages to publishers, to identify a collection of resources they wish to mine. This identifier shall therefore properly identify a specific collection of resources and be well know from their publisher.
 
-As an example, a TDM Actor may send to a publisher an email stating their desire to "mine the collection of resources identified by the following target value: 'https://provider.com/research-papers' ".
+The process a TDM Agent follows can be:
+
+* Check every resource for TDM properties
+* For each resource having TDM Rights reserved and a TDM Policy set
+  * retrieve the TDM Policy if its URL is not already in the cache, and cache the URL and the content of the TDM Policy (at least `permission` / `target`).
+* Group the resources by `permission` / `target`.
+* For each group, send an email to a publisher stating the desire to "mine the collection of resources identified by the following target value: 'https://provider.com/research-papers' ".
 
 Note: The `target` value is not necessarily dereferencable. Accessing this URL may end with an http error (403 in many cases): this is not a processing error.
 
