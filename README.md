@@ -49,7 +49,7 @@ The “opt-out” mechanism introduced by the DMS Directive is therefore a real 
 - [Useful extracts of the DSM Directive](docs/dsm-extracts.md)
 - [Past and existing initiatives](docs/initiatives.md)
 - [Robots for non techies](docs/robots.md)
-- [Github source of the specification](spec/index.html)
+- [Github project](https://github.com/w3c/tdm-reservation-protocol)
 
 
 ## Illustration of the three approved techniques 
