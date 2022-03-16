@@ -30,18 +30,25 @@ The “opt-out” mechanism introduced by the DMS Directive is therefore a real 
 
 ## Table of Contents
 
+### Introduction
+
 - [TDM: what does it mean in practice?](docs/tdm-meaning.md)
 - [Vocabulary used during the project](docs/vocabulary.md)
 - [Goals and Requirements for a technical solution](docs/requirements.md)
 - [Use cases](docs/use-cases.md)
-- [Past and existing initiatives](docs/initiatives.md)
-- [Useful extracts of the DSM Directive](docs/dsm-extracts.md)
-- [Robots for non techies](docs/robots.md)
+
+### Specification and guidelines
+
+- [Specification](https://www.w3.org/2022/tdmrep/)
 - [Technique based on http headers](techniques/technique-http-headers.md)
 - [Technique based on a well known file hosted on the origin server](techniques/technique-file-at-origin.md)
 - [Technique based on html meta tags](techniques/technique-html-meta.md)
 - [Dealing with TDM Policies](techniques/tdm-policies.md)
-- [Draft specification as a Web page](https://w3c.github.io/tdm-reservation-protocol/spec/)
+
+### Appendix
+- [Useful extracts of the DSM Directive](docs/dsm-extracts.md)
+- [Past and existing initiatives](docs/initiatives.md)
+- [Robots for non techies](docs/robots.md)
 - [Github source of the specification](spec/index.html)
 
 
