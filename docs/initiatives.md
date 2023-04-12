@@ -59,6 +59,7 @@ A remarquable requirement is that for some publishers it is important to be able
 
 Notes:
 - The work on the Article Sharing Framework has been managed by STM’s Standard and Technology Executive Committee, [STEC](https://www.stm-assoc.org/standards-technology/executive-committee-stec/).
+- An introduction to the Article Sharing Framework [is found here](https://www.stm-assoc.org/asf-2/). 
 - The STM Association maintains a [page on TDM](https://www.stm-assoc.org/policy-advocacy/text-data-mining-tdm/).
 - Access and License Indicators (ALI) are defined in the [NISO ALI Schema](https://www.niso.org/schemas/ali/1.0). 
 - Best practices are detailed in [NISO ALI Best Practices](https://groups.niso.org/apps/group_public/download.php/14226/rp-22-2015_ALI.pdf).
