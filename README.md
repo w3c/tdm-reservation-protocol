@@ -9,9 +9,9 @@ Read more details is the [CG Charter](charter.md).
 
 In order to [join the group](https://www.w3.org/community/tdmrep/join), you will need a (free) [W3C account](https://www.w3.org/accounts/request). Please note, however, that [W3C Membership](https://www.w3.org/community/about/faq/#is-w3c-membership-required-to-participate-in-a-community-or-business-group) is _not_ required to join a Community Group.
 
-If you are new to Github, an interesting read is [ I.Herman's introduction on the subject](https://iherman.github.io/misc-notes/docs/BasicGitHubContributionIntro). 
+If you are new to Github, an interesting read is [I.Herman's introduction on the subject](https://iherman.github.io/misc-notes/docs/BasicGitHubContributionIntro). 
 
-##  Text and Data Mining (TDM) Techniques
+## Introduction
 
 In addition to their significance in the context of scientific research, text and data mining techniques (TDM) are widely used both by private and public entities to analyse large amounts of data (including copyright protected content like text, images, video etc.) in different areas of life and for various purposes, including for government services, complex business decisions and the development of new applications or technologies.
 
@@ -28,14 +28,7 @@ These TDM exceptions apply to TDM usage in the European Union in relation to con
 
 The “opt-out” mechanism introduced by the DMS Directive is therefore a real opportunity for TDM actors and publishers across countries to define a machine-readable technique able to express not only if TDM rights on specific Web content are reserved or not, but also how rightsholders can be contacted and which licenses are available, if any. This is a tremendous help for TDM actors from all countries looking for legal certainty.
 
-## Table of Contents
-
-### Introduction
-
-- [TDM: what does it mean in practice?](docs/tdm-meaning.md)
-- [Vocabulary used during the project](docs/vocabulary.md)
-- [Goals and Requirements for a technical solution](docs/requirements.md)
-- [Use cases](docs/use-cases.md)
+## Documents
 
 ### Specification and guidelines
 
@@ -45,19 +38,24 @@ The “opt-out” mechanism introduced by the DMS Directive is therefore a real 
 - [Technique based on html meta tags](techniques/technique-html-meta.md)
 - [Dealing with TDM Policies](techniques/tdm-policies.md)
 
+### Useful notes
+
+- [TDM: what does it mean in practice?](docs/tdm-meaning.md)
+- [Vocabulary used during the project](docs/vocabulary.md)
+- [Goals and Requirements for a technical solution](docs/requirements.md)
+- [Use cases](docs/use-cases.md)
+
 ### Appendix
+
 - [Useful extracts of the DSM Directive](docs/dsm-extracts.md)
 - [Past and existing initiatives](docs/initiatives.md)
 - [Robots for non techies](docs/robots.md)
 - [Github project](https://github.com/w3c/tdm-reservation-protocol)
 
-
-## Illustration of the three approved techniques 
+### Illustration of the three approved techniques 
 
 On the left, the choice of the rightsholder is conveyed as a property (or two) set in the http headers associated with the fetching of the resource. On the center, it is conveyed as a property set in a well known file hosted on the origin server. On the right it is conveyed as a property set in the html metadata of the resource itself. 
 
 ![tdmrep techniques](https://www.edrlab.org/public/tdmrep/tdmrep1.png)
 
----
 
-Contacts: Laurent Le Meur (@llemeurfr) or Ivan Herman (@iherman)
