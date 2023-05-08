@@ -43,7 +43,7 @@ Disallow: /public/covers
 Disallow: /*.pdf$
 ```
 
-robots.txt has been so far loosely specified, but there is an effort undergoing to [make it an Internet Standard(https://tools.ietf.org/html/draft-koster-rep-00)] via the IETF standardization body. 
+robots.txt has been so far loosely specified, but there is an effort undergoing to [make it an Internet Standard](https://tools.ietf.org/html/draft-koster-rep-00) via the IETF standardization body. 
 
 ## robots meta directives 
 
@@ -54,7 +54,7 @@ There are two types of robots meta directives: those that are part of a Web page
 The author of a Web page can easily add a meta directive to the header of any HTML page. Its syntax is of the type:
 
 ``` html
-<meta name=”robots” content=”noindex, nofollow”>
+<meta name="robots" content="noindex, nofollow">
 ```
 
 An equivalent formulation using an HTTP response header would be:
@@ -83,12 +83,14 @@ But other instructions have also been defined over time, like:
 - *nosnippet* which means “do not show a snippet of this page on a search engine result page”.
 - *notranslate* which means “do not offer this page’s translation on a search engine result page”.
 
-This set of instructions is not properly standardized and different search engines accept different meta-tag parameters for the “robots” meta-tag. For instance Google specifies [here(https://developers.google.com/search/reference/robots_meta_tag)] the vocabulary it understands.
+This set of instructions is not properly standardized and different search engines accept different meta-tag parameters for the “robots” meta-tag. For instance Google specifies [here](https://developers.google.com/search/reference/robots_meta_tag) the vocabulary it understands.
 
 ## Conclusion
 
 robots.txt and robots meta directives are the tools SEO (Search Engine Optimization) managers are using for helping crawlers being more efficient. It is thus important to recognize that robots.txt is not a mechanism for keeping files out of reach from a bot and not meant to protect or block sensitive data.
 
-Using robots.txt for managing TDM opt-out would cause an important issue: if "Disallow" was used to express TDM opt-out, SEO and TDM directives would be identical, which makes no sense. If a new keyword was created instead (e.g. "TDM-Reservation") then SEO managers and TDM managers would have to share the maintenance of the same file, which would be error-prone in practice. Also, the "tdm-profile" property is a URL: all robots directives described above are booleans, none has a value. We would have to create a dirty extension for it. 
+Using robots.txt for managing TDM opt-out would cause an important issue: if "Disallow" was used to express TDM opt-out in a robots.txt file, SEO and TDM directives would be identical, which makes no sense. If a new keyword was created instead (e.g. "DisallowTDM") then SEO managers and content managers would have to share the maintenance of the same file, which would be error-prone in practice. 
+
+Using robots meta directives would cause the same kind of issue: One could create a "notdm" property, but SEO manager and content managers would have to share the maintenance of the same X-Robots-Tag property. Plus, we introduce a Profile property as a URL, that requires the creation of a specific property. 
 
 This is why the TDMRep Community Group decided to get inspiration from robots.txt, which has proven to be simple to implement, but using a different file (cleanly located in the .well-known directory and not the root of the web server) and specific property names and values. 
