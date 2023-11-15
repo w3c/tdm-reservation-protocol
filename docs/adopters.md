@@ -4,6 +4,10 @@ This page contains a list of adopters of the TDM Reservation Protocol. Adopters 
 
 ## France
 
+### STM
+- Cairn Info (https://www.cairn.info/): as http headers + html metadata, with a policy.
+
+### Newspapers
 - Ouest France (https://www.ouest-france.fr/): as html metadata, with a policy.
 - Sud Ouest (https://www.sudouest.fr/): as tdmrep.json, with a policy.
 - Les Echos (https://www.lesechos.fr/): as html metadata, with a policy.
