@@ -38,6 +38,10 @@ The “opt-out” mechanism introduced by the DMS Directive is therefore a real 
 - [Technique based on html meta tags](techniques/technique-html-meta.md)
 - [Dealing with TDM Policies](techniques/tdm-policies.md)
 
+### Adopters
+
+- [TDMRep Adopters](docs/adopters.md)
+
 ### Useful notes
 
 - [TDM: what does it mean in practice?](docs/tdm-meaning.md)
