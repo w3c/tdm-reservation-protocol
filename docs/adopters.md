@@ -18,7 +18,9 @@ This page contains a list of adopters of the TDM Reservation Protocol. Adopters 
 - Radio France (https://www.radiofrance.fr/): as tdmrep.json, with a policy.
 - France Bleu (https://www.francebleu.fr/): as tdmrep.json, with a policy.
 
-An daily update is available on [datawrapper](https://www.datawrapper.de/_/607Cd/). 
+A daily update is available on [Mind Media](https://www.mind.eu.com/media/data/ia-generative-quels-editeurs-francais-bloquent-les-robots-dopenai-et-google-lesquels-ont-adopte-le-protocole-tdmrep/), a French online media which maintains a robot developed using [datawrapper](https://www.datawrapper.de/_/607Cd/). 
+
+Cherry on the cake: this tool provides links to the TDM policy files of each newspaper. 
 
 ## Italy
 
