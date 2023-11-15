@@ -2,9 +2,9 @@
 
 ## Web crawlers and SEO
 
-A Web crawler (a.k.a bot)  is a software application that systematically browses the [World Wide Web](https://en.wikipedia.org/wiki/World_Wide_Web), typically for the purpose of [Web indexing](https://en.wikipedia.org/wiki/Web_indexing). A robots.txt file is a small file that can be placed at the root of any Web site. Such robots.txt file tells Web crawlers which pages or files of the Web server the crawler can or can't request on this Web site.
+A Web crawler (a.k.a bot)  is a software application that systematically browses the [World Wide Web](https://en.wikipedia.org/wiki/World_Wide_Web), typically for the purpose of [Web indexing](https://en.wikipedia.org/wiki/Web_indexing). A robots.txt file is a small file that can be placed at the root of any Web site. Such robots.txt file tells Web crawlers which pages or files of the Web server the crawler can or can't fetch on this Web site.
 
-When a search engine crawls a Website, it requests by default every single file of the site, by browsing the directories it has access to and following every link it finds into Web pages. And if the site has lots of pages, it will take the crawler a while to crawl them; for the sake of efficiency, a crawler has therefore a crawl budget, i.e the number of URLs the crawler can afford to process in a session.
+When a search engine crawls a Website, it requests every single file of the site by default, by browsing the directories it has access to and following every link it finds into Web pages. And if the site has lots of pages, it will take a while to the crawler for fetching them all; for the sake of efficiency, a crawler has therefore a crawl budget, i.e the number of URLs the crawler can afford to process in a session.
 
 Because of this, the SEO (Search Engine Optimization) manager of a web site tries to optimize the crawl budget of search engines. It may be by telling bots to not crawl parts of a site that are not displayed to the user, by limiting the number of hyperlinks crawlers should follow from a web page, or other techniques known only to SEO wizards.
 
@@ -16,11 +16,11 @@ A robots.txt file is placed at the top level path of the service (i.e.root of a 
 http://www.example.com/robots.txt
 ```
 
-If no file is found at this location, a web crawler will consider that every file present on the web site can be parsed and indexed. 
+If no file is found at this location, a web crawler will consider that every file present on the web site can be fetched, parsed and indexed. 
 
 The expressivity of robots.txt is very limited, with only three “words”:
 
-- *User-Agent* identifies a Web crawler (e.g. Googlebot) to which the following instructions apply; The asterisk ‘*’ is a wildcard and means “all crawlers”;
+- *User-Agent* identifies a specific Web crawler (e.g. Googlebot) to which the following instructions apply; The asterisk ‘*’ is a wildcard and means “all crawlers”;
 - *Disallow* specifies a path representing a set of files that should not be crawled. ‘*’ can be used as a wildcard;
 - *Allow* specifies a path representing a set of files that can be crawled even though its parent page or older may be disallowed. ‘*’ can be used as a wildcard.
 
@@ -87,10 +87,12 @@ This set of instructions is not properly standardized and different search engin
 
 ## Conclusion
 
-robots.txt and robots meta directives are the tools SEO (Search Engine Optimization) managers are using for helping crawlers being more efficient. It is thus important to recognize that robots.txt is not a mechanism for keeping files out of reach from a bot and not meant to protect or block sensitive data.
+robots.txt and robots meta directives are the tools SEO (Search Engine Optimization) managers are using for helping crawlers being more efficient. It is thus important to recognize that robots.txt is not meant to protect or block sensitive data.
 
-Using robots.txt for managing TDM opt-out would cause an important issue: if "Disallow" was used to express TDM opt-out in a robots.txt file, SEO and TDM directives would be identical, which makes no sense. If a new keyword was created instead (e.g. "DisallowTDM") then SEO managers and content managers would have to share the maintenance of the same file, which would be error-prone in practice. 
+Using robots.txt for managing TDM opt-out would require a "webmaster" to enter every single user agent (i.e. bot name) he wants to stop from mining the site. There may be already thousands of TDM and IA robots in the wild, and some of them do not even use a bot-specific user agent. Using robots.txt for opting-out from TDM/AI crawlers is therefore impossible today. This could change if robots.txt evolves and supports the expression of an opt-out (here Disallow) relative to certain purposes like "mining for training TDM and AI solutions". 
 
-Using robots meta directives would cause the same kind of issue: One could create a "notdm" property, but SEO manager and content managers would have to share the maintenance of the same X-Robots-Tag property. Plus, we introduce a Profile property as a URL, that requires the creation of a specific property. 
+Note also that sharing the management of robots.txt between SEO managers and webmasters could be error-prone in practice.  
 
-This is why the TDMRep Community Group decided to get inspiration from robots.txt, which has proven to be simple to implement, but using a different file (cleanly located in the .well-known directory and not the root of the web server) and specific property names and values. 
+Robots meta directives are already suporting a notion of processing purpose: "nosnippet" and "notranslate" are examples of such purpose. It would therefore be easier to use robots meta directives for supporting a "notdm" directive conforming to the CDSM Article 4. A "noai" directive has already been proposed, but it is not clearly aligned with the TDM opt-out we can legally declare, and it does not directly resolve our need for a Policy property (as a URL). 
+
+This is why the TDMRep Community Group decided to get inspiration from robots.txt and robots meta directives, which have proven simple to implement worldwide, but using a different syntax. 
