@@ -361,7 +361,7 @@
 
         <p>The [xml]] properties specified in this section are defined in the <code>http://www.w3.org/ns/tdmrep/xml</code>  namespace [xml-names]. Let's consider `tdm` as the preferred prefix for this XML namespace.</p>
 
-        <p>`tdm:reservation` and the optional `tdm:policy` are two properties added to the metadata section of the EPUB Package Document. These properties cover TDM rights for every resource in the package, and this specification does not allow the definition of specific TDM rights for the different resources present in the package.</p>
+        <p>`tdm-reservation` and the optional `tdm-policy` are two properties added to the metadata section of the EPUB Package Document, using the &lt;meta> element provided in EPUB for such extensions. These properties cover TDM rights for every resource in the package, and this specification does not allow the definition of specific TDM rights for the different resources present in the package.</p>
 
         <p>In the following example, the rightsowner signals that he reserves TDM rights on every resource of the EPUB file, but a TDM License may be acquired.</p>
 
@@ -369,8 +369,8 @@
           &lt;package xmlns:tdm="http://www.w3.org/ns/tdmrep/xml" ...>
             &lt;metadata ...>
               &lt;dc:title>Document title&lt;/dc:title>
-              &lt;tdm:reservation>1&lt;/tdm:reservation>
-              &lt;tdm:policy>https://provider.com/policies/policy.json&lt;/tdm:policy>
+              &lt;meta property="tdm-reservation">1&lt;/meta>
+              &lt;meta property="tdm-policy">https://provider.com/policies/policy.json&lt;/meta>
             &lt;/metadata>
           &lt;/package>
         </pre>
@@ -394,7 +394,9 @@
 
         <p>A TDM Agent MUST check the presence of TDM Metadata in every html file fetched from the Web server. The values of `tdm-reservation` and `tdm-policy` found here supercede previous values.</p>
 
-        <p>A TDM Agent MUST check the presence of TDM Metadata in every EPUB file fetched from the Web server. The values of `tdm:reservation` and `tdm:policy` found here supercede previous values.</p>
+        <p>A TDM Agent MUST check the presence of TDM Metadata in every EPUB file fetched from the Web server. The values of `tdm-reservation` and `tdm-policy` found here supercede previous values.</p>
+
+        <p>At every step, the absence of `tdm-reservation` and `tdm-policy` MUST not supercede previous values with null values.</p>
 
       </section>
 
