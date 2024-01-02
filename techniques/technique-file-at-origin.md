@@ -8,7 +8,7 @@ The related section of the specification is [TDM File on the Origin Server](http
 
 ## Use of the .well-known directory
 
-tdmep.json is stored in the .well-known directory, located at the root of the origin server. 
+tdmrep.json is stored in the .well-known directory, located at the root of the origin server. 
 
 Here is a quick introduction of [RFC-5785](https://tools.ietf.org/html/rfc5785):
 
