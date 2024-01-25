@@ -357,7 +357,7 @@
 
         <h2>TDM Metadata in EPUB files</h2>
 
-        <p>This technique provides a way to embed the righsholder's choice in an EPUB file.</p>
+        <p>This technique provides a way to embed the rightsholder's choice in an EPUB file.</p>
 
         <p>`tdm:reservation` and the optional `tdm:policy` are two properties added to the metadata section of the EPUB Package Document, using the &lt;meta> element provided in EPUB for such extensions. They both use the `tdm` prefix, which is the shorthand mapping of the URL `http://www.w3.org/ns/tdmrep#`.</p>
 
@@ -366,7 +366,7 @@
         <p>In the following example, the rightsowner signals that he reserves TDM rights on every resource of the EPUB file, but a TDM License may be acquired.</p>
 
         <pre class="example">
-          &lt;package xmlns:tdm="http://www.w3.org/ns/tdmrep#" ...>
+          &lt;package prefix="tdm: http://www.w3.org/ns/tdmrep#" ...>
             &lt;metadata ...>
               &lt;dc:title>Document title&lt;/dc:title>
               &lt;meta property="tdm:reservation">1&lt;/meta>
