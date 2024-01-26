@@ -2,11 +2,15 @@
 
 ## Web crawlers and SEO
 
-A Web crawler (a.k.a bot)  is a software application that systematically browses the [World Wide Web](https://en.wikipedia.org/wiki/World_Wide_Web), typically for the purpose of [Web indexing](https://en.wikipedia.org/wiki/Web_indexing). A robots.txt file is a small file that can be placed at the root of any Web site. Such robots.txt file tells Web crawlers which pages or files of the Web server the crawler can or can't fetch on this Web site.
+A Web crawler (a.k.a bot)  is a software application that systematically browses the [World Wide Web](https://en.wikipedia.org/wiki/World_Wide_Web), typically for the purpose of [Web indexing](https://en.wikipedia.org/wiki/Web_indexing). A robots.txt file is a small file that is placed at the root of any Web site. This robots.txt file tells Web crawlers which pages or files of the Web server the crawler can or can't fetch on this Web site. It is purely indicative, and does not block a crawler to fetch data from the Web server. Good citizens follow the rules set in robots.txt, bad citizens don't. 
+
+If robots.txt is not a blocking mechanism, then what is its practical use? 
 
 When a search engine crawls a Website, it requests every single file of the site by default, by browsing the directories it has access to and following every link it finds into Web pages. And if the site has lots of pages, it will take a while to the crawler for fetching them all; for the sake of efficiency, a crawler has therefore a crawl budget, i.e the number of URLs the crawler can afford to process in a session.
 
 Because of this, the SEO (Search Engine Optimization) manager of a web site tries to optimize the crawl budget of search engines. It may be by telling bots to not crawl parts of a site that are not displayed to the user, by limiting the number of hyperlinks crawlers should follow from a web page, or other techniques known only to SEO wizards.
+
+Webmasters can also use robots.txt to ask bots (any, or specific ones) to avoid crawling their Web server because such load is cumbersome for them. But as we said before, only good citizens will follow this request.  
 
 ## robots.txt 
 
@@ -45,7 +49,7 @@ Disallow: /*.pdf$
 
 robots.txt has been so far loosely specified, but there is an effort undergoing to [make it an Internet Standard](https://tools.ietf.org/html/draft-koster-rep-00) via the IETF standardization body. 
 
-## robots meta directives 
+## Robots meta directives 
 
 Whereas robots.txt file directives give bots suggestions for how to crawl files on a website robots meta directives provide more firm instructions on how to process the content of a Web page (or other kind of file) after the file has been crawled. If these directives are discovered by bots, their parameters serve as strong suggestions for crawler indexation behavior. 
 
@@ -87,12 +91,10 @@ This set of instructions is not properly standardized and different search engin
 
 ## Conclusion
 
-robots.txt and robots meta directives are the tools SEO (Search Engine Optimization) managers are using for helping crawlers being more efficient. It is thus important to recognize that robots.txt is not meant to protect or block sensitive data.
+robots.txt and robots meta directives give indications to search engines, essentially for SEO purposes. These techniques have not been created to protect sensitive data from a specific usage (like TDM).
 
-Using robots.txt for managing TDM opt-out would require a "webmaster" to enter every single user agent (i.e. bot name) he wants to stop from mining the site. There may be already thousands of TDM and IA robots in the wild, and some of them do not even use a bot-specific user agent. Using robots.txt for opting-out from TDM/AI crawlers is therefore impossible today. This could change if robots.txt evolves and supports the expression of an opt-out (here Disallow) relative to certain purposes like "mining for training TDM and AI solutions". 
+Using robots.txt for managing TDM opt-out would require a webmaster to enter every single user agent (i.e. bot name) he wants to stop from mining the site, whatever the mining purpose is (including indexing for web search). There may be already thousands of TDM and IA robots in the wild, and some of them do not even use a bot-specific user agent. Using robots.txt for opting-out from TDM/AI crawlers is therefore impossible today. This could change if robots.txt evolves and supports the expression of an opt-out (here Disallow) relative to certain purposes like "mining for training TDM and AI solutions". 
 
-Note also that sharing the management of robots.txt between SEO managers and webmasters could be error-prone in practice.  
+Robots meta directives  already suport a notion of purpose: "nosnippet" and "notranslate" are examples of such purpose. It would therefore be easier to use robots meta directives for supporting a "notdm" directive conforming to the CDSM Article 4. A "noai" directive has already been proposed, but it is not clearly aligned with the TDM opt-out we can legally declare, and it does not directly resolve our need for a Policy property (as a URL). 
 
-Robots meta directives are already suporting a notion of processing purpose: "nosnippet" and "notranslate" are examples of such purpose. It would therefore be easier to use robots meta directives for supporting a "notdm" directive conforming to the CDSM Article 4. A "noai" directive has already been proposed, but it is not clearly aligned with the TDM opt-out we can legally declare, and it does not directly resolve our need for a Policy property (as a URL). 
-
-This is why the TDMRep Community Group decided to get inspiration from robots.txt and robots meta directives, which have proven simple to implement worldwide, but using a different syntax. 
+This is why the TDMRep Community Group decided to get inspiration from robots.txt and robots meta directives, which have proven simple to implement, but using a different syntax. A syntax which is cleary different from the technique used for web indexing control, and allows the addition of a useful Policy feature. 
