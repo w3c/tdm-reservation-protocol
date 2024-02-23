@@ -1,0 +1,8 @@
+{
+  "@context": {
+  "tdm" : "http://www.w3.org/ns/tdmrep#",
+  "mine" :  "tdm:mine",
+  "research" :  "tdm:research",
+  "non-research" :  "tdm:non-research"
+  }
+}
