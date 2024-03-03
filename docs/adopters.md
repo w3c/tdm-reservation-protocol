@@ -25,5 +25,18 @@ A daily update is available on [Mind Media](https://www.mind.eu.com/media/data/i
 
 Cherry on the cake: this tool provides links to the TDM policy files of each newspaper. 
 
+## Spain
 
+### Book Publishers
+- Penguin Random House Spain has adopted the protocol in its EPUB files. 
 
+## Germany
+
+### Book Publishers
+- Penguin Random House Germany has adopted the protocol in its ONIX records. 
+- Aufbau has also adopted the protocol.
+
+## Switzerland
+
+### Book Publishers 
+- Diogenes  has  adopted the protocol.
