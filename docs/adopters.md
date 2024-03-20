@@ -6,6 +6,7 @@ This page contains a list of adopters of the TDM Reservation Protocol. Adopters 
 
 ### Book Publishers
 - Hachette Livre: most of the publishing houses of the Hachette group have implemented the protocol on their website. Here a some of them: Hachette.fr, Hachette Romans, Hachette Pratique, Livre de Poche, Hatier, Grasset, Fayard, Editions Larousse, Bescherelle, Pika, Audiolib ...   
+- Media-Participations has adopted the protocol in its different publishing houses, including La Martinière, Seuil, Fleurus ..
 
 ### STM
 - Cairn Info (https://www.cairn.info/): as http headers + html metadata, with a policy.
@@ -24,6 +25,11 @@ This page contains a list of adopters of the TDM Reservation Protocol. Adopters 
 A daily update is available on [Mind Media](https://www.mind.eu.com/media/data/ia-generative-quels-editeurs-francais-bloquent-les-robots-dopenai-et-google-lesquels-ont-adopte-le-protocole-tdmrep/), a French online media which maintains a robot developed using [datawrapper](https://www.datawrapper.de/_/607Cd/). 
 
 Cherry on the cake: this tool provides links to the TDM policy files of each newspaper. 
+
+## Italy
+
+### Book Publishers
+- Mondadori has adopted the protocol on the websites [Mondadori](https://www.mondadori.it/) and [Oscar](https://www.oscarmondadori.it/). 
 
 ## Spain
 
