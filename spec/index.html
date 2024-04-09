@@ -441,9 +441,9 @@
           &lt;rdf:RDF xmlns:rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#>
           &lt;rdf:Description rdf:about=""
             ...
-            xmlns:tdm=http://www.w3.org/ns/tdmrep/>
-                &lt;tdm:reservation>1</tdm:reservation>
-                &lt;tdm:policy> https://publisher.com/policies/policy.json </tdm:policy>
+            xmlns:tdm="http://www.w3.org/ns/tdmrep/">
+                &lt;tdm:reservation>1&lt;/tdm:reservation>
+                &lt;tdm:policy>https://publisher.com/policies/policy.json&lt;/tdm:policy>
               &lt;/rdf:Description>
             &lt;/rdf:RDF>
         </pre>
@@ -459,7 +459,7 @@
         <p>A TDM Agent MUST check the presence of a TDM file on the origin server before it starts scraping the content of the Web server.</p>
 
         <div class="note">
-          <p>A TDM Agent will keep in cache the content of the TDM file, usually as an in-memory object, so that it can check its rules against every Web resource it fetches from the origin server.</p>
+          <p>A TDM Agent must keep in cache the content of the TDM file, usually as an in-memory object, to optimize further processing.</p>
         </div>
 
         <p>A TDM Agent MUST check the presence of a TDM Header Field in every http header it gets from fetching a resource on the Web server. The values of `tdm-reservation` and `tdm-policy` found in this header supercede any value inferred from a TDM file on the origin server.</p>
