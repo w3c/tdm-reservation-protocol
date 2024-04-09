@@ -407,7 +407,7 @@
 
         <p>This technique provides a way to embed the rightsholder's choice into an EPUB 3 file.</p>
 
-        <p>`tdm:reservation` and the optional `tdm:policy` are two properties added to the metadata section of the EPUB Package Document, using the &lt;meta> element and the associated `property` attribute. They both use the `tdm` prefix, which is the shorthand mapping for the `http://www.w3.org/ns/tdmrep#` URL.</p>
+        <p>`tdm:reservation` and the optional `tdm:policy` are two properties added to the metadata section of the EPUB Package Document, using the &lt;meta> element and the associated `property` attribute. They both use the `tdm` prefix, which is a shorthand mapping for the `http://www.w3.org/ns/tdmrep#` URL.</p>
 
         <p>These properties cover TDM rights for every resource in the package, and this specification does not cover the definition of specific TDM rights for the different resources present in the package.</p>
 
@@ -421,6 +421,31 @@
               &lt;meta property="tdm:policy">https://provider.com/policies/policy.json&lt;/meta>
             &lt;/metadata>
           &lt;/package>
+        </pre>
+
+      </section>
+
+      <section id="sec-pdf">
+
+        <h2>TDM Metadata in PDF files</h2>
+
+        <p>This technique provides a way to embed the rightsholder's choice into a PDF file.</p>
+
+        <p>`tdm:reservation` and the optional `tdm:policy` are two elements added to the XMP metadata section of the PDF. They both use the `tdm` namespace prefix, which is a shorthand mapping for the `http://www.w3.org/ns/tdmrep/` URL.</p>
+
+        <p>These properties cover TDM rights for every page in the document.</p>
+
+        <p>In the following example, the rightsowner signals that he reserves TDM rights on the PDF document, but a TDM License may be acquired.</p>
+
+        <pre class="example">
+          &lt;rdf:RDF xmlns:rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+          &lt;rdf:Description rdf:about=""
+            ...
+            xmlns:tdm=http://www.w3.org/ns/tdmrep/>
+                &lt;tdm:reservation>1</tdm:reservation>
+                &lt;tdm:policy> https://publisher.com/policies/policy.json </tdm:policy>
+              &lt;/rdf:Description>
+            &lt;/rdf:RDF>
         </pre>
 
       </section>
@@ -441,7 +466,7 @@
 
         <p>A TDM Agent MUST check the presence of TDM Metadata in every html file fetched from the Web server. The values of `tdm-reservation` and `tdm-policy` found here supercede previous values.</p>
 
-        <p>A TDM Agent MUST check the presence of TDM Metadata in every EPUB file fetched from the Web server. The values of `tdm:reservation` and `tdm:policy` found here supercede previous values.</p>
+        <p>A TDM Agent MUST check the presence of TDM Metadata in every EPUB or PDF file fetched from the Web server. The values of `tdm:reservation` and `tdm:policy` found here supercede previous values.</p>
 
         <p>At every step, the absence of `tdm-reservation` and `tdm-policy` MUST not reset current values.</p>
 
