@@ -608,17 +608,17 @@
 
           <h3>Permissions</h3>
 
-          <p>A Policy MUST contain one `permission` property. It SHOULD not contain any `obligation` or `prohibition` property.</p> 
+          <p>A Policy MUST contain one `permission` property, which represents an array of permissions. A Policy SHOULD not contain any `obligation` or `prohibition` property.</p> 
 
           <section id="sec-odrl-profile-permission-target-action">
 
             <h4>Expressing the target of a permission</h4>
 
-            <p>The optional target of a permission, which is expressed via the `target` property, MUST be a URI identifying the collection of resources involved in the policy.</p>
+            <p>A permission MAY have a `target` property. If present, the `target` property MUST be a URI identifying the collection of resources associated with the permission.</p>
 
             <div class="note">
-              <p>This property is optional. Il can be used by a publisher to identify a collection of resources on which a specific action applies.If present, it should be used by TDM Agents in their messages to publishers.</p>
-              <p>The target URL is not necessarily dereferencable. Accessing this URL may end with an http error (403 in many cases): this is not a processing error.</p>
+              <p>This property is optional. Il can be used by a publisher to identify a collection of resources on which a specific permission applies. If present, it should be used by TDM Agents in their messages to publishers.</p>
+              <p>The target URL is not necessarily dereferencable. Accessing this URL may end with an http error (404 in many cases): this is not a processing error.</p>
             </div>
 
             <pre class="example">
