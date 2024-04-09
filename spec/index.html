@@ -377,13 +377,37 @@
 
 		  </section>
 
-      <section id="sec-epub">
+      <section id="sec-epub2">
+
+        <h2>TDM Metadata in EPUB 2 files</h2>
+
+        <p>This technique provides a way to embed the rightsholder's choice into an EPUB 2 file.</p>
+
+        <p>`tdm:reservation` and the optional `tdm:policy` are two metadata elements added to the metadata section of the EPUB Package Document, using the &lt;meta> element and the associated `name` and `content` properties.</p>
+
+        <p>These properties cover TDM rights for every resource in the package, and this specification does not cover the definition of specific TDM rights for the different resources present in the package.</p>
+
+        <p>In the following example, the rightsowner signals that he reserves TDM rights on every resource of the EPUB file, but a TDM License may be acquired.</p>
+
+        <pre class="example">
+          &lt;package version="2.0" ...>
+            &lt;metadata ...>
+              &lt;dc:title>Document title&lt;/dc:title>
+              &lt;meta name="tdm:reservation" content="1" />
+              &lt;meta name="tdm:policy" content="https://provider.com/policies/policy.json" />
+            &lt;/metadata>
+          &lt;/package>
+        </pre>
+
+      </section>
+
+      <section id="sec-epub3">
 
         <h2>TDM Metadata in EPUB 3 files</h2>
 
-        <p>This technique provides a way to embed the rightsholder's choice into an EPUB file.</p>
+        <p>This technique provides a way to embed the rightsholder's choice into an EPUB 3 file.</p>
 
-        <p>`tdm:reservation` and the optional `tdm:policy` are two properties added to the metadata section of the EPUB Package Document, using the &lt;meta> element provided in EPUB for such extensions. They both use the `tdm` prefix, which is the shorthand mapping of the URL `http://www.w3.org/ns/tdmrep#`.</p>
+        <p>`tdm:reservation` and the optional `tdm:policy` are two properties added to the metadata section of the EPUB Package Document, using the &lt;meta> element and the associated `property` attribute. They both use the `tdm` prefix, which is the shorthand mapping for the `http://www.w3.org/ns/tdmrep#` URL.</p>
 
         <p>These properties cover TDM rights for every resource in the package, and this specification does not cover the definition of specific TDM rights for the different resources present in the package.</p>
 
