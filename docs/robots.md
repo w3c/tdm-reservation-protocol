@@ -69,10 +69,8 @@ An equivalent formulation using an HTTP response header would be:
 ``` http
 HTTP/1.1 200 OK
 Date: Tue, 25 May 2010 21:42:43 GMT
- ...
 X-Robots-Tag: noindex, nofollow
- ...
-````
+```
 
 A list of <meta> names maintained by the W3C in the document https://wiki.whatwg.org/wiki/MetaExtensions. This document contains the "robots" entry and lists a small series of possible values, which could be completed by Mike Smith (W3C) at the request of the publishing industry.
 
