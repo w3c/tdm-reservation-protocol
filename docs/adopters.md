@@ -14,6 +14,7 @@ This page contains a list of adopters of the TDM Reservation Protocol. Adopters 
 ## STM Publishers
 - Cairn Info (https://www.cairn.info/): as http headers + html metadata, with a policy.
 - Elsevier (https://www.elsevier.com/): as tdmrep.json, with a policy.
+- American Chemical Society (https://pubs.acs.org/): as tdmrep.json, with a policy.
 
 ## Newspapers
 - Ouest France (https://www.ouest-france.fr/): as html metadata, with a policy.
