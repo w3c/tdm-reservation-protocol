@@ -14,6 +14,8 @@ Webmasters can also use robots.txt to ask bots (any, or specific ones) to avoid 
 
 ## robots.txt 
 
+The Robots Exclusion Protocol was initially defined in 1996. It is an IETF Internet Standard since September 2022 under the name [RFC 9309](ttps://datatracker.ietf.org/doc/html/rfc9309). 
+
 A robots.txt file is placed at the top level path of the service (i.e.root of a web server). The URL of the file is therefore something like: 
 
 ```
@@ -47,11 +49,12 @@ Disallow: /public/covers
 Disallow: /*.pdf$
 ```
 
-robots.txt has been so far loosely specified, but there is an effort undergoing to [make it an Internet Standard](https://tools.ietf.org/html/draft-koster-rep-00) via the IETF standardization body. 
 
 ## Robots meta directives 
 
 Whereas robots.txt file directives give bots suggestions for how to crawl files on a website robots meta directives provide more firm instructions on how to process the content of a Web page (or other kind of file) after the file has been crawled. If these directives are discovered by bots, their parameters serve as strong suggestions for crawler indexation behavior. 
+
+There is no Internet Standard for Robots meta directives. 
 
 There are two types of robots meta directives: those that are part of a Web page (necessarily in HTML) and those a web server sends back (as an X-Robots-Tag HTTP header) to the crawler when the Web resource (any file: image, audio, video etc.) is fetched. 
 
@@ -66,9 +69,9 @@ An equivalent formulation using an HTTP response header would be:
 ``` http
 HTTP/1.1 200 OK
 Date: Tue, 25 May 2010 21:42:43 GMT
-(…)
+( … )
 X-Robots-Tag: noindex, nofollow
-(…)
+( … )
 ````
 
 A list of <meta> names maintained by the W3C in the document https://wiki.whatwg.org/wiki/MetaExtensions. This document contains the "robots" entry and lists a small series of possible values, which could be completed by Mike Smith (W3C) at the request of the publishing industry.
