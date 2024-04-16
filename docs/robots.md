@@ -14,7 +14,7 @@ Webmasters can also use robots.txt to ask bots (any, or specific ones) to avoid 
 
 ## robots.txt 
 
-The Robots Exclusion Protocol was initially defined in 1996. It is an IETF Internet Standard since September 2022 under the name [RFC 9309](ttps://datatracker.ietf.org/doc/html/rfc9309). 
+The Robots Exclusion Protocol was initially defined in 1996. It is an IETF Internet Standard since September 2022 under the name [RFC 9309](https://datatracker.ietf.org/doc/html/rfc9309). 
 
 A robots.txt file is placed at the top level path of the service (i.e.root of a web server). The URL of the file is therefore something like: 
 
