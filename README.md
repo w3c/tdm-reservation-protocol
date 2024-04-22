@@ -32,7 +32,8 @@ The “opt-out” mechanism introduced by the DMS Directive is therefore a real 
 
 ### Specification and guidelines
 
-- [Specification](https://www.w3.org/2022/tdmrep/)
+- [Specification (current version)](https://www.w3.org/2022/tdmrep/)
+- [Draft Specification (upcoming version)](spec/index.html)
 - [Technique based on http headers](techniques/technique-http-headers.md)
 - [Technique based on a well known file hosted on the origin server](techniques/technique-file-at-origin.md)
 - [Technique based on html meta tags](techniques/technique-html-meta.md)
