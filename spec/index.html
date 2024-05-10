@@ -448,6 +448,10 @@
             &lt;/rdf:RDF>
         </pre>
 
+        <div class="note">
+          <p>A PDF/A validator will raise errors if TDMRep properties are present in the XMP metadata section of a PDF document.</p>
+        </div>  
+
       </section>
 
       <section id="sec-processing-priority">
@@ -617,8 +621,8 @@
             <p>A permission MAY have a `target` property. If present, the `target` property MUST be a URI identifying the collection of resources associated with the permission.</p>
 
             <div class="note">
-              <p>This property is optional. Il can be used by a publisher to identify a collection of resources on which a specific permission applies. If present, it should be used by TDM Agents in their messages to publishers.</p>
-              <p>The target URL is not necessarily dereferencable. Accessing this URL may end with an http error (404 in many cases): this is not a processing error.</p>
+              <p>This property is optional. It can be used by a publisher to identify a collection of resources on which a specific permission applies. If present, it should be used by TDM Agents in their messages to publishers.</p>
+              <p>The target URI is not necessarily dereferenceable, even if it is a URL. Accessing such URL may end with an http error: this is not a processing error.</p>
             </div>
 
             <pre class="example">
@@ -637,7 +641,7 @@
                   }
                 ]
               }
-              </pre>
+            </pre>
   
             <h4>Expressing the action of a permission</h4>
 
