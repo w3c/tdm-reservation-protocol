@@ -19,7 +19,7 @@
                       href: "https://www.w3.org/community/reports/tdmrep/CG-FINAL-tdmrep-20240202/"
                     }
                   ]
-                },   
+                },
                 {
                   key: "Useful links",
                   data: [
@@ -151,8 +151,8 @@
 
           <h2>tdm-reservation</h2>
 
-          <p>`tdm-reservation` is an boolean value.</p>
-          
+          <p>`tdm-reservation` is a boolean value.</p>
+
           <table class="simple">
             <tr><th>tdm-reservation</th>
                 <th>meaning</th>
@@ -170,14 +170,14 @@
           <div class="note">
             <p>The "opt-out" option specified by the Article 4 of the CDSM Directive is expressed by the use of `tdm-reservation` with value equal <code>1</code>.</p>
           </div>
-        
+
         </section>
         <section id="sec-tdm-policy">
 
           <h2>tdm-policy</h2>
-          
+
           <p>`tdm-policy` is a URL pointing to a TDM Policy set by the rightsholder.</p>
-          
+
           <div class="note">
             <p>The presence of `tdm-policy` when the value of `tdm-reservation` is <code>0</code> is not considered a protocol error. TDM Agents SHOULD NOT process `tdm-policy` in this case.</p>
           </div>
@@ -187,7 +187,7 @@
           <div class="note">
             <p>Being unable to access or parse a TDM Policy is not considered a protocol error. In such a case, the TDM Agent MUST consider that there is no way to know at this time which conditions would allow it to process the resource.</p>
           </div>
-  
+
   		</section>
 
 		</section>
@@ -207,8 +207,8 @@
         <p>An origin server that receives a valid GET request targeting this resource MUST send either a successful response containing a machine-readable representation of the site-wide righsholder's choices, as defined below, or a sequence of redirects that leads to such a representation. Failure to provide access to such a representation implies that the origin server does not implement this protocol.</p>
 
         <p>This specification defines a JSON file named <code>tdmrep.json</code>, which MUST be hosted in the <code>/.well-known</code> repository of a Web server.</p>
-        
-        <p>This file contains an array of JSON objects; each object represents a rule and accepts three properties:</p> 
+
+        <p>This file contains an array of JSON objects; each object represents a rule and accepts three properties:</p>
 
         <ul>
           <li><em>location</em>: a pattern matching the path of a set of files hosted on the server, associated with the sibling TDM properties.</li>
@@ -218,14 +218,14 @@
 
         <div class="note">
           <p>In each rule, `location` and `tdm-reservation` are mandatory, `tdm-policy` is optional.</p>
-        </div>  
+        </div>
 
         <p>To evaluate if the URL of a Web resource is subject to a given pattern, a TDM Agent MUST match the paths inferred from the pattern against the URL. The matching SHOULD be case sensitive. The most specific match found MUST be used. The most specific match is the first in sequence.</p>
 
         <p>If no match is found, a TDM Agent MUST consider that `tdm-reservation` is <code>unset</code> for the given URL.</p>
 
         <p>If a percent-encoded US-ASCII character is encountered in the URI, it MUST be unencoded prior to comparison, unless it is a reserved character in the URI as defined by RFC3986 or the character is outside the unreserved character range.  The match evaluates positively if and only if the end of the path from the rule is reached before a difference in octets is encountered.</p>
-      
+
         <section id="sec-tdm-file-regexp">
 
           <h3>Use of regular expressions</h3>
@@ -248,7 +248,7 @@
                 <td>"tdm-policy: /this/*/then"</td>
             </tr>
           </table>
-  
+
           <p>If TDM Agents match special characters verbatim in the URI, they MUST use "%" encoding.  For example:</p>
 
           <table class="simple">
@@ -262,8 +262,8 @@
 
           <div class="note">
             <p>This URL matching notation is subject to interpretation. For the sake of interoperability, TDM Agents should follow the rules detailed by Google in <a href="https://developers.google.com/search/docs/advanced/robots/robots_txt">How Google interprets the robots.txt specification</a>, section "URL matching based on path values".</p>
-          </div>  
-        
+          </div>
+
         </section>
 
         <section class="informative" id="sec-tdm-file-example">
@@ -272,7 +272,7 @@
 
           <p>In the following example, a rightsholder wants to "opt-out" for every file present on a Web server.</p>
 
-          <p>`tdmrep.json` is therefore simply structured as:</p> 
+          <p>`tdmrep.json` is therefore simply structured as:</p>
 
           <pre class="example">
           [
@@ -285,13 +285,13 @@
 
           <div class="note">
             <p>Note the brackets at the start and end of the file. They indicate that this is a JSON array, and they are mandatory even if you express only one rule. In this example, the provider has decided not to offer a TDM policy. </p>
-          </div>  
-  
+          </div>
+
           <p>In the following example, a Web server is hosting three groups of files. The rightsholder of the first group of files (PDF documents) wants to express that TDM rights are reserved on these files with no way to acquire a <a>TDM License</a>. The rightsholder of the second group of files (html pages) wants to express that TDM rights are reserved with a TDM Policy. TDM rights are not reserved for all JPEG images contained in the third group.</p>
 
           <p>In this example, the first group is a set of files stored in /directory-a; the second group is stored in /directory-b/html and the third group in /directory-b/images.</p>
 
-          <p>`tdmrep.json` is therefore structured as:</p> 
+          <p>`tdmrep.json` is therefore structured as:</p>
 
           <pre class="example">
           [
@@ -325,10 +325,10 @@
 
         <div class="note">
           <p>This is currently the preferred technique for implementing the protocol, as it is simple and already integrated in the swpawning.ai API.</p>
-        </div>  
+        </div>
 
         <p>In the following example, the rightsholder expresses that TDM rights are reserved on these files with no way to acquire a TDM License. The server returns a `tdm-reservation` header field with value <code>1</code>.
-        
+
         <pre class="example">
         HTTP/1.1 200 OK
         Date: Wed, 14 Jul 2021 12:07:48 GMT
@@ -450,7 +450,7 @@
 
         <div class="note">
           <p>A PDF/A validator will raise errors if TDMRep properties are present in the XMP metadata section of a PDF document.</p>
-        </div>  
+        </div>
 
       </section>
 
@@ -484,11 +484,11 @@
 
       <p>Policies are machine-readable structures referenced from the `tdm-policy` property defined in the specification. They provide ways for TDM Actors to contact content rightsholder and they offer details about available TDM licenses. Thus, they facilitate the acquisition of TDM licenses from rightsholders by TDM Actors.</p>
 
-      <p>The format of policies defined in this specification is a profile of the Open Digital Rights Language 2.2 [[ODRL]]. </p> 
+      <p>The format of policies defined in this specification is a profile of the Open Digital Rights Language 2.2 [[ODRL]]. </p>
 
       <div class="note">
         <p>This specification assumes basic knowledge of JSON-LD and the ODRL model and vocabulary.</p>
-      </div>  
+      </div>
 
       <section id="sec-odrl-profile">
 
@@ -568,8 +568,8 @@
 
           <h3>Assigner</h3>
 
-          <p>A Policy MUST contain one `assigner` property. The `assigner` property of the Offer MUST use a limited number of vCard properties ([[vcard-rdf]]):</p> 
-          
+          <p>A Policy MUST contain one `assigner` property. The `assigner` property of the Offer MUST use a limited number of vCard properties ([[vcard-rdf]]):</p>
+
           <ul>
             <li>"fn": full name of the rightsholder, as a string</li>
             <li>"nickname": acronym of the rightsholder, as a string</li>
@@ -600,7 +600,7 @@
                 "vcard:country-name": "France"
               },
               "vcard:hasTelephone": "tel:+61755555555",
-              "vcard:hasURL": "https://provider.com/tdm/licensing.html" 
+              "vcard:hasURL": "https://provider.com/tdm/licensing.html"
             }
             ...,
           }
@@ -612,7 +612,7 @@
 
           <h3>Permissions</h3>
 
-          <p>A Policy MUST contain one `permission` property, which represents an array of permissions. A Policy SHOULD not contain any `obligation` or `prohibition` property.</p> 
+          <p>A Policy MUST contain one `permission` property, which represents an array of permissions. A Policy SHOULD not contain any `obligation` or `prohibition` property.</p>
 
           <section id="sec-odrl-profile-permission-target-action">
 
@@ -642,7 +642,7 @@
                 ]
               }
             </pre>
-  
+
             <h4>Expressing the action of a permission</h4>
 
             <p>The mandatory action of a permission, which is expressed via the `action` property, MUST be the following:</p>
@@ -673,7 +673,7 @@
               ]
             }
             </pre>
-          
+
           </section>
 
           <section id="sec-odrl-profile-permission-obtainconsent">
@@ -731,7 +731,7 @@
               ]
             }
             </pre>
-          
+
           </section>
 
           <section id="sec-odrl-profile-permission-constraint">
@@ -787,7 +787,7 @@
               ]
             }
             </pre>
- 
+
           </section>
 
         </section>
@@ -822,7 +822,7 @@
               "vcard:country-name": "France"
             },
             "vcard:hasTelephone": "tel:+61755555555",
-            "vcard:hasURL": "https://provider.com/tdm/licensing.html" 
+            "vcard:hasURL": "https://provider.com/tdm/licensing.html"
           },
           "permission": [{
             "action": "tdm:mine",
