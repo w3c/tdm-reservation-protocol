@@ -10,10 +10,11 @@ This page contains a list of adopters of the TDM Reservation Protocol. Adopters 
 - Penguin Random House Germany has adopted the protocol in its ONIX records. 
 - Aufbau has also adopted the protocol.
 - Diogenes has adopted the protocol.
+- Bookwire (Germany) has adopted the protocol in every EPUB + Onix data it distributes. 
 
 ## STM Publishers
 - Cairn Info (https://www.cairn.info/): as http headers + html metadata, with a policy.
-- Elsevier (https://www.elsevier.com/): as tdmrep.json, with a policy.
+- Elsevier (https://www.elsevier.com/): as tdmrep.json, http headers + html metadata, with a policy.
 - American Chemical Society (https://pubs.acs.org/): as tdmrep.json, with a policy.
 
 ## Newspapers
