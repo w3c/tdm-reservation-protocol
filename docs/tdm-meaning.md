@@ -1,8 +1,8 @@
 # TDM: what does it mean in practice? 
 
-It is difficult to give strict boundaries to the notion of Text and Data Mining. The EU Copyright Directive offers the following definition:
+It is difficult to give strict boundaries to the notion of Text and Data Mining. The EU Copyright Directive offers the following definition in its [Article 2](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A32019L0790#d1e845-92-1):
 
-*(2) ‘text and data mining’ means any automated analytical technique aimed at analysing text and data in digital form in order to generate information which includes but is not limited to patterns, trends and correlations”*
+*”‘text and data mining’ means any automated analytical technique aimed at analysing text and data in digital form in order to generate information which includes but is not limited to patterns, trends and correlations”*
 
 Further details are provided in Recital 8:
 
