@@ -16,6 +16,8 @@ This page contains a list of adopters of the TDM Reservation Protocol. Adopters 
 - Cairn Info (https://www.cairn.info/): as http headers + html metadata, with a policy.
 - Elsevier (https://www.elsevier.com/): as tdmrep.json, http headers + html metadata, with a policy.
 - American Chemical Society (https://pubs.acs.org/): as tdmrep.json, with a policy.
+- Springer Nature (https://www.springernature.com/): as tdmrep.json, with a policy.
+- American Psychological Association (https://psycnet.apa.org, https://psycinfo.apa.org, https://academicwriter.apa.org, and https://psyctherapy.apa.org): as http headers + html metadata, with a policy.
 
 ## Newspapers
 - Ouest France (https://www.ouest-france.fr/): as html metadata, with a policy.
