@@ -12,6 +12,7 @@ This page contains a list of adopters of the TDM Reservation Protocol. Adopters 
 - Aufbau (Germany).
 - Diogenes (Germany).
 - Gruppo editoriale Mauri Spagnol (GEMS): in its EPUB files.
+- The Finnish Publishers Association estimates that the adoption of the TDMProtocol is between 50% -80% of trade publishers and 70% of publishers of learning material.
 
 ## STM Publishers
 The following Science, Technology and Mathematics publishers has adopted the protocol:
