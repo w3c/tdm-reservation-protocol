@@ -21,6 +21,7 @@ The following Science, Technology and Mathematics publishers has adopted the pro
 - American Chemical Society (https://pubs.acs.org/): as tdmrep.json, with a policy.
 - Springer Nature (https://www.springernature.com/): as tdmrep.json, with a policy.
 - American Psychological Association (https://psycnet.apa.org, https://psycinfo.apa.org, https://academicwriter.apa.org, and https://psyctherapy.apa.org): as http headers + html metadata, with a policy.
+- Optica Publishing Group (https://opg.optica.org/): as tdmrep.json, Crossref metadata, PDF XMP Metadata, with a policy
 
 ## Digital Platforms
 They are contracted by publishers to distribute digital content. 
