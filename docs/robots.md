@@ -1,16 +1,16 @@
-# robots for non techies
+# robots.txt for non techies
 
 ## Web crawlers and SEO
 
-A Web crawler (a.k.a bot)  is a software application that systematically browses the [World Wide Web](https://en.wikipedia.org/wiki/World_Wide_Web), typically for the purpose of [Web indexing](https://en.wikipedia.org/wiki/Web_indexing). A robots.txt file is a small file that is placed at the root of any Web site. This robots.txt file tells Web crawlers which pages or files of the Web server the crawler can or can't fetch on this Web site. It is purely indicative, and does not block a crawler to fetch data from the Web server. Good citizens follow the rules set in robots.txt, bad citizens don't. 
+A Web crawler (a.k.a bot)  is a software application that systematically browses the [World Wide Web](https://en.wikipedia.org/wiki/World_Wide_Web), typically for the purpose of [Web indexing](https://en.wikipedia.org/wiki/Web_indexing). A robots.txt file is a small file that is placed at the root of any Web site. This robots.txt file tells Web crawlers which files hosted on the Web server can or can't be fetched (i.e., copied). It is purely indicative, and does not block a crawler from copying data from the Web server. Good citizens follow the rules set in robots.txt, bad citizens don't. 
 
 If robots.txt is not a blocking mechanism, then what is its practical use? 
+
+Webmasters usually use robots.txt to ask bots (any, or specific ones) to avoid crawling parts of their Web server when such load is cumbersome for them and content indexation for search purpose is nor useful. 
 
 When a search engine crawls a Website, it requests every single file of the site by default, by browsing the directories it has access to and following every link it finds into Web pages. And if the site has lots of pages, it will take a while to the crawler for fetching them all; for the sake of efficiency, a crawler has therefore a crawl budget, i.e the number of URLs the crawler can afford to process in a session.
 
 Because of this, the SEO (Search Engine Optimization) manager of a web site tries to optimize the crawl budget of search engines. It may be by telling bots to not crawl parts of a site that are not displayed to the user, by limiting the number of hyperlinks crawlers should follow from a web page, or other techniques known only to SEO wizards.
-
-Webmasters can also use robots.txt to ask bots (any, or specific ones) to avoid crawling their Web server because such load is cumbersome for them. But as we said before, only good citizens will follow this request.  
 
 ## robots.txt 
 
@@ -22,7 +22,7 @@ A robots.txt file is placed at the top level path of the service (i.e.root of a 
 http://www.example.com/robots.txt
 ```
 
-If no file is found at this location, a web crawler will consider that every file present on the web site can be fetched, parsed and indexed. 
+If no file is found at this location, a web crawler will consider that every file present on the web site is interesting to fetch, parse and index. 
 
 The expressivity of robots.txt is very limited, with only three “words”:
 
@@ -52,7 +52,7 @@ Disallow: /*.pdf$
 
 ## Robots meta directives 
 
-Whereas robots.txt file directives give bots suggestions for how to crawl files on a website robots meta directives provide more firm instructions on how to process the content of a Web page (or other kind of file) after the file has been crawled. If these directives are discovered by bots, their parameters serve as strong suggestions for crawler indexation behavior. 
+Whereas robots.txt file directives give bots suggestions for how to crawl files on a website, robots meta directives provide more firm instructions on how to process the content of a Web page (or other kind of file) after the file has been crawled. If these directives are discovered by bots, their parameters serve as strong suggestions for crawler indexation behavior. 
 
 There is no Internet Standard for Robots meta directives. 
 
@@ -72,9 +72,9 @@ Date: Tue, 25 May 2010 21:42:43 GMT
 X-Robots-Tag: noindex, nofollow
 ```
 
-A list of <meta> names maintained by the W3C in the document https://wiki.whatwg.org/wiki/MetaExtensions. This document contains the "robots" entry and lists a small series of possible values, which could be completed by Mike Smith (W3C) at the request of the publishing industry.
+A list of <meta> names maintained by the W3C in the document https://wiki.whatwg.org/wiki/MetaExtensions. This document contains the "robots" entry and lists a small series of possible values, which could be completed at the request of the publishing industry.
 
-To add X-Robots-Tag headers to a site's HTTP responses, a technician must modify the configuration files of the Web server software. This solution is therefore much more flexible (any kind of file) but more complex to set up (a technician must act). 
+To add X-Robots-Tag headers to a site's HTTP responses, a technician must modify the configuration files of the Web server software. This solution is therefore much more flexible (any kind of file) but slightly complex to set up (a technician must act). 
 
 The most frequent instructions are:
 
@@ -94,10 +94,12 @@ This set of instructions is not properly standardized and different search engin
 
 robots.txt and robots meta directives have historically been developed to give indications to search engines, especially for SEO purposes. These techniques have not been created to protect sensitive data from specific usages (like AI training).
 
-Using robots.txt for managing TDM/AI opt-out would require a webmaster to enter every single user agent (i.e. bot name) he wants to stop from crawling the site, whatever the crawling purpose is. There may be already thousands of TDM and IA robots in the wild, and some of them do not even use a bot-specific user agent. Using robots.txt for opting out from TDM/AI crawlers would therefore be an overwhelming effort. This could change if robots.txt evolves and supports the expression of a generic opt-out (here Disallow) relative to certain purposes like "crawling for training generative AI solutions". Such an evolution could break existing implementations by web crawlers, which makes it a dangerous move. 
+Using robots.txt for managing TDM opt-out would require a webmaster to enter every single user agent (i.e. bot name) he wants to stop from crawling the site, whatever the crawling purpose is. There may be already thousands of TDM and IA robots in the wild, and some of them do not even use a bot-specific user agent. Using robots.txt for opting out from TDM or AI crawlers would therefore be an overwhelming effort. This could change if robots.txt evolves and supports the expression of a generic opt-out (here Disallow) relative to certain purposes like "crawling for training generative AI solutions". Such an evolution could break existing implementations by web crawlers, which makes it a dangerous move. 
 
 Robots meta directives  already support a notion of purpose: "nosnippet" and "notranslate" are examples of such purpose. It would therefore be easier to use robots meta directives for supporting a "notdm" directive conforming to the CDSM Article 4. A "noai" directive has already been proposed, but does not englobe the wide array of TDM practices publishers wish to address. 
 
 Plus, robots.txt and robots meta directives do not resolve our need for a TDM Policy property (as a URL). 
 
 This is why the TDMRep Community Group decided to get inspiration from robots.txt and robots meta directives, which were proven simple to implement, but using a different syntax; a syntax which is cleary different from the technique used for web indexing control, and allows the addition of the useful TDM Policy feature. 
+
+Search actors firmly state that modern Search engines rely on AI in their processing pipelines. As AI pipelines include TDM techniques (tokenization is considered by most people to be a TDM technique), reserving all TDM Rights could imply that Search engines need to obtain an agreement from content providers before indexing their content. TDMRep CG members advocate that robots.txt is an effective way to signal web crawlers an opt-in for Search, and therefore, constitutes a complementary solution for the TDM opt-out provided by TDMRep.
