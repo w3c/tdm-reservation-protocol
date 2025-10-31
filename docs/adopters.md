@@ -14,8 +14,8 @@ This page contains a list of adopters of the TDM Reservation Protocol. Adopters 
 - Gruppo editoriale Mauri Spagnol (GEMS): in its EPUB files.
 - The Finnish Publishers Association estimates that the adoption of the TDMProtocol is between 50% -80% of trade publishers and 70% of publishers of learning material.
 
-## STM Publishers
-The following Science, Technology and Mathematics publishers has adopted the protocol:
+## Academic & STM Publishers
+The following Academic & Science, Technology and Mathematics publishers has adopted the protocol:
 
 - Elsevier (https://www.elsevier.com/): as tdmrep.json, http headers + html metadata, with a policy.
 - American Chemical Society (https://pubs.acs.org/): as tdmrep.json, with a policy.
@@ -23,6 +23,7 @@ The following Science, Technology and Mathematics publishers has adopted the pro
 - American Psychological Association (https://psycnet.apa.org, https://psycinfo.apa.org, https://academicwriter.apa.org, and https://psyctherapy.apa.org): as http headers + html metadata, with a policy.
 - Optica Publishing Group (https://opg.optica.org/): as tdmrep.json, Crossref metadata, PDF XMP Metadata, with a policy
 - IEEE (https://www.ieee.org): as tdmrep.json, with a policy.
+- Sage (https://www.sagepub.com) as tdmrep.json, with a policy.
 
 ## Digital Platforms
 They are contracted by publishers to distribute digital content. 
