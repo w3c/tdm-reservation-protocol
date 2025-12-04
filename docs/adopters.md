@@ -24,6 +24,8 @@ The following Academic & Science, Technology and Mathematics publishers has adop
 - Optica Publishing Group (https://opg.optica.org/): as tdmrep.json, Crossref metadata, PDF XMP Metadata, with a policy
 - IEEE (https://www.ieee.org): as tdmrep.json, with a policy.
 - Sage (https://www.sagepub.com) as tdmrep.json, with a policy.
+- The Cochrane Library (http://www.cochranelibrary.com/) as tdmrep.json, with a policy.
+- Springer Publishing (https://connect.springerpub.com/) as tdmrep.json, with a policy.
 
 ## Digital Platforms
 They are contracted by publishers to distribute digital content. 
