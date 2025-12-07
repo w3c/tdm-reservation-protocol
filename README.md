@@ -9,7 +9,7 @@ Read more details is the [CG Charter](charter.md).
 
 In order to [join the group](https://www.w3.org/community/tdmrep/join), you will need a (free) [W3C account](https://www.w3.org/accounts/request). Please note, however, that [W3C Membership](https://www.w3.org/community/about/faq/#is-w3c-membership-required-to-participate-in-a-community-or-business-group) is _not_ required to join a Community Group.
 
-If you are new to Github, an interesting read is [I.Herman's introduction on the subject](https://iherman.github.io/misc-notes/docs/BasicGitHubContributionIntro). 
+If you are new to GitHub, an interesting read is [I.Herman's introduction on the subject](https://iherman.github.io/misc-notes/docs/BasicGitHubContributionIntro). 
 
 ## Introduction
 
@@ -26,7 +26,7 @@ The European Directive on Copyright and related rights in the Digital Single Mar
 
 The European AI Act, i.e. [EU Directive 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj), states that the copyright exceptions and limitations introduced in  Articles 3 and 4 of the CDSM apply to general-purpose AI models, and in particular large generative AI models. Any provider placing a general-purpose AI model on the Union market should comply with this obligation, regardless of the jurisdiction in which the copyright-relevant acts underpinning the training of those general-purpose AI models take place. Outside of the EU, advocating fair use or a similar rule is legally uncertain, as these actions are judged on a case-per-case basis.
 
-The “opt-out” mechanism introduced by the CDMS Directive is therefore a real opportunity for TDM/AI actors and publishers across countries to define a machine-readable technique able to express not only whether mining rights on specific content are reserved or not, but also how rightsholders can be contacted and which licenses are available, if any. This is a tremendous help for TDM/AI actors from all countries looking for legal certainty.
+The “opt-out” mechanism introduced by the CDSM Directive is therefore a real opportunity for TDM/AI actors and publishers across countries to define a machine-readable technique able to express not only whether mining rights on specific content are reserved or not, but also how rightsholders can be contacted and which licenses are available, if any. This is a tremendous help for TDM/AI actors from all countries looking for legal certainty.
 
 ## Documents
 
